@@ -1,0 +1,35 @@
+[package]
+name = "tinnitus-music"
+version = "0.1.0"
+edition = "2024"
+description = "Verified notch processing, loudness control and audio QA for tinnitus sound-therapy research"
+publish = false
+
+[lib]
+name = "tmdsp"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tmusic"
+path = "src/main.rs"
+
+# Every dependency is MIT and/or Apache-2.0 licensed, so the binary can ship
+# in a closed-source commercial product.
+[dependencies]
+anyhow = "1"
+# No "color" feature: it pulls in windows-sys, which needs dlltool on the
+# windows-gnu toolchain.
+clap = { version = "4.6", default-features = false, features = ["std", "derive", "help", "usage", "error-context", "suggestions"] }
+realfft = "3.5"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+
+[profile.dev]
+# Filter design and FFT convolution are slow unoptimised; keep tests fast.
+opt-level = 2
