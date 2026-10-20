@@ -1,14 +1,17 @@
 # Tinnitus Music
 
-可复现的音乐生成与耳鸣聆听研究工具。Rust 引擎负责音频处理和验证，
-Tauri / React 桌面端负责创作、播放、参与者配置与日志。
+A reproducible music generation and tinnitus listening research toolkit. The Rust
+engine processes and validates audio; the Tauri / React desktop app handles
+composition, playback, participant settings, and listening logs.
 
-**流程：生成或导入音乐 → 验证音频 → 按当前配置处理 → 主动播放 → 记录聆听。**
-音频指标通过不等于临床疗效；本项目尚未完成患者研究或产品临床验证。
+**Workflow: generate or import music → validate audio → process with current
+settings → start playback → log listening.** Passing audio checks does not
+demonstrate clinical efficacy. This project has not completed patient studies or
+clinical product validation.
 
-## 快速开始
+## Quick start
 
-需要 Rust stable。离线作曲无需模型或 API：
+Requires stable Rust. The offline composer needs no model or API:
 
 ```bash
 cargo build --release --locked
@@ -16,35 +19,37 @@ cargo build --release --locked
 ./target/release/tmusic process -i drift.wav -o drift_listening.wav --center 6000
 ```
 
-`generate` 保存原始 WAV 和生成参数；`process` 保存处理后的 WAV、检查结果及
-SHA-256。退出码：`0` 成功、`1` 执行错误、`2` 音频检查未通过。
-使用 `tmusic --help` 查看分析、滤波器设计、耳鸣匹配及模拟命令。
+`generate` saves the original WAV and generation parameters. `process` saves the
+processed WAV, validation results, and SHA-256 hashes. Exit codes: `0` success,
+`1` execution error, `2` audio validation failed. Run `tmusic --help` for analysis,
+filter design, tinnitus matching, and simulation commands.
 
-## 项目结构
+## Project structure
 
-| 路径 | 职责 |
+| Path | Purpose |
 |---|---|
-| `src/` | DSP、WAV、重采样、匹配流程、离线作曲和可选 ACE-Step 适配器 |
-| `app/src/` | React 创作工作室、音乐库、播放器和临床配置界面 |
-| `app/src-tauri/src/` | 桌面状态、播放、匹配、音乐库、临床命令与持久化 |
-| `tests/`、`app/tests/` | 信号验证、HTTP 协议、持久化及界面回归测试 |
-| `scripts/` | 可选模型服务安装与生成验证 |
-| `artifacts/validation/` | 小型、可追溯的历史技术测量记录 |
+| `src/` | DSP, WAV I/O, resampling, matching, offline composition, and optional ACE-Step adapter |
+| `app/src/` | React studio, library, player, and clinical settings interface |
+| `app/src-tauri/src/` | Desktop state, playback, matching, library, clinical commands, and persistence |
+| `tests/`, `app/tests/` | Signal validation, HTTP protocol, persistence, and UI regression tests |
+| `scripts/` | Optional model service setup and generation validation |
+| `artifacts/validation/` | Small, traceable records of historical technical measurements |
 
-- [桌面开发与数据说明](app/README.md)
-- [生成器、ACE-Step 配置与历史测量](docs/generation.md)
-- [音频处理、验证指标与匹配流程](docs/audio-engine.md)
-- [音乐生成实验室：候选筛选、偏好学习、同源对照](research/README.md)
+- [Desktop development and data](app/README.md)
+- [Generators, ACE-Step setup, and historical measurements](docs/generation.md)
+- [Audio processing, validation metrics, and matching](docs/audio-engine.md)
+- [Music research lab: candidate selection, preference learning, and paired controls](https://github.com/aotesaiwen/tinnitus-treatment/blob/codex/music-research-lab/research/README.md)
 
-生成源始终保留原始音频；播放和导出时按当前参与者配置重新处理。研究参与者
-的生成和导出由临床模式管理，界面不显示分组。PIN 仅是界面锁，不是数据加密。
+Generated sources retain their original audio. Playback and export reprocess it
+with the current participant settings. Clinical mode controls generation and
+export for research participants and hides group assignments from the interface.
+The PIN locks the interface; it does not encrypt data.
 
-## 验证
+## Verification
 
 ```bash
 cargo test --locked --features generation-http
 cargo clippy --locked --all-targets --features generation-http -- -D warnings
-python3 -m unittest discover -s research/tests -v
 cd app
 npm ci
 npm run build
@@ -52,14 +57,16 @@ npx playwright install chromium
 npm test
 ```
 
-HTTP 测试使用本地模拟服务器；浏览器测试模拟 Tauri IPC。真实桌面设备的音频输出、
-声压级校准和长时间运行仍需单独验证。模型服务是可选组件，普通开发无需下载权重。
-CI 同时检查核心 Rust、浏览器界面和 Windows 桌面编译。
+HTTP tests use local mock servers; browser tests mock Tauri IPC. Audio output on
+physical desktop devices, sound pressure level calibration, and extended use
+require separate validation. Model services are optional; routine development
+does not require downloading weights. CI checks the Rust core, browser UI, and
+Windows desktop compilation.
 
-## 边界
+## Limitations
 
-- 输入格式为 WAV；其他格式需先解码。无损输出用于保留陷波结果。
-- 生成时长为 30–300 秒；离线作曲不是神经模型。
-- LUFS / dBTP 是数字音频指标，不表示耳机实际声压级。
-- 历史模拟和 GPU 测量是技术验证，不能推导患者获益或跨硬件可复现性。
-- 发布前需另行确认模型与数据许可、临床证据以及目标市场的产品要求。
+- Input must be WAV; decode other formats first. Lossless output preserves the notch.
+- Generation supports 30–300 seconds. The offline composer is not a neural model.
+- LUFS / dBTP measure digital audio, not the actual sound pressure level at the headphones.
+- Historical simulations and GPU measurements are technical validation, not evidence of patient benefit or reproducibility across hardware.
+- Before release, review model and data licenses, clinical evidence, and product requirements for the target market.
