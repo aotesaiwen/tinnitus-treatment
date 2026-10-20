@@ -1,0 +1,82 @@
+{
+  "recipes": [
+    {
+      "id": "composer-drift",
+      "engine": "composer",
+      "style": "drift",
+      "duration_s": 30,
+      "tempo_bpm": 54,
+      "prompt": ""
+    },
+    {
+      "id": "composer-focus",
+      "engine": "composer",
+      "style": "focus",
+      "duration_s": 30,
+      "tempo_bpm": 76,
+      "prompt": ""
+    },
+    {
+      "id": "composer-unwind",
+      "engine": "composer",
+      "style": "unwind",
+      "duration_s": 30,
+      "tempo_bpm": 60,
+      "prompt": ""
+    },
+    {
+      "id": "ace-drift-baseline",
+      "engine": "ace-step",
+      "style": "drift",
+      "duration_s": 30,
+      "tempo_bpm": 54,
+      "prompt": "A spacious ambient instrumental with warm sustained pads and delicate soft bells."
+    },
+    {
+      "id": "ace-drift-overtone",
+      "engine": "ace-step",
+      "style": "drift",
+      "duration_s": 30,
+      "tempo_bpm": 54,
+      "prompt": "A spacious ambient instrumental with warm sustained pads and delicate soft bells. Soft acoustic details, gently brushed cymbals and airy strings with rich natural overtones."
+    },
+    {
+      "id": "ace-focus-baseline",
+      "engine": "ace-step",
+      "style": "focus",
+      "duration_s": 30,
+      "tempo_bpm": 76,
+      "prompt": "A minimal instrumental with gentle electric piano arpeggios, an unobtrusive pulse and warm pads."
+    },
+    {
+      "id": "ace-focus-overtone",
+      "engine": "ace-step",
+      "style": "focus",
+      "duration_s": 30,
+      "tempo_bpm": 76,
+      "prompt": "A minimal instrumental with gentle electric piano arpeggios, an unobtrusive pulse and warm pads. Soft acoustic details, gently brushed cymbals and airy strings with rich natural overtones."
+    },
+    {
+      "id": "ace-unwind-baseline",
+      "engine": "ace-step",
+      "style": "unwind",
+      "duration_s": 30,
+      "tempo_bpm": 60,
+      "prompt": "A quiet instrumental with mellow plucked strings, long soft chords and a sparse descending melody."
+    },
+    {
+      "id": "ace-unwind-overtone",
+      "engine": "ace-step",
+      "style": "unwind",
+      "duration_s": 30,
+      "tempo_bpm": 60,
+      "prompt": "A quiet instrumental with mellow plucked strings, long soft chords and a sparse descending melody. Soft acoustic details, gently brushed cymbals and airy strings with rich natural overtones."
+    }
+  ],
+  "seed_splits": {
+    "development": [42, 43, 44, 45],
+    "holdout": [142, 143, 144, 145]
+  },
+  "centers_hz": [1000, 3000, 6000, 10000],
+  "budgets": [1, 2, 4]
+}

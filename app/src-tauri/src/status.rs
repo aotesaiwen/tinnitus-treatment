@@ -11,6 +11,7 @@ pub(super) struct DayTotal {
 #[derive(Serialize)]
 pub(super) struct PlayerStatus {
     state: PlayState,
+    can_rate: bool,
     track_id: Option<String>,
     title: Option<String>,
     position_s: f64,
@@ -78,6 +79,7 @@ pub(super) async fn status(state: State<'_, AppState>) -> Result<Status, String>
             week,
             player: PlayerStatus {
                 state: g.state,
+                can_rate: feedback::allowed(g),
                 track_id: g.current.map(|i| g.tracks[i].id.clone()),
                 title: g.current.map(|i| g.tracks[i].title.clone()),
                 position_s: if music {

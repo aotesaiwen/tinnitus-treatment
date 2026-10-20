@@ -34,6 +34,12 @@ def _identifier(value, label):
         raise ValueError(f"{label} must be a nonempty, trimmed string (max 128 characters)")
 
 
+def validate_participant_id(value, label="participant_id"):
+    """Accept existing desktop IDs without changing their exact identity."""
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{label} must be a string containing a non-whitespace character")
+
+
 def _number(value, low, high, label, integer=False):
     if (
         isinstance(value, bool) or not isinstance(value, (int, float))
@@ -44,7 +50,8 @@ def _number(value, low, high, label, integer=False):
         raise ValueError(f"{label} must be a {kind} between {low} and {high}")
 
 
-def _validate(data):
+def validate_input(data):
+    """Validate a preference dataset and return its recipe catalog by ID."""
     _fields(data, {"catalog", "feedback"}, "input", optional={"synthetic"})
     if "synthetic" in data and not isinstance(data["synthetic"], bool):
         raise ValueError("synthetic must be a boolean")
@@ -73,7 +80,7 @@ def _validate(data):
     for index, event in enumerate(data["feedback"]):
         label = f"feedback[{index}]"
         _fields(event, FEEDBACK_FIELDS, label)
-        _identifier(event["participant_id"], f"{label}.participant_id")
+        validate_participant_id(event["participant_id"], f"{label}.participant_id")
         _identifier(event["recipe_id"], f"{label}.recipe_id")
         if event["recipe_id"] not in recipes:
             raise ValueError(f"{label} references unknown recipe_id: {event['recipe_id']}")
@@ -85,10 +92,10 @@ def _validate(data):
 
 def recommend(data, participant_id, seed):
     """Return one recipe and an auditable score table; never generate or play audio."""
-    _identifier(participant_id, "participant_id")
+    validate_participant_id(participant_id)
     if isinstance(seed, bool) or not isinstance(seed, int):
         raise ValueError("seed must be an integer")
-    recipes = _validate(data)
+    recipes = validate_input(data)
     feedback = {recipe_id: [] for recipe_id in recipes}
     for event in data["feedback"]:
         if event["participant_id"] == participant_id:

@@ -1,17 +1,24 @@
-# 音乐生成实验室
+# Music research lab
 
-三个可独立运行的探索方向。只使用 Python 标准库和现有 Rust CLI；
-不会修改桌面端参与者配置、自动播放或更新治疗参数。
+Three independently runnable experiments using only the Python standard library
+and the existing Rust CLI. They do not modify desktop participant settings, start
+playback, or update treatment parameters.
 
-| 方向 | 可检验假设 | 原型 | 优先观察的结果 |
+| Direction | Testable hypothesis | Prototype | Primary observations |
 |---|---|---|---|
-| 生成质量筛选 | 在固定生成预算内，多个候选可以提高找到合格音源的概率 | [候选生成与筛选](selection.md) | 每个独立音源的入库率、失败原因、每首合格音源的耗时 |
-| 偏好学习 | 个体的音乐评分可以帮助选出更愿意再次聆听的配方 | [偏好推荐](preferences.md) | 留出样本的喜欢程度、复听率、明确的不适反馈 |
-| 同源对照 | 使用同源音乐能减少处理条件之间的内容差异 | [对照材料制作](paired.md) | 音频指标、响度差、能否辨别条件、顺序敏感性 |
+| Generation quality screening | Multiple candidates may improve the chance of finding an acceptable source within a fixed generation budget | [Candidate generation and selection](selection.md) | Acceptance rate per independent source, failure reasons, time per accepted source |
+| Preference learning | Individual music ratings may help select recipes listeners want to hear again | [Preference recommendations](preferences.md) | Held-out liking scores, repeat listening, explicit discomfort reports |
+| Paired controls | Using the same source music can reduce content differences between processing conditions | [Control material preparation](paired.md) | Audio metrics, loudness differences, condition detectability, order sensitivity |
 
-## 开始
+The desktop app can now collect track ratings. Use the [feedback importer](feedback.md)
+to prepare one listener's responses for the preference prototype.
+The [generation matrix](benchmark.md) compares composer styles and ACE-Step
+prompt variants on separate development and holdout seeds, reusing each source
+across processing frequencies.
 
-在仓库根目录：
+## Getting started
+
+From the repository root:
 
 ```bash
 cargo build --release --locked
@@ -19,43 +26,65 @@ python3 -m unittest discover -s research/tests -v
 python3 -m research.selection --help
 python3 -m research.preferences --help
 python3 -m research.paired --help
+python3 -m research.benchmark --help
+python3 -m research.feedback --help
 ```
 
-使用 ACE-Step 时增加 `--features generation-http` 并启动模型服务。
-所有新实验的音频和原始输出应放在 Git 忽略的 `artifacts/audio/`。
-不要把参与者反馈、配置文件或条件映射提交进代码仓库；示例反馈是人工构造的数据。
-每次使用新的输出目录，以保留上一轮实验。
+For ACE-Step, add `--features generation-http` to the build and start the model
+service. Keep new experiment audio and raw output in the Git-ignored
+`artifacts/audio/` directory. Do not commit participant feedback, configuration
+files, or condition mappings; example feedback is synthetic. Use a fresh output
+directory for each run to preserve earlier experiments.
 
-## 研究与产品的衔接
+## From experiments to research and products
 
-先比较固定生成配方与候选筛选：按源音乐分组，记录生成失败与所有候选，
-不能只统计被选中的音乐。按种子、提示词、风格、时长和目标频段分层；
-训练/调参数据与最终测试音源分开。同一音乐的多个处理条件是重复测量，
-统计时不能视为独立音乐样本。候选选择后的性能要在留出音源上评估。
+First compare a fixed generation recipe with candidate selection. Group results
+by source music and record generation failures and every candidate, including
+unselected ones. Stratify by seed, prompt, style, duration, and target frequency
+band. Separate training and tuning data from final test sources. Processing
+conditions derived from the same music are repeated measurements, not independent
+music samples. Evaluate selection performance on held-out sources.
 
-随后进行听感评估：音质、突然声响、是否含意外人声、舒适度、喜爱度和复听意愿。
-技术筛选并不能检测这些属性。偏好模型只优化音乐选择，不允许用用户评分自动
-改变陷波位置、幅度、音量或研究分组；研究模式下应冻结策略或预先规定更新规则。
+Then assess listening experience: audio quality, sudden sounds, unexpected
+vocals, comfort, liking, and willingness to listen again. Technical screening
+does not detect these attributes. Preference models optimize music selection
+only; ratings must not automatically change notch placement, depth, volume, or
+study allocation. Freeze the policy in research mode or specify update rules
+in advance.
 
-产品方向可先验证“更愿意坚持的音乐创作与聆听”，再由临床合作方设计患者研究。
-如果未来评估耳鸣变化，应预先定义结局、随访、对照和不适事件处理，不能把
-技术入库率、合成反馈或短期喜爱度写成治疗有效的证据。
+Initial product work can test whether music creation and listening encourage
+continued use, followed by patient studies designed with clinical collaborators.
+Any future evaluation of tinnitus changes needs predefined outcomes, follow-up,
+controls, and procedures for discomfort events. Technical acceptance rates,
+synthetic feedback, and short-term liking are not evidence of treatment efficacy.
 
-## 证据边界与来源
+## Evidence and sources
 
-[NICE NG155 的研究说明](https://www.nice.org.uk/guidance/ng155/chapter/Rationale-and-impact)
-指出针对特定声音疗法的证据有限，因此这里的原型围绕可测量的技术与体验问题。
-[Okamoto 等人的原始试验](https://pubmed.ncbi.nlm.nih.gov/20080545/)
-研究了定制陷波音乐；本项目使用生成音乐及其新的筛选流程，需要独立验证，
-不能直接继承原试验的结果。
-[ACE-Step 1.5 论文](https://arxiv.org/abs/2602.00744)
-提供音乐生成模型的技术背景，其音乐生成指标不是耳鸣临床指标。
+[NICE NG155's rationale](https://www.nice.org.uk/guidance/ng155/chapter/Rationale-and-impact)
+describes limited evidence for specific sound therapies, so these prototypes
+focus on measurable technical and listening experience questions.
+[Okamoto et al.'s original trial](https://pubmed.ncbi.nlm.nih.gov/20080545/)
+studied tailor-made notched music. This project's generated music and selection
+workflow need independent validation; the trial's findings do not transfer
+directly. The [ACE-Step 1.5 paper](https://arxiv.org/abs/2602.00744) provides
+technical background on music generation. Its generation metrics are not
+clinical tinnitus outcomes.
 
-这些方向是项目提出的研究假设，不是已得到的科学结论。
+These directions are proposed research hypotheses, not established findings.
 
-## 本轮运行记录
+## Recorded runs
 
-[2026-10-21 技术记录](../artifacts/validation/research-20261021.json)保存了实际执行的
-离线 smoke test：两个 30 秒候选均通过，选中音源的三种处理条件也全部通过，
-响度极差约 `7.60 × 10⁻⁷ LU`。这些是同一次本机运行的结果，既不是临床数据，
-也不是生成成功率的可靠估计。偏好示例仅用合成评分；本轮没有运行 ACE-Step。
+The [generation matrix results](results-20261021.md) cover 72 executed source
+attempts, including 48 ACE-Step outputs, and 288 processing cases. All sources
+generated; 282 cases met the full admission rule. The six rejections were drift
+sources at 10 kHz. Overtone wording did not improve the observed admission count.
+The report includes separate development/holdout results, generation costs and
+an executed same-source listening package.
+
+The [2026-10-21 technical record](../artifacts/validation/research-20261021.json)
+captures an executed offline smoke test: both 30-second candidates passed, as
+did all three processing conditions for the selected source. The loudness range
+was approximately `7.60 × 10⁻⁷ LU`. These results come from a single local run;
+they are neither clinical data nor a reliable estimate of generation success.
+The preference example used synthetic ratings only. That smoke test did not run
+ACE-Step.

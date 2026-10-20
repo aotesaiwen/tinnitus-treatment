@@ -43,6 +43,27 @@ class PreferenceTests(unittest.TestCase):
         self.assertEqual(bob["selected_recipe"]["recipe_id"], "b")
         self.assertEqual(bob["feedback_count"], 80)
 
+    def test_padded_desktop_ids_remain_distinct_from_unpadded_ids(self):
+        baseline = recommend(self.data, "alice", 9)
+        self.data["feedback"].extend([
+            event("a", 1, " alice ", discomfort=True),
+            event("b", 5, " alice "),
+        ])
+        self.assertEqual(baseline, recommend(self.data, "alice", 9))
+        padded = recommend(self.data, " alice ", 9)
+        self.assertEqual(padded["participant_id"], " alice ")
+        self.assertEqual(padded["feedback_count"], 2)
+        self.assertEqual(padded["selected_recipe"]["recipe_id"], "b")
+        self.assertEqual(padded["excluded"][0]["recipe_id"], "a")
+
+    def test_long_existing_desktop_ids_are_preserved(self):
+        participant = "listener-" + "x" * 512
+        self.data["feedback"] = [event("a", 5, participant)]
+        result = recommend(self.data, participant, 9)
+        self.assertEqual(result["participant_id"], participant)
+        self.assertEqual(result["feedback_count"], 1)
+        self.assertEqual(result["candidates"][0]["mean_rating"], 5)
+
     def test_seed_reproducibility_and_no_mutation(self):
         original = copy.deepcopy(self.data)
         first = recommend(self.data, "alice", 123)
@@ -101,6 +122,10 @@ class PreferenceTests(unittest.TestCase):
             lambda data: data["feedback"][0].update(recipe_id="unknown"),
             lambda data: data["feedback"][0].update(discomfort=1),
             lambda data: data["feedback"][0].update(participant_id=""),
+            lambda data: data["feedback"][0].update(participant_id=" \t\n"),
+            lambda data: data["feedback"][0].update(participant_id=5),
+            lambda data: data["catalog"][0].update(recipe_id=" a"),
+            lambda data: data["catalog"][0].update(recipe_id="a" * 129),
             lambda data: data["catalog"][0].update(tempo_bpm=True),
             lambda data: data["catalog"][0].update(duration_s=301),
             lambda data: data["catalog"][0].update(provider="unknown"),
@@ -117,7 +142,10 @@ class PreferenceTests(unittest.TestCase):
                 recommend(data, "alice", 0)
 
     def test_invalid_participant_and_seed(self):
-        for participant, seed in (("", 1), (" alice", 1), ("alice", True), ("alice", 1.5)):
+        for participant, seed in (
+            ("", 1), (" \t\n", 1), (None, 1), (5, 1),
+            ("alice", True), ("alice", 1.5),
+        ):
             with self.subTest(participant=participant, seed=seed):
                 with self.assertRaises(ValueError):
                     recommend(self.data, participant, seed)

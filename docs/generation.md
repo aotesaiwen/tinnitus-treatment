@@ -54,7 +54,10 @@ bash scripts/acestep.sh setup
 bash scripts/acestep.sh start
 ```
 
-The API binds only to `127.0.0.1:8001`; stop it with Ctrl-C. `setup` requires `uv`,
+The API binds only to `127.0.0.1:8001`; stop it with Ctrl-C.
+For experiments on a CUDA device, `ACESTEP_GPU_MEMORY_GB=32 bash scripts/acestep.sh start`
+caps the PyTorch allocator at 32 GiB. This does not reserve GPU memory or constrain
+allocations outside PyTorch. `setup` requires `uv`,
 network access and space for the Python/CUDA dependencies and model weights.
 For a GPU with less memory, enable `ACESTEP_OFFLOAD_TO_CPU=true` and
 `ACESTEP_OFFLOAD_DIT_TO_CPU=true` before starting. The script leaves other services alone.

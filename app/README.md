@@ -66,6 +66,7 @@ Default Windows location: `%APPDATA%\local.tinnitusmusic.research\`.
 | `profile.json`, `settings.json` | Current assignment, library folder, PIN hash and volume |
 | `library_preferences.json` | Preferences and favorite IDs per participant |
 | `listening_log.jsonl` | Listening segments tagged with participant ID |
+| `music_feedback.jsonl` | Explicit track ratings, optional discomfort answers and private recipe snapshots |
 | `reports/`, `matching/` | Playback/export verification and matching reports |
 | `generated/library/` | Unprocessed admitted WAV sources |
 | `generated/records/` | Recipe, provider metadata, hashes, assignment snapshot and verification |
@@ -75,3 +76,7 @@ The PIN is a soft UI lock; disk access can reveal study assignments. ACE-Step re
 music preferences, not profiles, tinnitus pitch, assignments or listening logs.
 Sources containing `_notch` or ending in `_listening` are excluded from library scanning.
 Export into source folders is blocked. Playback has no physical sound-level calibration.
+
+Generated tracks can collect a 1–5 music rating while playing or paused. Responses
+stay local and do not change playback or assignments. See the
+[research feedback importer](../research/feedback.md) for the offline recommendation path.

@@ -1,0 +1,1150 @@
+{
+  "schema_version": 1,
+  "scope": "Technical generation and processing measurements; no listener or clinical outcomes.",
+  "plan_sha256": "c5b2ffab582511573b89cb916e109bad4e38a8d6bab5060e42773a248fffbe46",
+  "raw_summary_sha256": "18419c81a5aea5a647b02211c0d0d6de65194234ac8f0c26b61e568554920e46",
+  "local_evidence_root": "artifacts/audio/generation-matrix-20261021",
+  "status": "completed",
+  "source_attempts": 72,
+  "generated_sources": 72,
+  "processing_checks": 288,
+  "admitted_checks": 282,
+  "all_numeric_checks_pass": 288,
+  "elapsed_s": 262.38215538300574,
+  "generation_s": 120.84796192124486,
+  "processing_s": 126.37367526255548,
+  "generation_timing": {
+    "composer": {
+      "sources": 24,
+      "median_s": 0.6379384249448776,
+      "min_s": 0.50444420799613,
+      "max_s": 0.7659874763339758,
+      "total_s": 15.255357975140214
+    },
+    "ace": {
+      "sources": 48,
+      "median_s": 2.112209784798324,
+      "min_s": 2.0956017579883337,
+      "max_s": 4.198277268558741,
+      "total_s": 105.59260394610465
+    }
+  },
+  "model_runtime": {
+    "service_code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "model_repository": "ACE-Step/Ace-Step1.5",
+    "model_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+    "loaded_model": "acestep-v15-turbo",
+    "llm_initialized": false,
+    "torch": "2.10.0+cu128",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "pytorch_allocator_limit_gib": 32,
+    "note": "No CPU offload or FlashAttention; service was ready before the first attempt. LM disabled as verified by /health; generation metadata's reported_lm_model is not evidence it ran."
+  },
+  "paired_review": {
+    "schema_version": 1,
+    "accepted": true,
+    "source_sha256": "374f74c98f333ac69393324cfb72bf0576e178accca208b1b4a53756a27191f7",
+    "loudness_spread_lu": 0.05048586289425572,
+    "conditions_passed": 3,
+    "schedule": "listening/schedule.json",
+    "private_key": "private/key.json",
+    "note": "Only share listening/ for review. private/ reveals the condition mapping.",
+    "source_recipe": "ace-drift-baseline",
+    "source_split": "development",
+    "source_seed": 42,
+    "center_hz": 6000,
+    "sham_center_hz": 1000,
+    "local_output": "artifacts/audio/ace-paired-review-20261021",
+    "selection_note": "Exploratory illustration using the first ACE-Step development source; no listener evaluation has been performed."
+  },
+  "sources": [
+    {
+      "recipe_id": "composer-drift",
+      "split": "development",
+      "seed": 42,
+      "source_path": "composer-drift/development/seed-42/source.wav",
+      "source_sha256": "e05931f013e4f2964ef390bbdda3f846b6ae4a2e60ed7d65e1631ae4029ea162",
+      "manifest_sha256": "6d3b68f11786f7a408f85e6182e16d8ce244505788020a444eb7232c76e3a838",
+      "generation_s": 0.5064809117466211,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-drift",
+      "split": "development",
+      "seed": 43,
+      "source_path": "composer-drift/development/seed-43/source.wav",
+      "source_sha256": "6442adeb4f5f9c75f02a882cfcd8bf8b119d87cbbddf5fc23120e354f8ac7ff5",
+      "manifest_sha256": "07e7484a508a49a1c890d58147c3e80d9c1f67394dc7371c2556df47ae8517af",
+      "generation_s": 0.5064970217645168,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-drift",
+      "split": "development",
+      "seed": 44,
+      "source_path": "composer-drift/development/seed-44/source.wav",
+      "source_sha256": "7f2d6775e9f2652983142e5febe0c2405a1abc92f8d9d7927886f88cf35ee19d",
+      "manifest_sha256": "add2f8cd530efb54b497a795e9fa9a93de7aa7a5a28ed2872a664707388dd22c",
+      "generation_s": 0.5069619063287973,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-drift",
+      "split": "development",
+      "seed": 45,
+      "source_path": "composer-drift/development/seed-45/source.wav",
+      "source_sha256": "69919672752b6b7ae2ef0a6db46a8c89d1ddaf5dfa84b1f9bd797b2644165a7a",
+      "manifest_sha256": "0ed5d61455e383c82f1cf853b2655636885f9cacac5ec6cec8979177c7b9d8fb",
+      "generation_s": 0.505008103325963,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-drift",
+      "split": "holdout",
+      "seed": 142,
+      "source_path": "composer-drift/holdout/seed-142/source.wav",
+      "source_sha256": "d2c72d673197f5dc5c1647000c4cbce8c9337acf318f88786e9ba2bd5747612c",
+      "manifest_sha256": "8cfa01c46926fe97f3c71d794dd077f366775c2c0e27ef40351aa616a12069a4",
+      "generation_s": 0.5105396807193756,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-drift",
+      "split": "holdout",
+      "seed": 143,
+      "source_path": "composer-drift/holdout/seed-143/source.wav",
+      "source_sha256": "fff7c290e44f95ed7e1a671a79dae92a24806396c288029fe5a9e08fd33b5926",
+      "manifest_sha256": "3bb6379bd278ffda7d394691fc32413862189f0509463dcd90f561dd24a12f08",
+      "generation_s": 0.50444420799613,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-drift",
+      "split": "holdout",
+      "seed": 144,
+      "source_path": "composer-drift/holdout/seed-144/source.wav",
+      "source_sha256": "63804fcd55a5d0367f925e73543e0f1061d1e87cf84754c1e240ac0080cf5714",
+      "manifest_sha256": "b933e58a52bb6f81de135e11c69bc74d2cb8470ba7bfb6103f657dd45dfe161d",
+      "generation_s": 0.5064329132437706,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-drift",
+      "split": "holdout",
+      "seed": 145,
+      "source_path": "composer-drift/holdout/seed-145/source.wav",
+      "source_sha256": "26734461642d5e53588fb47a69bd3312b6565e07748818f848869f0e4ff11b1b",
+      "manifest_sha256": "b615927fd2c004f1f246bff6cb3e6ea03e9e3979989c852917dc128f868a209f",
+      "generation_s": 0.5051488429307938,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-focus",
+      "split": "development",
+      "seed": 42,
+      "source_path": "composer-focus/development/seed-42/source.wav",
+      "source_sha256": "1b9a203b95f41bbf0ea94fa4c0a8b4f7154c0d52833320a047ed494c8cbc3c09",
+      "manifest_sha256": "a154333f371f36a629aadc6af6c5b55fc3ed7e4b1cbe3fd177174c8a64f3bb04",
+      "generation_s": 0.7596058305352926,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-focus",
+      "split": "development",
+      "seed": 43,
+      "source_path": "composer-focus/development/seed-43/source.wav",
+      "source_sha256": "232f2780a676273577c2634788d0bcdb7e5d08d187917d64943b87a4bf72400c",
+      "manifest_sha256": "f995bc44568f00bb994ea2a4d67ff7b0caba2740fe44b924ac8fad54c04df655",
+      "generation_s": 0.7634322810918093,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-focus",
+      "split": "development",
+      "seed": 44,
+      "source_path": "composer-focus/development/seed-44/source.wav",
+      "source_sha256": "a9e6df1763d7f661590b60ab70c0ceab329c6c6b6c8e164ef5ba682c99e1255e",
+      "manifest_sha256": "0afa75f644af3430018cf7415499db0af3979ada3ec80766e7f963bf601347c2",
+      "generation_s": 0.7589219193905592,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-focus",
+      "split": "development",
+      "seed": 45,
+      "source_path": "composer-focus/development/seed-45/source.wav",
+      "source_sha256": "539b8590056f93e2ee4c85cb23d9bfbbd6007faab30214786aaed2519dece297",
+      "manifest_sha256": "4f9f6022656bfb04e69abfd29bca00cfdb83cd3693e44d3c1a89675fb83b9b6a",
+      "generation_s": 0.7659874763339758,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-focus",
+      "split": "holdout",
+      "seed": 142,
+      "source_path": "composer-focus/holdout/seed-142/source.wav",
+      "source_sha256": "bc3df0936a9c7a7ba9a633729a52a8632d0c5fba9c8040a3dfe4de4d540835f9",
+      "manifest_sha256": "e7efa85fdb6f613cce13fcc520acb08097d9f2e0e3aa6f81a623296a375fb7d9",
+      "generation_s": 0.7622835095971823,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-focus",
+      "split": "holdout",
+      "seed": 143,
+      "source_path": "composer-focus/holdout/seed-143/source.wav",
+      "source_sha256": "9a72ff0a504477b2b37c29cb36bc306b38a1ffd8b12fda2fc9d66d4bd2f5a60c",
+      "manifest_sha256": "711692c38bab9cb4516601e4c9657bb0e04919c8f21f8992b715a20b1dfd033d",
+      "generation_s": 0.765066085383296,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-focus",
+      "split": "holdout",
+      "seed": 144,
+      "source_path": "composer-focus/holdout/seed-144/source.wav",
+      "source_sha256": "2b05bd9cdae6066f6c8008d9bd3aac8bf2a1a1390bf2d34593ac8a4d8fcb657c",
+      "manifest_sha256": "d6fd5ec7265d66f7b242edbf4ca13b662bdcac7a81ac4e921a65589c5adde39d",
+      "generation_s": 0.7615600284188986,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-focus",
+      "split": "holdout",
+      "seed": 145,
+      "source_path": "composer-focus/holdout/seed-145/source.wav",
+      "source_sha256": "4e2bc4e60047e311d39e07e55f57a220466c24110994d2e9ca503870bc62809a",
+      "manifest_sha256": "76c99121c5d21fea976d2b0f5173162fc7a5a36c85f9e5b969328915dc121c15",
+      "generation_s": 0.7630054745823145,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-unwind",
+      "split": "development",
+      "seed": 42,
+      "source_path": "composer-unwind/development/seed-42/source.wav",
+      "source_sha256": "cf0d09b6ad6ad320ead2603f1b39ffd22aa2aa4a10c43e859c0652a19182dab1",
+      "manifest_sha256": "f4f599ad05ce86a82ba2f5cace4c2189eac51a52488fd58946ebc7636d715c69",
+      "generation_s": 0.6370783317834139,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-unwind",
+      "split": "development",
+      "seed": 43,
+      "source_path": "composer-unwind/development/seed-43/source.wav",
+      "source_sha256": "ee0159f366b5500bb98aab44dc710f4d041f70bec07451b095a39704b181e3b4",
+      "manifest_sha256": "40066884436cd7690273c3897881053c2798093d7426278dd3eaf5a559c44c2c",
+      "generation_s": 0.6371739916503429,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-unwind",
+      "split": "development",
+      "seed": 44,
+      "source_path": "composer-unwind/development/seed-44/source.wav",
+      "source_sha256": "b2b7262dd8cfdcd05eb3e23626a1d5d58a80292020f0464dd302c767790ec0c3",
+      "manifest_sha256": "c660c486c33568dd3d96fe9d53f1adbbe61da9bb50f9bc6d4774f4a44f89bc1e",
+      "generation_s": 0.6380054485052824,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-unwind",
+      "split": "development",
+      "seed": 45,
+      "source_path": "composer-unwind/development/seed-45/source.wav",
+      "source_sha256": "619239f25275d5323735da58a38b9e66cea41fc7ca245aa66dcea22c47bf6dc1",
+      "manifest_sha256": "3bf2d63b7d5c568f6d7a0f179e536c109be4511373342ab732998c16d7fde3dc",
+      "generation_s": 0.6383189987391233,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-unwind",
+      "split": "holdout",
+      "seed": 142,
+      "source_path": "composer-unwind/holdout/seed-142/source.wav",
+      "source_sha256": "393ae02e793ce05a7bd7fb7e0868fb3ea52e9cf746195ce31bb03ecf61d43b82",
+      "manifest_sha256": "5e48300130847e8c2d1134b44971f568f44e7a9db6a3a888a853f4bf5de00b24",
+      "generation_s": 0.6385973077267408,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-unwind",
+      "split": "holdout",
+      "seed": 143,
+      "source_path": "composer-unwind/holdout/seed-143/source.wav",
+      "source_sha256": "f8e89147f787d7e27e04592944ed2ed3b99858ef7187a5a0499653143295170d",
+      "manifest_sha256": "13d17605963d0fac11cf0794668f9b3a9d8cdc323e45550ee367d6fd736d783b",
+      "generation_s": 0.6362506784498692,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-unwind",
+      "split": "holdout",
+      "seed": 144,
+      "source_path": "composer-unwind/holdout/seed-144/source.wav",
+      "source_sha256": "3afee1b3919e6fe2238acf1dd91aca4e0498476c1be8abe59bb6545c7b609f11",
+      "manifest_sha256": "480600bc98ced81d1ada23e28f4c69b57dc688a4d8b8958452ee905f02fdbc70",
+      "generation_s": 0.6378714013844728,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "composer-unwind",
+      "split": "holdout",
+      "seed": 145,
+      "source_path": "composer-unwind/holdout/seed-145/source.wav",
+      "source_sha256": "77d83ef77966ab5f0a7f3bf7cffa866df4bfc86d04e5ec87a27ac25242b82908",
+      "manifest_sha256": "943e9264b2450ea64dd4c95e0e2a891cb102346eb6862c30a13c774d32a84bae",
+      "generation_s": 0.640685623511672,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-baseline",
+      "split": "development",
+      "seed": 42,
+      "source_path": "ace-drift-baseline/development/seed-42/source.wav",
+      "source_sha256": "374f74c98f333ac69393324cfb72bf0576e178accca208b1b4a53756a27191f7",
+      "manifest_sha256": "f99c63d8d4466031f551def645b141cba1e1681fec171d7a90abbc5a4330b049",
+      "generation_s": 4.198277268558741,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-baseline",
+      "split": "development",
+      "seed": 43,
+      "source_path": "ace-drift-baseline/development/seed-43/source.wav",
+      "source_sha256": "0e563d26e9408c61fef64c7b4bb598123e5a5791e1a03f07e3d06b82bcc62d97",
+      "manifest_sha256": "8fefc12290877c878193938d598a323b448ce7e08c2b3dad3879363a9e3ccb3e",
+      "generation_s": 2.0956017579883337,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-baseline",
+      "split": "development",
+      "seed": 44,
+      "source_path": "ace-drift-baseline/development/seed-44/source.wav",
+      "source_sha256": "3fbae1c5d719a28a1039f3ed326f780d4ca1b0d7991d6285ce081b36edcb661b",
+      "manifest_sha256": "7f34ffb24a125e139c225cd4544070e162f0075d05532d193dccc71420515643",
+      "generation_s": 2.097637826576829,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-baseline",
+      "split": "development",
+      "seed": 45,
+      "source_path": "ace-drift-baseline/development/seed-45/source.wav",
+      "source_sha256": "b2e66b5710ab78c453013d1ea4fd98d867d502c356593bf9ec2567abbe26b0bf",
+      "manifest_sha256": "46c3432966dae3b762cd1eb2bc73f96fda6427af69de556ee1f4f7b125093b32",
+      "generation_s": 2.106793377548456,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-baseline",
+      "split": "holdout",
+      "seed": 142,
+      "source_path": "ace-drift-baseline/holdout/seed-142/source.wav",
+      "source_sha256": "87519b9d8f7718cddd4e9c9e5db46984e629306104d5cf12173f85f324d73812",
+      "manifest_sha256": "ff3f95f8f9b5793341006bf55a0aabd7eba94d5e5c6dbd7c6083789e8c87689b",
+      "generation_s": 2.1186159159988165,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-baseline",
+      "split": "holdout",
+      "seed": 143,
+      "source_path": "ace-drift-baseline/holdout/seed-143/source.wav",
+      "source_sha256": "dd78aa293b0d5a6f02e47a98d71fc04db1afdbf278771c9c32b0479c941d4b8f",
+      "manifest_sha256": "13287adfb8f6c32f0459c19266e87e4b7f6a54ab44b738fd9990608e34113bd9",
+      "generation_s": 2.1233903728425503,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-baseline",
+      "split": "holdout",
+      "seed": 144,
+      "source_path": "ace-drift-baseline/holdout/seed-144/source.wav",
+      "source_sha256": "a1db8f74e376b54dffa3ae9ef6c8cd009a311176b65f32647155a41986740745",
+      "manifest_sha256": "1c068629b280570a6bbceffbb8179427cd1c042a5d857441962a592233830dbc",
+      "generation_s": 2.1084444858133793,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-baseline",
+      "split": "holdout",
+      "seed": 145,
+      "source_path": "ace-drift-baseline/holdout/seed-145/source.wav",
+      "source_sha256": "21598414102f31369be62385735627dc81a9fd4a3cf1e8ea624c3172c89ef90a",
+      "manifest_sha256": "41a1ab7913ea8f5bae98c36ec5c589f90a4fb297f7bd9df73ca359c71e9b587d",
+      "generation_s": 2.1282988246530294,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-overtone",
+      "split": "development",
+      "seed": 42,
+      "source_path": "ace-drift-overtone/development/seed-42/source.wav",
+      "source_sha256": "acf8764ed8bec8b972514a280f8d3b92076c78276d00aaab98e15ed345ae0c03",
+      "manifest_sha256": "37f9342e4ec96ce8db2e2719c3a7b1f9da17040cb5ea7000e03bd32fd58c2bd9",
+      "generation_s": 2.1065436359494925,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-overtone",
+      "split": "development",
+      "seed": 43,
+      "source_path": "ace-drift-overtone/development/seed-43/source.wav",
+      "source_sha256": "0ae059fda3f2074d9c8b41529435552beff0e7e86bcd98ed3aaa9c98db032112",
+      "manifest_sha256": "1fb752ce9cd01171b51359c11a4e432969bccbe98a9e190d1654f60bfb08e6d7",
+      "generation_s": 2.10684971511364,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-overtone",
+      "split": "development",
+      "seed": 44,
+      "source_path": "ace-drift-overtone/development/seed-44/source.wav",
+      "source_sha256": "fdfce0b4ad2db934f0be0b50287e577bc612f8668aa76a267b01c911c64eb3b6",
+      "manifest_sha256": "dde0ff4a3c1b75a36fd6c38c3c6534939233feac96f797cc0d8bf3a2e5481086",
+      "generation_s": 2.127344962209463,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-overtone",
+      "split": "development",
+      "seed": 45,
+      "source_path": "ace-drift-overtone/development/seed-45/source.wav",
+      "source_sha256": "455a07cf57932dffb3b1269cbfed29d7f5c74ab18334baee959b0af4d731ba2e",
+      "manifest_sha256": "b61afdc80526968b226dc19cc101177a6e675a79c5216d2f2a503ec6566cef73",
+      "generation_s": 2.113510688766837,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-overtone",
+      "split": "holdout",
+      "seed": 142,
+      "source_path": "ace-drift-overtone/holdout/seed-142/source.wav",
+      "source_sha256": "ad61ff41e289b49bf79777c41fa96e295359440546adbbda70a2aa5d08c76851",
+      "manifest_sha256": "762a85a4a59065334cae7f035b11871bd4b6ef07d841203ae69ec4ce42d2cd47",
+      "generation_s": 2.1156156938523054,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-overtone",
+      "split": "holdout",
+      "seed": 143,
+      "source_path": "ace-drift-overtone/holdout/seed-143/source.wav",
+      "source_sha256": "5bd60fb1d0cc0d147f89a15376a08865d5ba4b357cf2301509e829288c2d728c",
+      "manifest_sha256": "47aba5695e1cba3573e8ba86ca0f153e685ea9fcfe73de50c8f40a2bab3cbbbc",
+      "generation_s": 2.104455327615142,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-overtone",
+      "split": "holdout",
+      "seed": 144,
+      "source_path": "ace-drift-overtone/holdout/seed-144/source.wav",
+      "source_sha256": "d132dd7a0c8eeff150180e7ab32f7d4af32bdbca540c1ba33a02dc42fb2a5943",
+      "manifest_sha256": "fc6a516015d725b224b4f47f080593d1888e5b48db3651672a59b74294e5377f",
+      "generation_s": 2.105841975659132,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-drift-overtone",
+      "split": "holdout",
+      "seed": 145,
+      "source_path": "ace-drift-overtone/holdout/seed-145/source.wav",
+      "source_sha256": "6139474b99527a3a4f24d726c11d452ab946c62bf41d7d74276723e66a0ad772",
+      "manifest_sha256": "285de34d4ae92b045c65a856a85b95daee2f0cc50955f34ec85019e4e17cbbab",
+      "generation_s": 2.1198346111923456,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-baseline",
+      "split": "development",
+      "seed": 42,
+      "source_path": "ace-focus-baseline/development/seed-42/source.wav",
+      "source_sha256": "880d34242439357b0189721af9e95443ab70e1f5b2dee1e1974cc1f0c5004932",
+      "manifest_sha256": "48301180a65a4291c2886e078c4a303687dc454cc733ce892dee293ff8900d4d",
+      "generation_s": 2.109635980799794,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-baseline",
+      "split": "development",
+      "seed": 43,
+      "source_path": "ace-focus-baseline/development/seed-43/source.wav",
+      "source_sha256": "9a99b49c1f721469469ca07eec966dc2b132cc44af9dbddb618ae0bb0acb8902",
+      "manifest_sha256": "9b449137708fb2ba3cb011475d06985dfdbd118d6c5c6e7ef09d6ca50648f819",
+      "generation_s": 2.1112162303179502,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-baseline",
+      "split": "development",
+      "seed": 44,
+      "source_path": "ace-focus-baseline/development/seed-44/source.wav",
+      "source_sha256": "aa570ad8330197161ba7800bc7a94359844b932862a8ef2dcb36429019380eba",
+      "manifest_sha256": "5cbf3bfce07db4eab9d12a7517f711e74ad399bed1a8b4c8feb1fe578c2538af",
+      "generation_s": 2.1474855951964855,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-baseline",
+      "split": "development",
+      "seed": 45,
+      "source_path": "ace-focus-baseline/development/seed-45/source.wav",
+      "source_sha256": "fec3f8890a3609ae3e4a8c0fd1527295c811173be235963c4e7369f6b273b179",
+      "manifest_sha256": "e5861078c14ee073d2a67be35d6b4aa1283de7a254909ef8aa2b97c45cf16f07",
+      "generation_s": 2.106583409011364,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-baseline",
+      "split": "holdout",
+      "seed": 142,
+      "source_path": "ace-focus-baseline/holdout/seed-142/source.wav",
+      "source_sha256": "dcda5863ec88791508799bf39eca3c154e8e605880cb700baf394fb72ec20fde",
+      "manifest_sha256": "cfbe023f17acb6fce04ee02735870094aae7507d3e72a26f0824cd6722fa29d8",
+      "generation_s": 2.1008250042796135,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-baseline",
+      "split": "holdout",
+      "seed": 143,
+      "source_path": "ace-focus-baseline/holdout/seed-143/source.wav",
+      "source_sha256": "21682d6392b6c376c7c2a993753845d965edf99ae09747c1c5b394accc5597e2",
+      "manifest_sha256": "16c1fcf26f041f4e31d0060adb7dac8d03b54bfa5eaec9645e9b6d9d855a125e",
+      "generation_s": 2.1067857686430216,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-baseline",
+      "split": "holdout",
+      "seed": 144,
+      "source_path": "ace-focus-baseline/holdout/seed-144/source.wav",
+      "source_sha256": "2d9ca773810aa474b03f7e4691163dd84265d2dc492d11375936c013bf6a5df7",
+      "manifest_sha256": "1dd404ab4752daff7607b8e3953ffdc4784b84c9a072cfc7e1327b8b0578555f",
+      "generation_s": 2.1086250711232424,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-baseline",
+      "split": "holdout",
+      "seed": 145,
+      "source_path": "ace-focus-baseline/holdout/seed-145/source.wav",
+      "source_sha256": "7d4217d94bd51d7f081066b714046644e66cab99ce64f308bc6193f7cdebbfa2",
+      "manifest_sha256": "54ba53df3656200aad11e7195e4603c173a2698c6d3ac9ebcc70f0c33cd49983",
+      "generation_s": 2.155675109475851,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-overtone",
+      "split": "development",
+      "seed": 42,
+      "source_path": "ace-focus-overtone/development/seed-42/source.wav",
+      "source_sha256": "e11fb68312bc37e28182090e508db5172db0dbc56a6089dac93833ab4fca9ee4",
+      "manifest_sha256": "f44e4af00034dd0f98a3589b899bc977bb05dd67996df1d066a885932fcb3082",
+      "generation_s": 2.1262154299765825,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-overtone",
+      "split": "development",
+      "seed": 43,
+      "source_path": "ace-focus-overtone/development/seed-43/source.wav",
+      "source_sha256": "216f5e7271c018b7e9f6f5ff3faf523aa95348cf671e256424c0eb7f9fe25cff",
+      "manifest_sha256": "3afd8b4055b711b585451180743e44e98bb62743a6d5fdc70ef7fa7c575158b0",
+      "generation_s": 2.1087434217333794,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-overtone",
+      "split": "development",
+      "seed": 44,
+      "source_path": "ace-focus-overtone/development/seed-44/source.wav",
+      "source_sha256": "70e830f1ea449a02d4db047aa35410437765471cc5050578cdc1604c08fead9b",
+      "manifest_sha256": "8ab7d4f72724a4f373bae81275306448704e091e08ec816859c41989d1120fa9",
+      "generation_s": 2.104651477187872,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-overtone",
+      "split": "development",
+      "seed": 45,
+      "source_path": "ace-focus-overtone/development/seed-45/source.wav",
+      "source_sha256": "aedeea7e91386f10c271801f2346237445376b85112bf53505556c887b5d8afc",
+      "manifest_sha256": "d603f3a1e3782bb7981b1ab4b26660fceff1e2578f241dc89823d78f333d4b25",
+      "generation_s": 2.115249438211322,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-overtone",
+      "split": "holdout",
+      "seed": 142,
+      "source_path": "ace-focus-overtone/holdout/seed-142/source.wav",
+      "source_sha256": "6486ae7de2069d2fe4d5123267da369ae715bbe48543817ddc397f1ce624ed25",
+      "manifest_sha256": "3698a4690b92997822f301a692be20d013f3dbc3c1476bb22370a59ebf06969b",
+      "generation_s": 2.113203339278698,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-overtone",
+      "split": "holdout",
+      "seed": 143,
+      "source_path": "ace-focus-overtone/holdout/seed-143/source.wav",
+      "source_sha256": "d11736e65a0a26125a354373faa736a0ccec3f3ad46b17fd97d7e8fbfbc7d347",
+      "manifest_sha256": "917a84a3df73b762c6e82e5d71a9a01cb1883a22b728d30d2bb48e08ea4e2e28",
+      "generation_s": 2.11387811973691,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-overtone",
+      "split": "holdout",
+      "seed": 144,
+      "source_path": "ace-focus-overtone/holdout/seed-144/source.wav",
+      "source_sha256": "55c1c375b90c7b21adffb5124773cbb973349285bb6ca6c5c65cb6af95be8d84",
+      "manifest_sha256": "6121ad138cb687b22e3f1589cf26c4612f08141567112ebcdf70865cd34d3b2c",
+      "generation_s": 2.0968415439128876,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-focus-overtone",
+      "split": "holdout",
+      "seed": 145,
+      "source_path": "ace-focus-overtone/holdout/seed-145/source.wav",
+      "source_sha256": "81915d148e5d081ed9cb3e7020b835853f5462a7b0204fbb8541e510c640ee79",
+      "manifest_sha256": "654d0be2128addca57425d98f2d86404644a21695bdabeac1ed820a040b05f6a",
+      "generation_s": 2.106033144518733,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-baseline",
+      "split": "development",
+      "seed": 42,
+      "source_path": "ace-unwind-baseline/development/seed-42/source.wav",
+      "source_sha256": "89a1f4afb36f6163ab09e98d2580223755511029d61eb6c87bb712e59ec392f4",
+      "manifest_sha256": "06c089872842a99d03dc23ed7f1745ee7097772ecfc5f09d544d1454938e7c82",
+      "generation_s": 2.1018980406224728,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-baseline",
+      "split": "development",
+      "seed": 43,
+      "source_path": "ace-unwind-baseline/development/seed-43/source.wav",
+      "source_sha256": "3f4b73b3bc406bfac8bbd48638fc5f041ec1e44be4982639d05f7708291247d5",
+      "manifest_sha256": "ac3b9eef66574e454922e0ab800081f55f2bd64e1a1f9a3c1aa810a474b099fd",
+      "generation_s": 2.1095771566033363,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-baseline",
+      "split": "development",
+      "seed": 44,
+      "source_path": "ace-unwind-baseline/development/seed-44/source.wav",
+      "source_sha256": "79fcc30517d58ab803d3cb346fef7e604d0021ef6eeb17e5d94adfc706d1f31f",
+      "manifest_sha256": "6071a40f17f83313d96f87ab13c07a7fd40f66d272f5205dd9eb9185a006b4d8",
+      "generation_s": 2.124022215604782,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-baseline",
+      "split": "development",
+      "seed": 45,
+      "source_path": "ace-unwind-baseline/development/seed-45/source.wav",
+      "source_sha256": "31629996a3d096cff0d67665540aa25da8700467e3f45054fe8976161e540231",
+      "manifest_sha256": "241d32b26c37bb4816f61287868edba3ceb0ad7503402e7a7261c3bc9e1313fe",
+      "generation_s": 4.123152760788798,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-baseline",
+      "split": "holdout",
+      "seed": 142,
+      "source_path": "ace-unwind-baseline/holdout/seed-142/source.wav",
+      "source_sha256": "5e5cf1d78095de2b2e36eddc3983a5dd06dc3ccb040721ca3d79f8f9530d86eb",
+      "manifest_sha256": "df9294bc75be496727eebfc10a373d7d64ec003bb1f93ed87fd985ae200c7cb9",
+      "generation_s": 2.107348518446088,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-baseline",
+      "split": "holdout",
+      "seed": 143,
+      "source_path": "ace-unwind-baseline/holdout/seed-143/source.wav",
+      "source_sha256": "3c7afad900e4e242567f17ae46cd2d89d40956c1ad37b8a041ab38dc31a6f751",
+      "manifest_sha256": "332fb2ab87ab560dbb3a225db6096a2dde368e554141b55d6b257151dd1b93c9",
+      "generation_s": 2.1387828327715397,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-baseline",
+      "split": "holdout",
+      "seed": 144,
+      "source_path": "ace-unwind-baseline/holdout/seed-144/source.wav",
+      "source_sha256": "a3d9e1e7d38d6876ff60f207c511fbc8287be9b7bc7faadd0e2ba17eaeca9e2e",
+      "manifest_sha256": "d74fafd21036e772278c749c1fa68aed1267e7c4cc86968ebb519cf66323cb7c",
+      "generation_s": 2.10523440875113,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-baseline",
+      "split": "holdout",
+      "seed": 145,
+      "source_path": "ace-unwind-baseline/holdout/seed-145/source.wav",
+      "source_sha256": "4769f515c8266aaded7949e4566191ed5a1de70b695bbdfaecae4687e0e3e8d7",
+      "manifest_sha256": "f1510e28fefa13ad54b22e5a339b6b17205c1a9e55154754a54795df243db129",
+      "generation_s": 2.130490595474839,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-overtone",
+      "split": "development",
+      "seed": 42,
+      "source_path": "ace-unwind-overtone/development/seed-42/source.wav",
+      "source_sha256": "e601e7a2c604dd012a68b53fdc5595d5b10442701a917198c02b595769502c71",
+      "manifest_sha256": "adb86dd87f80ef5df4e40ae34e7983f0b4842475578f5fd85ba46768d6241a3f",
+      "generation_s": 2.114023771136999,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-overtone",
+      "split": "development",
+      "seed": 43,
+      "source_path": "ace-unwind-overtone/development/seed-43/source.wav",
+      "source_sha256": "5ecc0d83c6a3dc29c58dd29377964b9825944cd52a869595ab4aedbbb54760b6",
+      "manifest_sha256": "751a8a8fc926ee883ac074d7a74e5fc52db4ab93b40afe3ef1ec8c675bb9a2e5",
+      "generation_s": 2.115513341501355,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-overtone",
+      "split": "development",
+      "seed": 44,
+      "source_path": "ace-unwind-overtone/development/seed-44/source.wav",
+      "source_sha256": "b3ff3ee2f3941a16ea76aa9f14091521e50240e2a0c87230bcbffa96a5707839",
+      "manifest_sha256": "d903f89ea341fd444e5e38024bd9daa76c84c2bc654edde6cc149e8e0c24db91",
+      "generation_s": 2.1238320898264647,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-overtone",
+      "split": "development",
+      "seed": 45,
+      "source_path": "ace-unwind-overtone/development/seed-45/source.wav",
+      "source_sha256": "7418f8d0b221ec84276365bf0e9f09b4f72c45d13934673014b99a98edaad5cb",
+      "manifest_sha256": "d8364caab966ad8c9619eececf3cb2221c157fca55c01be88816cf43edb496b0",
+      "generation_s": 2.115061605349183,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-overtone",
+      "split": "holdout",
+      "seed": 142,
+      "source_path": "ace-unwind-overtone/holdout/seed-142/source.wav",
+      "source_sha256": "de53c0682ed82b9337a4fe3909bdcf0d4f6ea04824d51f84c9e9529a42c7c9cc",
+      "manifest_sha256": "604a9447b6cf9eb74adb64ca5a905fcafda9bc38cdf4f5ea22a8919c0c4a09fb",
+      "generation_s": 2.105965519323945,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-overtone",
+      "split": "holdout",
+      "seed": 143,
+      "source_path": "ace-unwind-overtone/holdout/seed-143/source.wav",
+      "source_sha256": "c436637c5277229f4bfdc0d052a99aa4786bdf5dcf38b4012f1bb12ef08fc8d0",
+      "manifest_sha256": "369c6a1f31e64f8e7d566aaf9b6b406015397c3027f7de857ee0a951467cf9c0",
+      "generation_s": 2.1058021020144224,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-overtone",
+      "split": "holdout",
+      "seed": 144,
+      "source_path": "ace-unwind-overtone/holdout/seed-144/source.wav",
+      "source_sha256": "23f664205528720f6c0561f7aa2b71e4f98231a96475796b3733e3286eb85b8b",
+      "manifest_sha256": "52816a815d7dea73fae84ac187384d1a3e4c6abd70fcc9389d86aced1c43ab01",
+      "generation_s": 2.1397130005061626,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    },
+    {
+      "recipe_id": "ace-unwind-overtone",
+      "split": "holdout",
+      "seed": 145,
+      "source_path": "ace-unwind-overtone/holdout/seed-145/source.wav",
+      "source_sha256": "189e785d77051b4b35b1bafc8c7fbf6a58588bfdde4db0692ca4522ad45a696f",
+      "manifest_sha256": "30f6c4bf7ca76e40ad108323f2091a714dea3a5765795353e0a9ea69b2be3473",
+      "generation_s": 2.1234814636409283,
+      "admitted_centers_hz": [
+        1000,
+        3000,
+        6000,
+        10000
+      ]
+    }
+  ],
+  "artifact_hashes": {
+    "plan.json": "c5b2ffab582511573b89cb916e109bad4e38a8d6bab5060e42773a248fffbe46",
+    "admission.csv": "ed06c68a0e5f869874e8bce90a6c52fe0271f47b2de6d7fcf0f2142f7540321d",
+    "budgets.csv": "74cdf70be23986d26d6a7799f75afd9344d9bfaa3161cfb11a9fd829f2660fc3",
+    "cases.csv": "27852bec40adab313e82f9b7b26e4544f84636de90484f2b6c8f596c71994ec9"
+  },
+  "limitations": [
+    "Four seeds per recipe per split; centers repeat the same sources and are not independent.",
+    "Budgets reuse seed blocks and are correlated; N=4 yields one block per recipe/split/center.",
+    "Fixed recipe order may confound timing. No confidence interval or population success claim is made.",
+    "Neural generation need not reproduce bit-for-bit across runtime or hardware changes.",
+    "No patient data, listening preference, discomfort outcomes, or clinical effects were measured.",
+    "Raw source audio and full reports are retained locally, not included in Git."
+  ]
+}

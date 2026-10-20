@@ -2,6 +2,7 @@ import { useState } from "react";
 import { api, errorText, fmtTime, type MusicRecipe, type Status } from "./api";
 import MusicStudio from "./MusicStudio";
 import MusicLibrary from "./MusicLibrary";
+import TrackFeedback from "./TrackFeedback";
 
 function Ring({ value, goal }: { value: number; goal: number }) {
   const frac = Math.min(1, goal > 0 ? value / goal : 0);
@@ -130,6 +131,16 @@ export default function Participant({
           </>
         )}
       </section>
+
+      {p.can_rate && status.participant_id && p.track_id && (
+        <TrackFeedback
+          key={`${status.participant_id}-${p.track_id}`}
+          participantId={status.participant_id}
+          trackId={p.track_id}
+          title={p.title ?? "Current track"}
+          refresh={refresh}
+        />
+      )}
 
       <MusicLibrary key={status.participant_id} status={status} refresh={refresh} onReuse={recipe => {
         setReuse(current => ({ recipe, revision: (current?.revision ?? 0) + 1 }));
