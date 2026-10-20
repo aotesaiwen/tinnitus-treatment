@@ -8,6 +8,7 @@
 mod audio;
 mod clinician;
 mod export;
+mod feedback;
 mod generation;
 mod library;
 mod matching;
@@ -500,6 +501,7 @@ pub fn run() {
             library::music_preferences_save,
             library::library_favorite,
             library::library_export,
+            feedback::music_feedback_save,
             matching::match_start,
             matching::match_play,
             matching::match_answer,

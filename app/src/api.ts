@@ -18,6 +18,12 @@ export interface MusicPreferences extends Omit<GenerationRequest, "seed"> {
   provider: MusicProvider;
 }
 export interface MusicRecipe { provider: MusicProvider; request: GenerationRequest }
+export interface TrackFeedbackRequest {
+  participant_id: string;
+  track_id: string;
+  rating: number;
+  discomfort: boolean | null;
+}
 export interface LibraryTrack {
   id: string;
   title: string;
@@ -43,7 +49,7 @@ export interface Status {
   daily_goal_min: number;
   today_min: number;
   week: DayTotal[];
-  player: { state: PlayState; track_id: string | null; title: string | null; position_s: number; duration_s: number };
+  player: { state: PlayState; can_rate: boolean; track_id: string | null; title: string | null; position_s: number; duration_s: number };
   volume_db: number;
   library: LibraryTrack[];
   music_preferences: MusicPreferences;
@@ -120,6 +126,7 @@ export const api = {
   playTrack: (trackId: string) => invoke<void>("player_play", { trackId }),
   saveMusicPreferences: (participantId: string, preferences: MusicPreferences) => invoke<void>("music_preferences_save", { participantId, preferences }),
   favorite: (participantId: string, trackId: string, favorite: boolean) => invoke<void>("library_favorite", { participantId, trackId, favorite }),
+  saveTrackFeedback: (feedback: TrackFeedbackRequest) => invoke<void>("music_feedback_save", { feedback }),
   exportTrack: (participantId: string, trackId: string, path: string) => invoke<{ path: string; report_file: string }>("library_export", { participantId, trackId, path }),
   toggle: () => invoke<void>("player_toggle"),
   skip: (delta: number) => invoke<void>("player_skip", { delta }),

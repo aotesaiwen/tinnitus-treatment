@@ -58,7 +58,28 @@ PY
     export ACESTEP_USE_FLASH_ATTENTION=false
     export ACESTEP_OFFLOAD_TO_CPU="${ACESTEP_OFFLOAD_TO_CPU:-false}"
     export ACESTEP_OFFLOAD_DIT_TO_CPU="${ACESTEP_OFFLOAD_DIT_TO_CPU:-false}"
-    # Optional allocator limit. Lower-memory GPUs can enable CPU offload above.
+    # Optional allocator limit for repeatable experiments on a shared GPU.
+    if [[ -n "${ACESTEP_GPU_MEMORY_GB:-}" ]]; then
+      exec .venv/bin/python -u - "${ACESTEP_API_PORT:-8001}" <<'PY'
+import math
+import os
+import runpy
+import sys
+import torch
+
+limit = float(os.environ["ACESTEP_GPU_MEMORY_GB"])
+if not math.isfinite(limit) or limit <= 0:
+    raise SystemExit("ACESTEP_GPU_MEMORY_GB must be a finite positive number.")
+if os.environ.get("ACESTEP_DEVICE") != "cuda" or not torch.cuda.is_available():
+    raise SystemExit("ACESTEP_GPU_MEMORY_GB requires the CUDA device.")
+total = torch.cuda.get_device_properties(0).total_memory
+fraction = min(1.0, limit * 1024**3 / total)
+torch.cuda.set_per_process_memory_fraction(fraction, device=0)
+print(f"[tmusic] PyTorch GPU allocation limit: {fraction * total / 1024**3:.1f} GiB")
+sys.argv = ["acestep.api_server", "--host", "127.0.0.1", "--port", sys.argv[1]]
+runpy.run_module("acestep.api_server", run_name="__main__")
+PY
+    fi
     exec .venv/bin/python -u -m acestep.api_server --host 127.0.0.1 --port "${ACESTEP_API_PORT:-8001}"
     ;;
   *)

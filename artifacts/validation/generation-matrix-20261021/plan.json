@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "experiment": "generation-matrix-v1",
+  "created_at_utc": "2026-10-20T18:17:52.058059+00:00",
+  "config": {
+    "recipes": [
+      {
+        "id": "composer-drift",
+        "engine": "composer",
+        "style": "drift",
+        "duration_s": 30,
+        "tempo_bpm": 54,
+        "prompt": ""
+      },
+      {
+        "id": "composer-focus",
+        "engine": "composer",
+        "style": "focus",
+        "duration_s": 30,
+        "tempo_bpm": 76,
+        "prompt": ""
+      },
+      {
+        "id": "composer-unwind",
+        "engine": "composer",
+        "style": "unwind",
+        "duration_s": 30,
+        "tempo_bpm": 60,
+        "prompt": ""
+      },
+      {
+        "id": "ace-drift-baseline",
+        "engine": "ace-step",
+        "style": "drift",
+        "duration_s": 30,
+        "tempo_bpm": 54,
+        "prompt": "A spacious ambient instrumental with warm sustained pads and delicate soft bells."
+      },
+      {
+        "id": "ace-drift-overtone",
+        "engine": "ace-step",
+        "style": "drift",
+        "duration_s": 30,
+        "tempo_bpm": 54,
+        "prompt": "A spacious ambient instrumental with warm sustained pads and delicate soft bells. Soft acoustic details, gently brushed cymbals and airy strings with rich natural overtones."
+      },
+      {
+        "id": "ace-focus-baseline",
+        "engine": "ace-step",
+        "style": "focus",
+        "duration_s": 30,
+        "tempo_bpm": 76,
+        "prompt": "A minimal instrumental with gentle electric piano arpeggios, an unobtrusive pulse and warm pads."
+      },
+      {
+        "id": "ace-focus-overtone",
+        "engine": "ace-step",
+        "style": "focus",
+        "duration_s": 30,
+        "tempo_bpm": 76,
+        "prompt": "A minimal instrumental with gentle electric piano arpeggios, an unobtrusive pulse and warm pads. Soft acoustic details, gently brushed cymbals and airy strings with rich natural overtones."
+      },
+      {
+        "id": "ace-unwind-baseline",
+        "engine": "ace-step",
+        "style": "unwind",
+        "duration_s": 30,
+        "tempo_bpm": 60,
+        "prompt": "A quiet instrumental with mellow plucked strings, long soft chords and a sparse descending melody."
+      },
+      {
+        "id": "ace-unwind-overtone",
+        "engine": "ace-step",
+        "style": "unwind",
+        "duration_s": 30,
+        "tempo_bpm": 60,
+        "prompt": "A quiet instrumental with mellow plucked strings, long soft chords and a sparse descending melody. Soft acoustic details, gently brushed cymbals and airy strings with rich natural overtones."
+      }
+    ],
+    "seed_splits": {
+      "development": [
+        42,
+        43,
+        44,
+        45
+      ],
+      "holdout": [
+        142,
+        143,
+        144,
+        145
+      ]
+    },
+    "centers_hz": [
+      1000,
+      3000,
+      6000,
+      10000
+    ],
+    "budgets": [
+      1,
+      2,
+      4
+    ]
+  },
+  "processing": {
+    "mode": "notch",
+    "width_oct": 1,
+    "transition_oct": 0.041666666666666664,
+    "atten_db": 60,
+    "ripple_db": 0.1,
+    "target_lufs": -23.0,
+    "true_peak_ceiling_db": -1.0,
+    "format": "f32"
+  },
+  "source_attempts_planned": 72,
+  "center_checks_planned": 288,
+  "execution_order": "recipe list, split object insertion order, seed list, center list",
+  "keep_processed": false,
+  "admission_rule": "Generation and processing exit 0; manifests and waveform hashes match; all checks pass; no warnings.",
+  "budget_rule": "First admitted seed in each disjoint ordered full block; failed generations consume one attempt.",
+  "interpretation": "Technical admission only. A local predeclared holdout split is not external preregistration or listening/clinical validation.",
+  "runtime": {
+    "binary": "/home/xujr/projects/tinnitus-music/target/release/tmusic",
+    "binary_sha256": "e87513d0a3f3d475c3c154ad6e388b67fcdf5251bf5169a56c7f46dbbe2a12a5",
+    "code_sha256": {
+      "research/benchmark.py": "23825bfbe99714d503fd6ebf9721399282aa57f402dbca0a4102237d74aef11a",
+      "research/selection.py": "54af3fb3d2d6951ed9ce365d25b0e8365927880f589540e45e56e233eb5e939a"
+    },
+    "python": "3.10.12",
+    "platform": {
+      "system": "Linux",
+      "release": "6.8.0-107-generic",
+      "machine": "x86_64"
+    },
+    "stage_timeout_s": 900
+  }
+}

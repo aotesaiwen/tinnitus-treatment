@@ -144,6 +144,79 @@ pub struct LogEntry {
     pub report: String,
 }
 
+/// The UI supplies only listener intent; the backend supplies the saved recipe.
+#[derive(Clone, Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct FeedbackRequest {
+    pub participant_id: String,
+    pub track_id: String,
+    pub rating: u8,
+    pub discomfort: Option<bool>,
+}
+
+impl FeedbackRequest {
+    fn validate(&self) -> Result<(), String> {
+        // Profiles historically accept any nonblank identifier. Preserve its
+        // exact value so feedback cannot silently merge or reject listeners.
+        if self.participant_id.trim().is_empty() {
+            return Err("Listener identity is invalid. Refresh and try again.".into());
+        }
+        if self.track_id.trim().is_empty()
+            || self.track_id != self.track_id.trim()
+            || self.track_id.chars().count() > 128
+        {
+            return Err("Track identity is invalid. Refresh and try again.".into());
+        }
+        if !(1..=5).contains(&self.rating) {
+            return Err("Choose a music rating from 1 to 5.".into());
+        }
+        Ok(())
+    }
+
+    /// Validate against state held under the app lock, including study listeners.
+    pub fn validate_for<'a>(
+        &self,
+        participant_id: Option<&str>,
+        current_track_id: Option<&str>,
+        recipe: Option<&'a Recipe>,
+        listening: bool,
+    ) -> Result<&'a Recipe, String> {
+        self.validate()?;
+        if participant_id != Some(self.participant_id.as_str()) {
+            return Err("The listener changed. Refresh and rate the current track.".into());
+        }
+        if !listening || current_track_id != Some(self.track_id.as_str()) {
+            return Err(
+                "The playing track changed. Listen to the current track before rating it.".into(),
+            );
+        }
+        let recipe = recipe.ok_or("This track has no saved music recipe to rate.")?;
+        validate_feedback_recipe(recipe)?;
+        Ok(recipe)
+    }
+}
+
+fn validate_feedback_recipe(recipe: &Recipe) -> Result<(), String> {
+    recipe.request.validate()?;
+    if recipe.provider == Provider::Composer && !recipe.request.prompt.trim().is_empty() {
+        return Err("The saved composer recipe is invalid.".into());
+    }
+    Ok(())
+}
+
+#[derive(Serialize)]
+struct FeedbackEvent<'a> {
+    schema_version: u8,
+    event_id: &'a str,
+    participant_id: &'a str,
+    track_id: &'a str,
+    recipe: &'a Recipe,
+    rating: u8,
+    /// None means unanswered, never an inferred report of no discomfort.
+    discomfort: Option<bool>,
+    created_at: &'a str,
+}
+
 pub struct Store {
     pub dir: PathBuf,
 }
@@ -220,6 +293,65 @@ impl Store {
             .map_err(|e| format!("opening listening log: {e}"))?;
         let line = serde_json::to_string(e).map_err(|e| e.to_string())?;
         writeln!(f, "{line}").map_err(|e| format!("writing listening log: {e}"))
+    }
+
+    /// Append a private research event by atomically publishing the complete
+    /// ledger. The caller holds the app lock across reading and publication.
+    /// There is no participant read command: study recipes remain private.
+    pub fn append_feedback(
+        &self,
+        request: &FeedbackRequest,
+        recipe: &Recipe,
+        created_at: &str,
+    ) -> Result<String, String> {
+        self.append_feedback_with(request, recipe, created_at, atomic_write)
+    }
+
+    /// Keep publication injectable so failure tests do not depend on filesystem
+    /// permissions or require filling a real disk.
+    pub(crate) fn append_feedback_with(
+        &self,
+        request: &FeedbackRequest,
+        recipe: &Recipe,
+        created_at: &str,
+        publish: impl FnOnce(&Path, &[u8]) -> Result<(), String>,
+    ) -> Result<String, String> {
+        use std::sync::atomic::{AtomicU64, Ordering};
+        static SEQUENCE: AtomicU64 = AtomicU64::new(0);
+        request.validate()?;
+        validate_feedback_recipe(recipe)?;
+        let path = self.dir.join("music_feedback.jsonl");
+        let mut bytes = match fs::read(&path) {
+            Ok(bytes) => bytes,
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => Vec::new(),
+            Err(error) => return Err(format!("Could not read music feedback: {error}")),
+        };
+        if !bytes.is_empty() && !bytes.ends_with(b"\n") {
+            return Err("Music feedback has an incomplete final record. Restore the ledger before saving another rating.".into());
+        }
+        let stamp = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map_err(|e| e.to_string())?
+            .as_nanos();
+        let event_id = format!(
+            "feedback-{stamp:x}-{:x}-{:x}",
+            std::process::id(),
+            SEQUENCE.fetch_add(1, Ordering::Relaxed)
+        );
+        let event = FeedbackEvent {
+            schema_version: 1,
+            event_id: &event_id,
+            participant_id: &request.participant_id,
+            track_id: &request.track_id,
+            recipe,
+            rating: request.rating,
+            discomfort: request.discomfort,
+            created_at,
+        };
+        serde_json::to_writer(&mut bytes, &event).map_err(|e| e.to_string())?;
+        bytes.push(b'\n');
+        publish(&path, &bytes).map_err(|e| format!("Could not save music feedback: {e}"))?;
+        Ok(event_id)
     }
 
     /// Keep history isolated when a computer is reassigned to another listener.
