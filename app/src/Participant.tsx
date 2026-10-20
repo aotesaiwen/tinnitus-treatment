@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { api, errorText, fmtTime, type Status } from "./api";
+import { api, errorText, fmtTime, type MusicRecipe, type Status } from "./api";
+import MusicStudio from "./MusicStudio";
+import MusicLibrary from "./MusicLibrary";
 
 function Ring({ value, goal }: { value: number; goal: number }) {
   const frac = Math.min(1, goal > 0 ? value / goal : 0);
@@ -37,18 +39,16 @@ export default function Participant({
   onSetup: () => void;
   refresh: () => void;
 }) {
-  const [busy, setBusy] = useState(false);
+  const [reuse, setReuse] = useState<{ recipe: MusicRecipe; revision: number } | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
   const run = async (f: () => Promise<unknown>) => {
-    setBusy(true);
     setErr(null);
     try {
       await f();
     } catch (e) {
       setErr(errorText(e));
     } finally {
-      setBusy(false);
       refresh();
     }
   };
@@ -56,7 +56,8 @@ export default function Participant({
   if (!status.setup_done) {
     return (
       <section className="card narrow">
-        <h1>Welcome</h1>
+        <h1>Your music. Your listening routine.</h1>
+        <p>Create fresh instrumentals with the offline composer or describe your sound to AI. Each track is checked before playback.</p>
         <p>
           This app plays relaxing music shaped to your tinnitus. First it needs to know the pitch of your tinnitus. That
           takes about 15–20 minutes of short listening questions.
@@ -74,7 +75,9 @@ export default function Participant({
   const pct = p.duration_s > 0 ? (100 * p.position_s) / p.duration_s : 0;
 
   return (
-    <div className="grid">
+    <div className="participant">
+      <MusicStudio key={`${status.participant_id}-${reuse?.revision ?? 0}`} status={status} refresh={refresh} recipe={reuse?.recipe} />
+      <div className="grid">
       <section className="card today">
         <h2>Today</h2>
         <Ring value={status.today_min} goal={status.daily_goal_min} />
@@ -85,28 +88,28 @@ export default function Participant({
 
       <section className="card player">
         <h2>Music</h2>
-        {status.tracks.length === 0 ? (
-          <p className="muted">No music has been added yet. Ask your clinician.</p>
+        {status.library.length === 0 ? (
+          <p className="muted">{status.can_generate ? "Your library starts here. Create your first track in the studio above." : "No music has been added yet. Your clinician can create or add music for you."}</p>
         ) : (
           <>
             <div className="now">
-              <div className="title">{p.title ?? "Press play to start"}</div>
+              <div className="title">{p.state === "loading" ? `Preparing ${p.title ?? "track"}…` : (p.title ?? "Press play to start")}</div>
               <div className="sub">
-                {p.state === "idle" ? `${status.tracks.length} tracks` : `${fmtTime(p.position_s)} / ${fmtTime(p.duration_s)}`}
+                {p.state === "idle" || p.state === "loading" ? `${status.library.length} ${status.library.length === 1 ? "track" : "tracks"}` : `${fmtTime(p.position_s)} / ${fmtTime(p.duration_s)}`}
               </div>
             </div>
             <div className="progress" aria-hidden>
               <div style={{ width: `${pct}%` }} />
             </div>
             <div className="controls">
-              <button className="round" disabled={busy} onClick={() => run(() => api.skip(-1))} aria-label="Previous">
-                ⏮
+              <button className="round" onClick={() => run(() => api.skip(-1))} aria-label="Previous">
+                ⏮︎
               </button>
-              <button className="round big" disabled={busy} onClick={() => run(api.toggle)} aria-label="Play or pause">
-                {busy ? "…" : p.state === "playing" ? "❚❚" : "▶"}
+              <button className="round big" onClick={() => run(api.toggle)} aria-label={p.state === "playing" ? "Pause" : p.state === "loading" ? "Cancel loading" : "Play"}>
+                {p.state === "playing" ? "❚❚" : p.state === "loading" ? "…" : "▶"}
               </button>
-              <button className="round" disabled={busy} onClick={() => run(() => api.skip(1))} aria-label="Next">
-                ⏭
+              <button className="round" onClick={() => run(() => api.skip(1))} aria-label="Next">
+                ⏭︎
               </button>
             </div>
             <label className="volume">
@@ -117,17 +120,22 @@ export default function Participant({
                 max={0}
                 step={1}
                 value={status.volume_db}
-                onChange={(e) => api.setVolume(Number(e.target.value)).then(refresh)}
+                onChange={(e) => run(() => api.setVolume(Number(e.target.value)))}
               />
               <span className="vol-db">{status.volume_db <= -40 ? "muted" : `${status.volume_db} dB`}</span>
             </label>
             {status.volume_db <= -40 && p.state === "playing" && (
               <p className="muted">Muted: time does not count towards today.</p>
             )}
-            {err && <div className="banner warn">{err}</div>}
           </>
         )}
       </section>
+
+      <MusicLibrary key={status.participant_id} status={status} refresh={refresh} onReuse={recipe => {
+        setReuse(current => ({ recipe, revision: (current?.revision ?? 0) + 1 }));
+        requestAnimationFrame(() => document.getElementById("music-engine")?.focus());
+      }} />
+      {err && <div className="banner warn" role="alert">{err}</div>}
 
       <section className="card week">
         <h2>This week</h2>
@@ -157,6 +165,7 @@ export default function Participant({
           <li>If any sound feels unpleasant, stop and tell your clinician.</li>
         </ul>
       </section>
+      </div>
     </div>
   );
 }

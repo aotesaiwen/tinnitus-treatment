@@ -85,18 +85,20 @@ pub fn parse_wav(b: &[u8]) -> Result<Audio> {
     if n_ch == 0 || fs == 0 {
         bail!("invalid format: {n_ch} channels at {fs} Hz");
     }
+    let decode: fn(&[u8]) -> f32 = match (tag, bits) {
+        (1, 8) => |s| (s[0] as f32 - 128.0) / 128.0,
+        (1, 16) => |s| i16::from_le_bytes([s[0], s[1]]) as f32 / 32768.0,
+        (1, 24) => |s| (i32::from_le_bytes([0, s[0], s[1], s[2]]) >> 8) as f32 / 8_388_608.0,
+        (1, 32) => {
+            |s| (i32::from_le_bytes([s[0], s[1], s[2], s[3]]) as f64 / 2_147_483_648.0) as f32
+        }
+        (3, 32) => |s| f32::from_le_bytes([s[0], s[1], s[2], s[3]]),
+        (3, 64) => |s| f64::from_le_bytes(s[..8].try_into().unwrap()) as f32,
+        _ => bail!("unsupported WAV encoding: format tag {tag}, {bits} bits"),
+    };
     let width = bits / 8;
     let frames = data.len() / (width * n_ch);
     let mut channels = vec![Vec::with_capacity(frames); n_ch];
-    let decode: Box<dyn Fn(&[u8]) -> f32> = match (tag, bits) {
-        (1, 8) => Box::new(|s| (s[0] as f32 - 128.0) / 128.0),
-        (1, 16) => Box::new(|s| i16::from_le_bytes([s[0], s[1]]) as f32 / 32768.0),
-        (1, 24) => Box::new(|s| (i32::from_le_bytes([0, s[0], s[1], s[2]]) >> 8) as f32 / 8_388_608.0),
-        (1, 32) => Box::new(|s| (i32::from_le_bytes([s[0], s[1], s[2], s[3]]) as f64 / 2_147_483_648.0) as f32),
-        (3, 32) => Box::new(|s| f32::from_le_bytes([s[0], s[1], s[2], s[3]])),
-        (3, 64) => Box::new(|s| f64::from_le_bytes(s[..8].try_into().unwrap()) as f32),
-        _ => bail!("unsupported WAV encoding: format tag {tag}, {bits} bits"),
-    };
     for frame in data.chunks_exact(width * n_ch).take(frames) {
         for (c, s) in frame.chunks_exact(width).enumerate() {
             channels[c].push(decode(s));
@@ -112,7 +114,12 @@ pub struct WriteStats {
     pub non_finite_samples: usize,
 }
 
-pub fn write_wav(path: &Path, audio: &Audio, format: SampleFormat, dither_seed: u64) -> Result<WriteStats> {
+pub fn write_wav(
+    path: &Path,
+    audio: &Audio,
+    format: SampleFormat,
+    dither_seed: u64,
+) -> Result<WriteStats> {
     let (bytes, stats) = encode_wav(audio, format, dither_seed);
     std::fs::write(path, bytes).with_context(|| format!("writing {}", path.display()))?;
     Ok(stats)
@@ -133,7 +140,9 @@ pub fn encode_wav(audio: &Audio, format: SampleFormat, dither_seed: u64) -> (Vec
 
     let mut out = Vec::with_capacity(44 + 2 + fact_len + data_len);
     out.extend_from_slice(b"RIFF");
-    out.extend_from_slice(&((4 + 8 + fmt_len as usize + fact_len + 8 + data_len) as u32).to_le_bytes());
+    out.extend_from_slice(
+        &((4 + 8 + fmt_len as usize + fact_len + 8 + data_len) as u32).to_le_bytes(),
+    );
     out.extend_from_slice(b"WAVE");
     out.extend_from_slice(b"fmt ");
     out.extend_from_slice(&fmt_len.to_le_bytes());

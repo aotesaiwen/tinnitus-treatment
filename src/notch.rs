@@ -111,7 +111,7 @@ pub fn design(spec: &NotchSpec, fs: f64) -> Result<NotchDesign, String> {
     if !(20.0..=150.0).contains(&spec.stop_atten_db) {
         return Err(format!("stop_atten_db must be in [20, 150], got {}", spec.stop_atten_db));
     }
-    if !(spec.pass_ripple_db > 0.0) {
+    if spec.pass_ripple_db.partial_cmp(&0.0) != Some(std::cmp::Ordering::Greater) {
         return Err("pass_ripple_db must be positive".into());
     }
 

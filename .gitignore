@@ -1,1 +1,7 @@
 /target
+/.runtime/
+/artifacts/audio/
+__pycache__/
+.env
+.env.*
+!.env.example

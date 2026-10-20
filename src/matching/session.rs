@@ -240,7 +240,7 @@ impl Session {
         if cfg.fs < 8000.0 {
             return Err("sample rate must be at least 8 kHz".into());
         }
-        if !(cfg.max_level_db > cfg.min_level_db) {
+        if cfg.max_level_db.partial_cmp(&cfg.min_level_db) != Some(std::cmp::Ordering::Greater) {
             return Err("max_level_db must exceed min_level_db".into());
         }
         if cfg.pitch_repeats == 0 {

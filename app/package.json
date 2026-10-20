@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "test": "playwright test",
     "tauri": "tauri"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "react-dom": "19.3.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@tauri-apps/cli": "2.12.3",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",

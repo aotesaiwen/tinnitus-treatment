@@ -1,10 +1,36 @@
 import { invoke } from "@tauri-apps/api/core";
 
-export type PlayState = "idle" | "playing" | "paused";
+export type PlayState = "idle" | "loading" | "playing" | "paused";
 export type Answer = "yes" | "no" | "louder" | "softer" | "equal" | "first" | "second" | "same";
 export type Ear = "both" | "left" | "right";
 export type TinnitusSound = "tonal" | "noise_like";
 export type Arm = "notch" | "passthrough" | "sham";
+export type MusicStyle = "drift" | "focus" | "unwind";
+export type MusicProvider = "composer" | "ace_step";
+export interface GenerationRequest {
+  style: MusicStyle;
+  duration_s: number;
+  tempo_bpm: number;
+  seed: number;
+  prompt: string;
+}
+export interface MusicPreferences extends Omit<GenerationRequest, "seed"> {
+  provider: MusicProvider;
+}
+export interface MusicRecipe { provider: MusicProvider; request: GenerationRequest }
+export interface LibraryTrack {
+  id: string;
+  title: string;
+  duration_s: number;
+  favorite: boolean;
+  recipe: MusicRecipe | null;
+}
+export interface GenerationJob {
+  stage: string;
+  title: string | null;
+  track_id: string | null;
+  message: string | null;
+}
 
 export interface DayTotal {
   date: string;
@@ -17,15 +43,18 @@ export interface Status {
   daily_goal_min: number;
   today_min: number;
   week: DayTotal[];
-  player: { state: PlayState; index: number | null; title: string | null; position_s: number; duration_s: number };
+  player: { state: PlayState; track_id: string | null; title: string | null; position_s: number; duration_s: number };
   volume_db: number;
-  tracks: string[];
+  library: LibraryTrack[];
+  music_preferences: MusicPreferences;
   library_dir: string;
   clinician_unlocked: boolean;
   pin_set: boolean;
   device_fs: number | null;
   matching_active: boolean;
   error: string | null;
+  generation: GenerationJob;
+  can_generate: boolean;
 }
 
 export interface MatchSummary {
@@ -88,7 +117,10 @@ export interface LogEntry {
 
 export const api = {
   status: () => invoke<Status>("status"),
-  play: (index?: number) => invoke<void>("player_play", { index: index ?? null }),
+  playTrack: (trackId: string) => invoke<void>("player_play", { trackId }),
+  saveMusicPreferences: (participantId: string, preferences: MusicPreferences) => invoke<void>("music_preferences_save", { participantId, preferences }),
+  favorite: (participantId: string, trackId: string, favorite: boolean) => invoke<void>("library_favorite", { participantId, trackId, favorite }),
+  exportTrack: (participantId: string, trackId: string, path: string) => invoke<{ path: string; report_file: string }>("library_export", { participantId, trackId, path }),
   toggle: () => invoke<void>("player_toggle"),
   skip: (delta: number) => invoke<void>("player_skip", { delta }),
   stop: () => invoke<void>("player_stop"),
@@ -108,6 +140,9 @@ export const api = {
   logsGet: () => invoke<{ entries: LogEntry[]; days: DayTotal[] }>("logs_get"),
   logsExport: (path: string) => invoke<number>("logs_export", { path }),
   dataDir: () => invoke<string>("data_dir"),
+  generate: (provider: MusicProvider, request: GenerationRequest) => invoke<void>("generation_start", { provider, request }),
+  generationCancel: () => invoke<void>("generation_cancel"),
+  generationHealth: () => invoke<void>("generation_health"),
 };
 
 export function errorText(e: unknown): string {

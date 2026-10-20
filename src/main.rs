@@ -12,6 +12,13 @@ use tmdsp::notch::{self, NotchSpec};
 use tmdsp::pipeline::{self, Mode, Options};
 use tmdsp::wav::{self, Audio, SampleFormat};
 use tmdsp::{conv, loudness, signals};
+use tmdsp::generation::{self, Request as MusicRequest, Style};
+
+#[derive(Clone, Copy, Debug, clap::ValueEnum, serde::Serialize)]
+enum MusicEngine {
+    Composer,
+    AceStep,
+}
 
 #[derive(Parser)]
 #[command(name = "tmusic", version, about = "Verified notch processing for tinnitus sound-therapy research")]
@@ -53,6 +60,23 @@ impl NotchArgs {
 
 #[derive(Subcommand)]
 enum Cmd {
+    /// Create an instrumental source WAV and a reproducibility manifest.
+    Generate {
+        #[arg(short, long)]
+        output: PathBuf,
+        #[arg(long, value_enum, default_value_t = MusicEngine::Composer)]
+        engine: MusicEngine,
+        #[arg(long, value_enum, default_value_t = Style::Drift)]
+        style: Style,
+        #[arg(long, default_value_t = 60)]
+        duration: u32,
+        #[arg(long, default_value_t = 60)]
+        tempo: u32,
+        #[arg(long, default_value_t = 42)]
+        seed: u32,
+        #[arg(long, default_value = "")]
+        prompt: String,
+    },
     /// Notch a WAV file, normalise loudness, and write a verification report.
     Process {
         #[arg(short, long)]
@@ -130,6 +154,44 @@ fn main() -> ExitCode {
 /// Returns whether every check passed.
 fn run(cli: Cli) -> Result<bool> {
     match cli.cmd {
+        Cmd::Generate { output, engine, style, duration, tempo, seed, prompt } => {
+            use sha2::{Digest, Sha256};
+            let request = MusicRequest { style, duration_s: duration, tempo_bpm: tempo, seed, prompt };
+            request.validate().map_err(anyhow::Error::msg)?;
+            let (audio, model) = match engine {
+                MusicEngine::Composer => {
+                    if !request.prompt.trim().is_empty() {
+                        anyhow::bail!("--prompt is supported by --engine ace-step; the offline composer uses style, tempo and seed");
+                    }
+                    (generation::compose(&request, || false).map_err(anyhow::Error::msg)?,
+                        serde_json::json!({"engine": "additive-composer-v1"}))
+                }
+                MusicEngine::AceStep => {
+                    #[cfg(feature = "generation-http")]
+                    {
+                        let client = generation::acestep::AceStep::new(
+                            &std::env::var("TINNITUS_MUSIC_ACESTEP_URL").unwrap_or_else(|_| "http://127.0.0.1:8001".into()),
+                            std::env::var("ACESTEP_API_KEY").ok(),
+                        ).map_err(anyhow::Error::msg)?;
+                        client.generate(&request, || false, |stage| eprintln!("{stage}…")).map_err(anyhow::Error::msg)?
+                    }
+                    #[cfg(not(feature = "generation-http"))]
+                    anyhow::bail!("build with --features generation-http to use ACE-Step")
+                }
+            };
+            let (bytes, _) = wav::encode_wav(&audio, SampleFormat::F32, seed as u64);
+            let manifest = serde_json::json!({
+                "schema_version": 1, "engine": engine, "request": request, "model": model,
+                "source_sha256": format!("{:x}", Sha256::digest(&bytes)),
+                "sample_rate": audio.fs, "duration_s": audio.duration_s(),
+            });
+            let metadata = PathBuf::from(format!("{}.generation.json", output.display()));
+            std::fs::write(&output, bytes).with_context(|| format!("writing {}", output.display()))?;
+            std::fs::write(&metadata, serde_json::to_vec_pretty(&manifest)?)?;
+            println!("Created {} ({:.0} s). Source audio only; run `tmusic process` to apply and verify listening settings.", output.display(), audio.duration_s());
+            println!("Generation manifest: {}", metadata.display());
+            Ok(true)
+        }
         Cmd::Match(a) => match_cli::interactive(a),
         Cmd::MatchSim(a) => match_cli::simulate(a),
         Cmd::Stimulus(a) => match_cli::stimulus(a),

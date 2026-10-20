@@ -21,7 +21,7 @@ serde_json = "1"
 cpal = "0.18"
 chrono = { version = "0.4", features = ["serde"] }
 sha2 = "0.10"
-tinnitus-music = { path = "../.." }
+tinnitus-music = { path = "../..", features = ["generation-http"] }
 
 [profile.release]
 opt-level = 3

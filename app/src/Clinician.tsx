@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { open, save } from "@tauri-apps/plugin-dialog";
 import { api, errorText, fmtTime, type DayTotal, type LogEntry, type MatchSummary, type Profile, type Status, type VerifyRow } from "./api";
+import MusicStudio from "./MusicStudio";
 
 type Tab = "participant" | "library" | "log" | "security";
 
@@ -149,8 +150,8 @@ function LibraryTab({ status, refresh }: { status: Status; refresh: () => void }
         </button>
       </div>
       <p>
-        {status.tracks.length} tracks.{" "}
-        <button className="ghost" disabled={busy || status.tracks.length === 0} onClick={verify}>
+        {status.library.length} tracks.{" "}
+        <button className="ghost" disabled={busy || status.library.length === 0} onClick={verify}>
           {busy ? "Verifying…" : "Verify all with this participant's settings"}
         </button>
       </p>
@@ -190,9 +191,10 @@ function LibraryTab({ status, refresh }: { status: Status; refresh: () => void }
 function LogTab() {
   const [data, setData] = useState<{ entries: LogEntry[]; days: DayTotal[] } | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
-    api.logsGet().then(setData);
+    api.logsGet().then(setData, (e) => setLoadError(errorText(e)));
   }, []);
 
   const exportCsv = async () => {
@@ -206,6 +208,7 @@ function LogTab() {
     }
   };
 
+  if (loadError) return <div className="banner warn">Could not load the listening log: {loadError}</div>;
   if (!data) return <p className="muted">Loading…</p>;
   const total = data.days.reduce((s, d) => s + d.minutes, 0);
   return (
@@ -290,8 +293,8 @@ function SecurityTab() {
       </div>
       {msg && <div className={msg.ok ? "banner ok" : "banner warn"}>{msg.text}</div>}
       <p className="muted">
-        All data stays on this computer, in <code>{dir}</code>: the participant profile, listening log, matching reports
-        and a verification report for every track played. The PIN is a soft lock. Someone who opens that folder can
+        Profiles, listening logs, matching reports, generated tracks and verification reports are saved in <code>{dir}</code>.
+        AI generation sends music preferences to the configured ACE-Step service. The PIN is a soft lock. Someone who opens that folder can
         read the profile, including the arm.
       </p>
     </div>
@@ -327,7 +330,10 @@ export default function Clinician({
         ))}
       </nav>
       {tab === "participant" && <ParticipantTab lastMatch={lastMatch} onRunMatching={onRunMatching} />}
-      {tab === "library" && <LibraryTab status={status} refresh={refresh} />}
+      {tab === "library" && <>
+        <MusicStudio key={status.participant_id} status={status} refresh={refresh} />
+        <LibraryTab status={status} refresh={refresh} />
+      </>}
       {tab === "log" && <LogTab />}
       {tab === "security" && <SecurityTab />}
     </section>

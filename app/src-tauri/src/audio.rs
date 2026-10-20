@@ -49,7 +49,10 @@ impl AudioEngine {
             .name("audio-output".into())
             .spawn(move || audio_thread(s, rx))
             .expect("spawning audio thread");
-        let engine = Arc::new(Self { shared, tx: Mutex::new(tx) });
+        let engine = Arc::new(Self {
+            shared,
+            tx: Mutex::new(tx),
+        });
         engine.wait_ready();
         engine
     }
@@ -149,8 +152,13 @@ fn audio_thread(shared: Arc<Mutex<Shared>>, rx: mpsc::Receiver<Msg>) {
 
 fn build_stream(shared: &Arc<Mutex<Shared>>) -> Result<cpal::Stream, String> {
     let host = cpal::default_host();
-    let device = host.default_output_device().ok_or("no audio output device")?;
-    let config: cpal::StreamConfig = device.default_output_config().map_err(|e| e.to_string())?.into();
+    let device = host
+        .default_output_device()
+        .ok_or("no audio output device")?;
+    let config: cpal::StreamConfig = device
+        .default_output_config()
+        .map_err(|e| e.to_string())?
+        .into();
     let channels = config.channels as usize;
     let fs = config.sample_rate as u32;
     {
@@ -165,8 +173,18 @@ fn build_stream(shared: &Arc<Mutex<Shared>>) -> Result<cpal::Stream, String> {
         .build_output_stream(
             config,
             move |data: &mut [f32], _: &cpal::OutputCallbackInfo| {
-                // Never block the audio thread: on contention, output silence.
-                let Ok(mut guard) = sh.try_lock() else {
+                // Never block the audio thread. Other threads hold this lock
+                // for well under a microsecond, so a short spin almost always
+                // gets it; a missed buffer would be an audible click.
+                let mut guard = None;
+                for _ in 0..2000 {
+                    if let Ok(g) = sh.try_lock() {
+                        guard = Some(g);
+                        break;
+                    }
+                    std::hint::spin_loop();
+                }
+                let Some(mut guard) = guard else {
                     data.fill(0.0);
                     return;
                 };
@@ -206,6 +224,8 @@ fn build_stream(shared: &Arc<Mutex<Shared>>) -> Result<cpal::Stream, String> {
             None,
         )
         .map_err(|e| format!("opening audio output: {e}"))?;
-    stream.play().map_err(|e| format!("starting audio output: {e}"))?;
+    stream
+        .play()
+        .map_err(|e| format!("starting audio output: {e}"))?;
     Ok(stream)
 }

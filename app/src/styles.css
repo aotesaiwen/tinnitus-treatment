@@ -508,3 +508,94 @@ kbd {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
+
+/* Music creation is the primary participant workflow. */
+.participant { display: grid; gap: 1.5rem; }
+.studio {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(300px, 1.15fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+  margin-bottom: 1rem;
+}
+.participant > .studio { margin-bottom: 0; }
+.studio-intro { align-self: start; }
+.studio-kicker { color: var(--accent); font-size: 0.75rem; font-weight: 650; letter-spacing: 0.13em; margin-bottom: 1.25rem; }
+.studio h1 { font-size: clamp(1.8rem, 3.8vw, 2.65rem); line-height: 1.15; letter-spacing: -0.04em; font-weight: 600; text-wrap: balance; }
+.studio-intro > p { max-width: 34ch; color: var(--muted); line-height: 1.7; }
+.studio-process { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin: 2rem 0; font-size: 0.8rem; color: var(--accent); }
+.studio-process span { border-top: 2px solid var(--line); padding-top: 0.6rem; }
+.studio-intro .studio-note { font-size: 0.83rem; }
+.studio-engine { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.studio-engine label { font-weight: 600; white-space: nowrap; }
+.studio-engine select { max-width: 100%; min-width: 0; }
+.mood-picker { border: 0; padding: 0; margin: 0 0 1.25rem; }
+.mood-picker legend { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+.mood-option { display: flex; align-items: center; gap: 0.75rem; border: 1px solid var(--line); padding: 0.7rem 1rem; border-radius: 8px; margin-top: 0.5rem; cursor: pointer; }
+.mood-option.selected { background: var(--accent-soft); border-color: var(--accent); }
+.mood-option input { accent-color: var(--accent); margin: 0; }
+.mood-option strong { font-size: 0.95rem; font-weight: 600; }
+.mood-option small { display: block; color: var(--muted); margin-top: 0.1rem; }
+.music-settings { display: grid; grid-template-columns: 1fr 1.2fr; gap: 1.25rem; }
+.music-settings label, .ai-description > label { display: grid; gap: 0.4rem; font-size: 0.85rem; }
+.music-settings label[for] { grid-template-columns: 1fr auto; }
+.music-settings input { grid-column: 1 / -1; width: 100%; accent-color: var(--accent); padding: 0; }
+.volume input { accent-color: var(--accent); }
+.music-settings select { min-width: 0; }
+.ai-description { margin: 1rem 0; }
+.ai-description > label { display: block; }
+textarea { width: 100%; margin-top: 0.4rem; resize: vertical; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); padding: 0.7rem; font: inherit; }
+textarea::placeholder { color: var(--muted); opacity: 1; }
+.service-check { display: flex; align-items: center; flex-wrap: wrap; gap: 0.25rem; font-size: 0.8rem; margin-top: 0.3rem; }
+.service-check button { font-size: inherit; padding-left: 0; }
+.variation-settings { color: var(--muted); font-size: 0.8rem; margin: 1rem 0; }
+.variation-settings summary { cursor: pointer; width: fit-content; }
+.variation-settings label { display: block; margin: 0.5rem 0; }
+.variation-settings input { width: 100%; }
+.generate-actions { display: flex; gap: 0.5rem; }
+.generate-button { flex: 1; min-height: 46px; font-weight: 600; }
+.job-status { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--muted); }
+.activity-indicator { width: 10px; height: 10px; flex-shrink: 0; border: 2px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: studio-spin 1s linear infinite; }
+@keyframes studio-spin { to { transform: rotate(360deg); } }
+.grid .library { grid-column: 1 / -1; }
+.library-heading { margin-top: 0; }
+.library-heading h2 { margin: 0; }
+.track-list { padding: 0; margin: 1rem 0 0; list-style: none; max-height: 320px; overflow-y: auto; }
+.track { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.75rem; text-align: left; width: 100%; align-items: center; border: 0; border-radius: 6px; padding: 0.85rem 0.75rem; }
+.track:hover, .track.active { background: var(--accent-soft); }
+.track-title { overflow-wrap: anywhere; }
+.track-number { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.track-action { font-size: 0.8rem; color: var(--accent); }
+.remember-settings { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8rem; }
+.recipe-notice { margin: 0; font-size: 0.85rem; color: var(--accent); }
+.library-tools { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+.library-tools input { flex: 1; min-width: 160px; }
+.track-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; border-bottom: 1px solid var(--line); }
+.track-title small { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 0.2rem; }
+.track-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 0.25rem; }
+.export-result { overflow-wrap: anywhere; }
+.track-tools .ghost { font-size: 0.8rem; }
+.favorite-button { width: 44px; height: 44px; padding: 0; border: 0; font-size: 1.4rem; color: var(--accent); }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-color-scheme: dark) {
+  button.primary, button.round.big { color: #12171d; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .activity-indicator { animation: none; }
+  .ring-fill { transition: none; }
+}
+@media (max-width: 760px) {
+  .studio { grid-template-columns: 1fr; gap: 1.25rem; }
+  .studio h1 br { display: none; }
+  .studio-intro > p { max-width: none; }
+  .studio-process { margin: 1rem 0; }
+  .studio-note { margin-bottom: 0; }
+  main { padding: 1rem; }
+  .topbar { padding: 0.75rem 1rem; gap: 0.5rem; flex-wrap: wrap; }
+  .card { padding: 1rem; min-width: 0; }
+  .track-row { grid-template-columns: 1fr; padding-bottom: 0.4rem; }
+  .track-tools { justify-content: flex-end; }
+}

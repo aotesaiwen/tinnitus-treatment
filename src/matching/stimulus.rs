@@ -97,7 +97,7 @@ impl Renderer {
     }
 
     pub fn render(&mut self, s: &Stimulus) -> Result<Vec<f32>, String> {
-        if !(s.level_db <= self.max_level_db + 1e-9) {
+        if !matches!(s.level_db.partial_cmp(&(self.max_level_db + 1e-9)), Some(std::cmp::Ordering::Less | std::cmp::Ordering::Equal)) {
             return Err(format!("{:.1} dB exceeds the {:.1} dB ceiling", s.level_db, self.max_level_db));
         }
         let fs = self.fs;

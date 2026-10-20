@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { api, errorText, type MatchSummary, type Status } from "./api";
 import Participant from "./Participant";
 import Clinician from "./Clinician";
@@ -13,20 +13,29 @@ export default function App() {
   const [pinOpen, setPinOpen] = useState(false);
   const [lastMatch, setLastMatch] = useState<MatchSummary | null>(null);
   const [fatal, setFatal] = useState<string | null>(null);
+  const refreshRevision = useRef(0);
 
   const refresh = useCallback(async () => {
+    const revision = ++refreshRevision.current;
     try {
-      setStatus(await api.status());
+      const next = await api.status();
+      if (revision !== refreshRevision.current) return;
+      setStatus(next);
       setFatal(null);
     } catch (e) {
-      setFatal(errorText(e));
+      if (revision === refreshRevision.current) setFatal(errorText(e));
     }
   }, []);
 
   useEffect(() => {
-    refresh();
-    const id = setInterval(refresh, 500);
-    return () => clearInterval(id);
+    let active = true;
+    let timer: ReturnType<typeof setTimeout>;
+    const poll = async () => {
+      await refresh();
+      if (active) timer = setTimeout(poll, 1000);
+    };
+    void poll();
+    return () => { active = false; clearTimeout(timer); };
   }, [refresh]);
 
   if (!status) {
@@ -75,10 +84,11 @@ export default function App() {
       </header>
 
       {status.error && view.name !== "matching" && <div className="banner warn">{status.error}</div>}
+      {fatal && <div className="banner warn" role="alert">Connection interrupted: {fatal}. Retrying…</div>}
 
       <main>
         {view.name === "participant" && (
-          <Participant status={status} onSetup={() => setView({ name: "matching", mode: "self" })} refresh={refresh} />
+          <Participant key={`${status.participant_id}-${status.can_generate}`} status={status} onSetup={() => setView({ name: "matching", mode: "self" })} refresh={refresh} />
         )}
         {view.name === "clinician" && status.clinician_unlocked && (
           <Clinician
