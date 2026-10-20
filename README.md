@@ -34,6 +34,7 @@ SHA-256。退出码：`0` 成功、`1` 执行错误、`2` 音频检查未通过�
 - [桌面开发与数据说明](app/README.md)
 - [生成器、ACE-Step 配置与历史测量](docs/generation.md)
 - [音频处理、验证指标与匹配流程](docs/audio-engine.md)
+- [音乐生成实验室：候选筛选、偏好学习、同源对照](research/README.md)
 
 生成源始终保留原始音频；播放和导出时按当前参与者配置重新处理。研究参与者
 的生成和导出由临床模式管理，界面不显示分组。PIN 仅是界面锁，不是数据加密。
@@ -43,6 +44,7 @@ SHA-256。退出码：`0` 成功、`1` 执行错误、`2` 音频检查未通过�
 ```bash
 cargo test --locked --features generation-http
 cargo clippy --locked --all-targets --features generation-http -- -D warnings
+python3 -m unittest discover -s research/tests -v
 cd app
 npm ci
 npm run build

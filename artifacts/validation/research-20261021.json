@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-21",
+  "scope": "Local offline-composer technical smoke test. Preference events are synthetic. No patient outcomes, listening evaluation, or new ACE-Step inference.",
+  "core_commit": "21690e0",
+  "runtime": {
+    "binary_sha256": "dcd0eb1e3db0c1c9d86e0136238b5f224f8e1c08b8454cd63804e8aeeb6537e3",
+    "python": "3.10.12",
+    "platform": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
+    "stage_timeout_s": 900
+  },
+  "selection": {
+    "command": "python3 -m research.selection --binary target/debug/tmusic --output artifacts/audio/selection-smoke-20261021 --engine composer --style drift --duration 30 --tempo 60 --seed 42 --candidates 2 --center 6000",
+    "summary_sha256": "428f0debdd682c80b10472924b104ee4a8da2362911b248b51be549caf4774c9",
+    "admitted": 2,
+    "attempted": 2,
+    "selected": "candidate-02",
+    "elapsed_s": 2.282336488366127,
+    "candidates": [
+      {
+        "id": "candidate-01",
+        "seed": 42,
+        "admitted": true,
+        "source_sha256": "4997b142e0665a6a8a76df11789b21eca86a355a6fc2641e74bc97715be9cc86",
+        "processed_sha256": "40a3055ad61abf810ee436c2a377f42454c38eec7d29ca156f5d11281f9c2bc8",
+        "metrics": {
+          "loudness_error_lu": 3.2285387163710766e-07,
+          "peak_headroom_db": 11.440226178474575
+        },
+        "elapsed_s": 1.1370835714042187
+      },
+      {
+        "id": "candidate-02",
+        "seed": 43,
+        "admitted": true,
+        "source_sha256": "446cb9be5d80d9ca78eb24a2d4d33c56b356b94ded29fd01d8aac59dcfa52de7",
+        "processed_sha256": "807b0c104fb7cafd401d97f955c93efebf4af02c91587d008483a106b821e573",
+        "metrics": {
+          "loudness_error_lu": 3.209005825510758e-07,
+          "peak_headroom_db": 11.656446526607166
+        },
+        "elapsed_s": 1.140686646103859
+      }
+    ]
+  },
+  "paired": {
+    "command": "python3 -m research.paired --binary target/debug/tmusic --source artifacts/audio/selection-smoke-20261021/candidate-02/source.wav --center 6000 --sham-center 1500 --seed 42 --output artifacts/audio/paired-smoke-20261021",
+    "summary_sha256": "a738c14e186c653827c818ca4d5e2bc9dc2cff7e9b83184ddbbced765ed77975",
+    "accepted": true,
+    "source_sha256": "446cb9be5d80d9ca78eb24a2d4d33c56b356b94ded29fd01d8aac59dcfa52de7",
+    "conditions_passed": 3,
+    "loudness_spread_lu": 7.598237452555168e-07,
+    "output_hashes": {
+      "passthrough": "8f4e4894dc1ba75037dfc23e5130dc74e999090a0eefbc6273a8cad9141d6fa4",
+      "notch": "807b0c104fb7cafd401d97f955c93efebf4af02c91587d008483a106b821e573",
+      "sham": "58bd0d7b0d36e2317417fea705673727722053be68ceb39c7839e82a69ae1ff1"
+    },
+    "schedule_orders": 6
+  },
+  "preferences": {
+    "synthetic_input": true,
+    "seed": 42,
+    "selected_recipe": "drift-pads",
+    "excluded_recipe_ids": [
+      "focus-piano"
+    ]
+  },
+  "verification": {
+    "rust_tests": 55,
+    "browser_tests": 13,
+    "research_tests": 32,
+    "frontend_build": "passed",
+    "core_clippy": "passed",
+    "native_backend_check": "passed on Linux; Windows physical playback not tested"
+  }
+}

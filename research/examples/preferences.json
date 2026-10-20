@@ -1,0 +1,39 @@
+{
+  "synthetic": true,
+  "catalog": [
+    {
+      "recipe_id": "drift-pads",
+      "provider": "composer",
+      "style": "drift",
+      "tempo_bpm": 54,
+      "duration_s": 60,
+      "prompt": ""
+    },
+    {
+      "recipe_id": "focus-piano",
+      "provider": "composer",
+      "style": "focus",
+      "tempo_bpm": 70,
+      "duration_s": 60,
+      "prompt": ""
+    },
+    {
+      "recipe_id": "unwind-strings",
+      "provider": "composer",
+      "style": "unwind",
+      "tempo_bpm": 60,
+      "duration_s": 60,
+      "prompt": ""
+    }
+  ],
+  "feedback": [
+    {"participant_id": "synthetic-alice", "recipe_id": "drift-pads", "rating": 5, "discomfort": false},
+    {"participant_id": "synthetic-alice", "recipe_id": "drift-pads", "rating": 4, "discomfort": false},
+    {"participant_id": "synthetic-alice", "recipe_id": "focus-piano", "rating": 3, "discomfort": true},
+    {"participant_id": "synthetic-alice", "recipe_id": "unwind-strings", "rating": 4, "discomfort": false},
+    {"participant_id": "synthetic-bob", "recipe_id": "drift-pads", "rating": 2, "discomfort": true},
+    {"participant_id": "synthetic-bob", "recipe_id": "focus-piano", "rating": 5, "discomfort": false},
+    {"participant_id": "synthetic-bob", "recipe_id": "focus-piano", "rating": 4, "discomfort": false},
+    {"participant_id": "synthetic-bob", "recipe_id": "unwind-strings", "rating": 3, "discomfort": false}
+  ]
+}
