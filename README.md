@@ -8,6 +8,10 @@ products.
 2. **Notching** (`tmusic process --center <pitch>`) removes the band around that pitch from
    music and proves that it did.
 
+3. **Windows app** ([app/](app/README.md)) has a participant player with live notching
+   and listening logs, plus PIN-protected clinician tools for setup, matching, library
+   checks and log export.
+
 The music comes from an open generative model (ACE-Step 1.5) or from the listener's own
 library. This engine handles the part a music model can't guarantee. It removes a
 precisely specified band around the tinnitus frequency, sets loudness and peak level, and

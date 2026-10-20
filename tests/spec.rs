@@ -327,3 +327,28 @@ fn psd_band_power_of_sine() {
     let in_band = psd.band_power(900.0, 1100.0) / psd.total();
     assert!(in_band > 0.999999, "{in_band}");
 }
+
+/// REQ-R1: resampling 48 -> 44.1 kHz keeps tone frequency and level, and
+/// keeps the notch (the resampler is linear).
+#[test]
+fn resampling_preserves_tone_and_notch() {
+    use tmdsp::resample::resample;
+    let fs = 48_000u32;
+    let n = 10 * fs as usize;
+    let tone = Audio { fs, channels: vec![signals::sine(n, fs as f64, 1000.0, 0.5, 0.0)] };
+    let r = resample(&tone, 44_100).unwrap();
+    assert_eq!(r.fs, 44_100);
+    assert!((r.frames() as f64 - n as f64 * 44_100.0 / 48_000.0).abs() <= 2.0, "{}", r.frames());
+    let mid = &r.channels[0][4410..r.frames() - 4410];
+    let peak = mid.iter().fold(0.0f32, |m, v| m.max(v.abs()));
+    assert!(db(peak as f64 / 0.5).abs() < 0.05, "{peak}");
+    let psd = Psd::welch(&[mid.to_vec()], 44_100.0, 16_384);
+    assert!(psd.band_power(990.0, 1010.0) / psd.total() > 0.9999);
+
+    let d = notch::design(&spec(&[4000.0], 1.0), fs as f64).unwrap();
+    let noise = Audio { fs, channels: vec![conv::filter_zero_phase(&d.taps_f32(), &signals::white_noise(n, 0.3, 8))] };
+    let r = resample(&noise, 44_100).unwrap();
+    let psd = Psd::welch(&r.channels, 44_100.0, 8192);
+    let band = psd.band_power(3000.0, 5500.0) / psd.band_power(1000.0, 2500.0) * (1500.0 / 2500.0);
+    assert!(10.0 * band.log10() < -55.0, "notch after resampling: {:.1} dB", 10.0 * band.log10());
+}

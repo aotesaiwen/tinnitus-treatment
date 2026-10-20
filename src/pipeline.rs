@@ -115,6 +115,16 @@ fn check(id: impl Into<String>, description: impl Into<String>, value: f64, limi
 
 /// Runs the whole chain in memory. Returns the encoded WAV and its report.
 pub fn run(input: &Audio, opts: &Options) -> Result<(Vec<u8>, Report)> {
+    run_inner(input, opts).map(|(bytes, _, report)| (bytes, report))
+}
+
+/// Like [`run`], but returns the verified output as samples (decoded from
+/// the encoding the report measured), for playback.
+pub fn run_to_audio(input: &Audio, opts: &Options) -> Result<(Audio, Report)> {
+    run_inner(input, opts).map(|(_, audio, report)| (audio, report))
+}
+
+fn run_inner(input: &Audio, opts: &Options) -> Result<(Vec<u8>, Audio, Report)> {
     let t0 = Instant::now();
     let fs = input.fs as f64;
     if input.frames() == 0 {
@@ -304,7 +314,7 @@ pub fn run(input: &Audio, opts: &Options) -> Result<(Vec<u8>, Report)> {
         processing_s,
         realtime_factor: input.duration_s() / processing_s,
     };
-    Ok((bytes, report))
+    Ok((bytes, written, report))
 }
 
 pub fn sha256_hex(bytes: &[u8]) -> String {

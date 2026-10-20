@@ -1,0 +1,29 @@
+[package]
+name = "tinnitus-music-app"
+version = "0.1.0"
+description = "Tinnitus Music: matching, notched music playback and listening logs"
+edition = "2024"
+publish = false
+
+[lib]
+name = "tm_app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.7", features = [] }
+
+# All MIT and/or Apache-2.0.
+[dependencies]
+tauri = { version = "2.12", features = [] }
+tauri-plugin-dialog = "2.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+cpal = "0.18"
+chrono = { version = "0.4", features = ["serde"] }
+sha2 = "0.10"
+tinnitus-music = { path = "../.." }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

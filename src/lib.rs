@@ -12,5 +12,6 @@ pub mod loudness;
 pub mod matching;
 pub mod notch;
 pub mod pipeline;
+pub mod resample;
 pub mod signals;
 pub mod wav;
