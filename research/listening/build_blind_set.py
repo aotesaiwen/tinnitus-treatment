@@ -34,7 +34,10 @@ def main() -> None:
     spec = json.loads(args.source_list.read_text())
     output = args.output.resolve()
     (output / "audio").mkdir(parents=True, exist_ok=True)
-    work = ROOT / "artifacts/audio/blind-20261021/prepared"
+    version = spec["version"]
+    if not isinstance(version, str) or not version or any(c not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_" for c in version):
+        raise ValueError("Dataset version must be a safe directory name")
+    work = ROOT / "artifacts/audio/blind-20261021/prepared" / version
     work.mkdir(parents=True, exist_ok=True)
     manifest = dict(version=spec["version"], samples=[], method=spec["method"],
                     coverageNote=spec["coverageNote"], coverage=spec["coverage"],

@@ -1,7 +1,7 @@
 {
-  "version": "piano-20261021-v1",
-  "method": "六段音乐各取源文件开头 30 秒，统一为 −23 LUFS。由 MIDI 演奏的片段使用同一套 Salamander 钢琴音色；直接生成音频的对照使用模型自身生成的音色。各片段首尾均作 20 毫秒淡入淡出，不做频段滤波、降噪或压缩。",
-  "coverageNote": "本次实际运行了两种本地 MIDI 生成模型，每种使用两个预先确定的随机种子；另加入一段已有的直接生成音频和一段原创 MIDI 作对照。下方标为“未测试”的方案没有试听片段。",
+  "version": "piano-20261021-v2",
+  "method": "十二段音乐各取源文件开头 30 秒，统一为 44.1 kHz 双声道、−23 LUFS。由 MIDI 演奏的片段使用同一套 Salamander 钢琴音色；直接生成音频的片段使用模型自身生成的音色。各片段首尾均作 20 毫秒淡入淡出，不做频段滤波、降噪或压缩。",
+  "coverageNote": "第二轮加入 Stable Audio 3 的两个版本，以及 Google Lyria RealTime，每种各两段；同时保留第一轮的六段作为对照。每种方案使用预先固定的种子，不挑选最好听的重试。第一轮与旧评分可从页面上方返回查看。",
   "attribution": "钢琴采样：Alexander Holm 制作的 Salamander Grand Piano V3，采用 CC BY 3.0 许可（https://creativecommons.org/licenses/by/3.0/），来源为 https://archive.org/details/SalamanderGrandPianoV3。使用 sfizz 1.2.3 演奏，统一关闭键盘与踏板的机械噪声层。试听片段经过截取、首尾淡入淡出及响度匹配。",
   "coverage": [
     {
@@ -30,24 +30,34 @@
       "detail": "所有 MIDI 片段都使用这套真实钢琴采样音色。"
     },
     {
+      "name": "Stable Audio 3 Small Music",
+      "status": "已生成",
+      "detail": "本地直接生成两段音频，使用官方 Small Music 权重。"
+    },
+    {
+      "name": "Stable Audio 3 Medium",
+      "status": "已生成",
+      "detail": "本地直接生成两段音频，与 Small Music 使用相同的钢琴独奏提示词和种子。"
+    },
+    {
+      "name": "Lyria RealTime",
+      "status": "已生成",
+      "detail": "使用 Google 实验性实时音乐 API 的免费额度，直接生成两段音频。它是独立于 Lyria 3.5 的模型。"
+    },
+    {
       "name": "Eleven Music v2.5",
       "status": "未测试",
-      "detail": "尚未配置账号和 API 凭据。"
+      "detail": "API 密钥已验证，但当前账号是免费档；音乐 API 要求付费订阅。"
     },
     {
       "name": "Lyria 3.5",
       "status": "未测试",
-      "detail": "尚未配置账号和 API 凭据。"
-    },
-    {
-      "name": "Stable Audio 3",
-      "status": "未测试",
-      "detail": "官方 Medium 和 Small Music 权重需要 Hugging Face 访问授权。未登录的下载请求返回 401，目前尚未配置授权凭据。"
+      "detail": "API 密钥已验证，但该音乐模型没有免费 API 额度；本轮没有开启付费计费。"
     },
     {
       "name": "Pianoteq",
-      "status": "未测试",
-      "detail": "尚未安装有许可证的版本，本次没有使用功能受限的试用版作为对照。"
+      "status": "已跳过",
+      "detail": "没有购买许可证。MIDI 片段继续使用已配置的 Salamander 钢琴音源。"
     }
   ],
   "samples": [
@@ -98,6 +108,54 @@
       "description": "用代码写成的原创乐句，也是 Aria 的输入，由同一套 Salamander 钢琴演奏。用于对照采样器的音色，本身不是音乐生成模型的输出。",
       "configuration": "八小节，D 大调，64 个音符，约每分钟 62.7 拍。取前 30 秒。保留琴音及松键后的琴弦余音；所有 MIDI 片段都统一关闭机械噪声层。",
       "url": "https://archive.org/details/SalamanderGrandPianoV3"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/stable-audio/small-music/piano-210731-60s-raw.wav",
+      "label": "Stable Audio 3 Small Music · 1",
+      "shortLabel": "Stable Audio Small Music · 1",
+      "description": "根据安静、克制的钢琴独奏提示词直接生成声音，音色和演奏均由模型生成。没有经过钢琴采样器重奏。",
+      "configuration": "官方权重；种子 210731；8 步采样；生成 60 秒，取开头 30 秒。与另一版本使用相同提示词。",
+      "url": "https://huggingface.co/stabilityai/stable-audio-3-small-music"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/stable-audio/small-music/piano-210732-60s-raw.wav",
+      "label": "Stable Audio 3 Small Music · 2",
+      "shortLabel": "Stable Audio Small Music · 2",
+      "description": "根据安静、克制的钢琴独奏提示词直接生成声音，音色和演奏均由模型生成。没有经过钢琴采样器重奏。",
+      "configuration": "官方权重；种子 210732；8 步采样；生成 60 秒，取开头 30 秒。与另一版本使用相同提示词。",
+      "url": "https://huggingface.co/stabilityai/stable-audio-3-small-music"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/stable-audio/medium/piano-210731-60s-raw.wav",
+      "label": "Stable Audio 3 Medium · 1",
+      "shortLabel": "Stable Audio Medium · 1",
+      "description": "根据安静、克制的钢琴独奏提示词直接生成声音，音色和演奏均由模型生成。没有经过钢琴采样器重奏。",
+      "configuration": "官方权重；种子 210731；8 步采样；生成 60 秒，取开头 30 秒。与另一版本使用相同提示词。",
+      "url": "https://huggingface.co/stabilityai/stable-audio-3-medium"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/stable-audio/medium/piano-210732-60s-raw.wav",
+      "label": "Stable Audio 3 Medium · 2",
+      "shortLabel": "Stable Audio Medium · 2",
+      "description": "根据安静、克制的钢琴独奏提示词直接生成声音，音色和演奏均由模型生成。没有经过钢琴采样器重奏。",
+      "configuration": "官方权重；种子 210732；8 步采样；生成 60 秒，取开头 30 秒。与另一版本使用相同提示词。",
+      "url": "https://huggingface.co/stabilityai/stable-audio-3-medium"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/lyria-realtime/lyria-realtime-seed210731.wav",
+      "label": "Lyria RealTime · 1",
+      "shortLabel": "Lyria RealTime · 1",
+      "description": "Google 实验性实时音乐模型直接生成的声音。提示词要求钢琴独奏，实际乐器与音质以试听为准。",
+      "configuration": "lyria-realtime-exp；初始种子 210731；64 BPM；D 大调；质量模式；鼓声关闭。流式生成 40 秒，取开头 30 秒，并从 48 kHz 转为 44.1 kHz。",
+      "url": "https://ai.google.dev/gemini-api/docs/realtime-music-generation"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/lyria-realtime/lyria-realtime-seed210732.wav",
+      "label": "Lyria RealTime · 2",
+      "shortLabel": "Lyria RealTime · 2",
+      "description": "Google 实验性实时音乐模型直接生成的声音。提示词要求钢琴独奏，实际乐器与音质以试听为准。",
+      "configuration": "lyria-realtime-exp；初始种子 210732；64 BPM；D 大调；质量模式；鼓声关闭。流式生成 40 秒，取开头 30 秒，并从 48 kHz 转为 44.1 kHz。",
+      "url": "https://ai.google.dev/gemini-api/docs/realtime-music-generation"
     }
   ]
 }

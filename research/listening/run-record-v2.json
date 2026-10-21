@@ -1,0 +1,1856 @@
+{
+  "schema": "listening-room-run/v2",
+  "dataset": "piano-20261021-v2",
+  "recorded_on": "2026-10-21",
+  "previous_dataset": "piano-20261021-v1",
+  "previous_run_record": "research/listening/run-record.json",
+  "previous_dataset_route": "round-1/",
+  "original_samples_reused": 6,
+  "selection": "Two predetermined seeds per added model; no quality-based rerolls; first 30 seconds of every source.",
+  "stable_audio": {
+    "small-music": {
+      "model": "small-music",
+      "code_revision": "77e0398c26f7d22d801ec1bb036307e8b231f741",
+      "checkpoint_revision": "8bdfb53c6b0fbc62113cd571fd37373efe15fa14",
+      "checkpoint_files": [
+        {
+          "path": "LICENSE.md",
+          "bytes": 11852,
+          "sha256": "d6f6b1a4dce5c852bd6d7d9482d002baf0ccdb71e662250b73be9eec8764ee8d"
+        },
+        {
+          "path": "LICENSE_GEMMA.md",
+          "bytes": 10541,
+          "sha256": "e77acc0d3163bb7534675045c584b4d04b387b529239fc4b3647da0a01ba4745"
+        },
+        {
+          "path": "NOTICE",
+          "bytes": 97,
+          "sha256": "66f856d7da72797f528fca46b7c80634ab481f917bfe020960e123d84b19f75f"
+        },
+        {
+          "path": "README.md",
+          "bytes": 5916,
+          "sha256": "d7b82d6bf7d171bb083663699febdc158dab02feaaedc7ed9e72b7b3271bd756"
+        },
+        {
+          "path": "model.safetensors",
+          "bytes": 2270384940,
+          "sha256": "da85866b11b01d0694d990785f6abbd79c8064df1b0e6f8aea52935e0ef84b64"
+        },
+        {
+          "path": "model_config.json",
+          "bytes": 10341,
+          "sha256": "100776f25af5aa83f70e0c6b384de6690cb4e5ad01c24f7cfbb6524d18765f06"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/README.md",
+          "bytes": 18296,
+          "sha256": "6a96748c87d323d6080d037191346e68c3eda39c34c0530cb4f7f3bd8cc20319"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/config.json",
+          "bytes": 2540,
+          "sha256": "575334409716886ac2952f5a275ed92868deef8a0ea560258d9970a431c6fb3a"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/generation_config.json",
+          "bytes": 156,
+          "sha256": "1068b94599a94ceea097dd3936819f108c2e70806d7c6cc5ec425610af347625"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/model.safetensors",
+          "bytes": 1183022944,
+          "sha256": "9b05ea5a4f211d023832f706fb2c0e83e4fc721b6da35ab69ceb0b55eb7800d3"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/special_tokens_map.json",
+          "bytes": 636,
+          "sha256": "baec30ea10906f16adb8c18af7a34023002c1746542612b8b41c9f09e1351351"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/tokenizer.json",
+          "bytes": 34362429,
+          "sha256": "7794135caa3ea73918949c902a781cc61dab674a4b59c17d85931c77c1114cbd"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/tokenizer.model",
+          "bytes": 4241003,
+          "sha256": "61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/tokenizer_config.json",
+          "bytes": 46437,
+          "sha256": "9546baec0dfefec0e29873edea9488ecde153f846e18c06ea48cb44587bf408f"
+        }
+      ],
+      "prompt": "TrackType: Instrument, Format: Solo, Instruments: Acoustic Grand Piano, Genre: Contemporary Classical, VocalType: Instrumental. A quiet, intimate solo acoustic grand piano piece at 64 BPM in D major. A clear, lyrical right-hand melody over sparse, gently flowing left-hand broken chords. Natural phrasing with breathing space, soft rounded notes, warm lower and middle registers, restrained dynamics. Clean close-miked studio piano with a short natural room decay. One acoustic piano alone throughout, without accompaniment.",
+      "duration_seconds": 60,
+      "steps": 8,
+      "cfg_scale": 1.0,
+      "negative_prompt": null,
+      "model_dtype": "float16",
+      "chunked_decode": false,
+      "load_seconds": 7.710210325196385,
+      "strict_loads": [
+        {
+          "loaded_tensors": 685,
+          "strict": true
+        }
+      ],
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "memory_limit_GiB": 40,
+      "flash_attention_installed": false,
+      "attention_note": "Upstream attention implementation with its built-in flex/SDPA fallbacks",
+      "software": {
+        "torch": "2.10.0+cu128",
+        "torchaudio": "2.10.0+cu128",
+        "transformers": "5.8.0",
+        "numpy": "2.5.4",
+        "safetensors": "0.8.0"
+      },
+      "samples": [
+        {
+          "seed": 210731,
+          "path": "artifacts/audio/blind-20261021/stable-audio/small-music/piano-210731-60s-raw.wav",
+          "duration_seconds": 60.0,
+          "sample_rate": 44100,
+          "channels": 2,
+          "generation_seconds": 1.3663563299924135,
+          "peak_gpu_GiB": 1.9951982498168945,
+          "peak": 0.55615234375,
+          "rms": 0.05735128332853233,
+          "sha256": "3faff59e1f492b6f0cf649d9ad4c7e375d18f06406c99bd658678398485d0c03"
+        },
+        {
+          "seed": 210732,
+          "path": "artifacts/audio/blind-20261021/stable-audio/small-music/piano-210732-60s-raw.wav",
+          "duration_seconds": 60.0,
+          "sample_rate": 44100,
+          "channels": 2,
+          "generation_seconds": 0.33712085150182247,
+          "peak_gpu_GiB": 1.9973955154418945,
+          "peak": 0.63916015625,
+          "rms": 0.057840117692598926,
+          "sha256": "9c8cbb3ce17b2f8cf91c12f87b53ec14d8f877c40b8277bb8b8a14d0ea0a3303"
+        }
+      ]
+    },
+    "medium": {
+      "model": "medium",
+      "code_revision": "77e0398c26f7d22d801ec1bb036307e8b231f741",
+      "checkpoint_revision": "d4d3579395a8ac0df4ab13b5b1d7138ce7290f81",
+      "checkpoint_files": [
+        {
+          "path": "LICENSE.md",
+          "bytes": 11852,
+          "sha256": "d6f6b1a4dce5c852bd6d7d9482d002baf0ccdb71e662250b73be9eec8764ee8d"
+        },
+        {
+          "path": "LICENSE_GEMMA.md",
+          "bytes": 10541,
+          "sha256": "e77acc0d3163bb7534675045c584b4d04b387b529239fc4b3647da0a01ba4745"
+        },
+        {
+          "path": "NOTICE",
+          "bytes": 97,
+          "sha256": "66f856d7da72797f528fca46b7c80634ab481f917bfe020960e123d84b19f75f"
+        },
+        {
+          "path": "README.md",
+          "bytes": 6089,
+          "sha256": "a0c635e8bb58a33cead58435ae58ae49c2db91be49fa605447d72f5a3496c4f0"
+        },
+        {
+          "path": "model.safetensors",
+          "bytes": 9222116660,
+          "sha256": "48d9c65e290e7bcd5194e0633bfc2424a59ee9683f5c2d58762d997b7d8ce0b5"
+        },
+        {
+          "path": "model_config.json",
+          "bytes": 10360,
+          "sha256": "4f8846649df59167e1792d134acb6fc2bb7105227c5455300bad6cb107e20c88"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/README.md",
+          "bytes": 18296,
+          "sha256": "6a96748c87d323d6080d037191346e68c3eda39c34c0530cb4f7f3bd8cc20319"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/config.json",
+          "bytes": 2540,
+          "sha256": "575334409716886ac2952f5a275ed92868deef8a0ea560258d9970a431c6fb3a"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/generation_config.json",
+          "bytes": 156,
+          "sha256": "1068b94599a94ceea097dd3936819f108c2e70806d7c6cc5ec425610af347625"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/model.safetensors",
+          "bytes": 1183022944,
+          "sha256": "9b05ea5a4f211d023832f706fb2c0e83e4fc721b6da35ab69ceb0b55eb7800d3"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/special_tokens_map.json",
+          "bytes": 636,
+          "sha256": "baec30ea10906f16adb8c18af7a34023002c1746542612b8b41c9f09e1351351"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/tokenizer.json",
+          "bytes": 34362429,
+          "sha256": "7794135caa3ea73918949c902a781cc61dab674a4b59c17d85931c77c1114cbd"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/tokenizer.model",
+          "bytes": 4241003,
+          "sha256": "61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2"
+        },
+        {
+          "path": "t5gemma-b-b-ul2/tokenizer_config.json",
+          "bytes": 46437,
+          "sha256": "9546baec0dfefec0e29873edea9488ecde153f846e18c06ea48cb44587bf408f"
+        }
+      ],
+      "prompt": "TrackType: Instrument, Format: Solo, Instruments: Acoustic Grand Piano, Genre: Contemporary Classical, VocalType: Instrumental. A quiet, intimate solo acoustic grand piano piece at 64 BPM in D major. A clear, lyrical right-hand melody over sparse, gently flowing left-hand broken chords. Natural phrasing with breathing space, soft rounded notes, warm lower and middle registers, restrained dynamics. Clean close-miked studio piano with a short natural room decay. One acoustic piano alone throughout, without accompaniment.",
+      "duration_seconds": 60,
+      "steps": 8,
+      "cfg_scale": 1.0,
+      "negative_prompt": null,
+      "model_dtype": "float16",
+      "chunked_decode": false,
+      "load_seconds": 17.357200000435114,
+      "strict_loads": [
+        {
+          "loaded_tensors": 997,
+          "strict": true
+        }
+      ],
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "memory_limit_GiB": 40,
+      "flash_attention_installed": false,
+      "attention_note": "Upstream attention implementation with its built-in flex/SDPA fallbacks",
+      "software": {
+        "torch": "2.10.0+cu128",
+        "torchaudio": "2.10.0+cu128",
+        "transformers": "5.8.0",
+        "numpy": "2.5.4",
+        "safetensors": "0.8.0"
+      },
+      "samples": [
+        {
+          "seed": 210731,
+          "path": "artifacts/audio/blind-20261021/stable-audio/medium/piano-210731-60s-raw.wav",
+          "duration_seconds": 60.0,
+          "sample_rate": 44100,
+          "channels": 2,
+          "generation_seconds": 8.053989646956325,
+          "peak_gpu_GiB": 6.839087963104248,
+          "peak": 0.72216796875,
+          "rms": 0.062012612607580925,
+          "sha256": "e5912f7e6933ba05fe41db1b8c6e32c3ff50a814e3645970f1914216692dfa90"
+        },
+        {
+          "seed": 210732,
+          "path": "artifacts/audio/blind-20261021/stable-audio/medium/piano-210732-60s-raw.wav",
+          "duration_seconds": 60.0,
+          "sample_rate": 44100,
+          "channels": 2,
+          "generation_seconds": 0.6165968645364046,
+          "peak_gpu_GiB": 5.688397407531738,
+          "peak": 0.7509765625,
+          "rms": 0.052996799954644035,
+          "sha256": "aaf106f954c3f1b0c655d8e9dad781e6589fc4e58b9fcae1b8a44ac41d60f16f"
+        }
+      ]
+    }
+  },
+  "lyria_realtime": {
+    "validation": {
+      "schema_version": 1,
+      "independent_validation": [
+        {
+          "initial_seed": 210731,
+          "wav_matches_raw_pcm": true,
+          "source_seed_advances_by_one_per_2s_chunk": true,
+          "source_seed_range": [
+            210731,
+            210750
+          ],
+          "duration_seconds": 40,
+          "sample_rate": 48000,
+          "channels": 2,
+          "finite": true,
+          "silence_windows_100ms_below_minus_60_dbfs": 0,
+          "full_scale_samples": 0,
+          "peak_dbfs": -3.692609369277622,
+          "minimum_100ms_rms_dbfs": -27.68512295803278,
+          "elapsed_seconds": 42.319
+        },
+        {
+          "initial_seed": 210732,
+          "wav_matches_raw_pcm": true,
+          "source_seed_advances_by_one_per_2s_chunk": true,
+          "source_seed_range": [
+            210732,
+            210751
+          ],
+          "duration_seconds": 40,
+          "sample_rate": 48000,
+          "channels": 2,
+          "finite": true,
+          "silence_windows_100ms_below_minus_60_dbfs": 0,
+          "full_scale_samples": 0,
+          "peak_dbfs": -2.4494349683435455,
+          "minimum_100ms_rms_dbfs": -26.201387885565413,
+          "elapsed_seconds": 42.13
+        }
+      ],
+      "identical_2s_pcm_chunks_between_recordings": 0,
+      "credential_scan_passed": true,
+      "script_sha256": "622dda77df114d51cf1888ac0f85675e2cf640d7eb7eac65529842c1a1b45a51",
+      "qualification": "File/transport validation only; musical quality and instrument compliance are for blind listening."
+    },
+    "sessions": [
+      {
+        "schema_version": 1,
+        "started_at_utc": "2026-10-21T08:48:04.902991+00:00",
+        "model": "models/lyria-realtime-exp",
+        "api_version": "v1alpha",
+        "prompt": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+        "prompt_weight": 1.0,
+        "config": {
+          "seed": 210731,
+          "bpm": 64,
+          "density": 0.2,
+          "brightness": 0.3,
+          "guidance": 5.0,
+          "temperature": 0.9,
+          "topK": 40,
+          "scale": "D_MAJOR_B_MINOR",
+          "muteDrums": true,
+          "muteBass": false,
+          "musicGenerationMode": "QUALITY"
+        },
+        "requested_minimum_seconds": 40.0,
+        "official_sources": [
+          "https://ai.google.dev/gemini-api/docs/realtime-music-generation",
+          "https://ai.google.dev/api/live_music",
+          "https://github.com/google-gemini/cookbook/blob/main/quickstarts/Get_started_LyriaRealTime.ipynb",
+          "https://magenta.withgoogle.com/infinite-crate-announce"
+        ],
+        "free_access_basis": "Official Google cookbook describes free preview with quota; account status reports free billing tier.",
+        "billing_changes_made": false,
+        "other_model_calls_made": false,
+        "attempt_number": 1,
+        "transport": "WebSocket over existing SOCKS5 proxy with remote DNS and verified TLS",
+        "software": {
+          "websocket-client": "1.9.2",
+          "python-socks": "3.1.1"
+        },
+        "status": "completed",
+        "stage": "complete",
+        "messages_without_audio": [],
+        "chunks": [
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 4.64,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210731,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 6.007,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210732,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 7.912,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210733,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 10.161,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210734,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 12.081,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210735,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 13.869,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210736,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 16.147,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210737,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 17.932,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210738,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 20.134,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210739,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 21.716,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210740,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 24.074,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210741,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 26.039,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210742,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 27.935,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210743,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 30.089,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210744,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 31.842,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210745,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 34.016,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210746,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 36.07,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210747,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 37.926,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210748,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 39.882,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210749,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 42.082,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210750,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          }
+        ],
+        "processing": "All returned PCM chunks concatenated unchanged; WAV header added. No DSP or sample selection.",
+        "setup_response": {
+          "setupComplete": {}
+        },
+        "elapsed_seconds": 42.319,
+        "audio": {
+          "frames": 1920000,
+          "duration_seconds": 40.0,
+          "channels": 2,
+          "sample_rate": 48000,
+          "sample_format": "signed 16-bit little-endian PCM",
+          "finite": true,
+          "peak_dbfs": -3.692609369277622,
+          "rms_dbfs": -18.71232049810801,
+          "full_scale_samples": 0,
+          "nonzero_samples": 3839508,
+          "sha256_pcm": "e165e24d8f15e96b36abf14069a48bf7d08e9a84ad1f05ec672ae191d037ec58",
+          "wav_path": "artifacts/audio/blind-20261021/lyria-realtime/lyria-realtime-seed210731.wav",
+          "sha256_wav": "a207797fde0447f5199a54c61ccac44fd7be2aac565eed1e60c3333f66df5e03"
+        }
+      },
+      {
+        "schema_version": 1,
+        "started_at_utc": "2026-10-21T08:48:48.000605+00:00",
+        "model": "models/lyria-realtime-exp",
+        "api_version": "v1alpha",
+        "prompt": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+        "prompt_weight": 1.0,
+        "config": {
+          "seed": 210732,
+          "bpm": 64,
+          "density": 0.2,
+          "brightness": 0.3,
+          "guidance": 5.0,
+          "temperature": 0.9,
+          "topK": 40,
+          "scale": "D_MAJOR_B_MINOR",
+          "muteDrums": true,
+          "muteBass": false,
+          "musicGenerationMode": "QUALITY"
+        },
+        "requested_minimum_seconds": 40.0,
+        "official_sources": [
+          "https://ai.google.dev/gemini-api/docs/realtime-music-generation",
+          "https://ai.google.dev/api/live_music",
+          "https://github.com/google-gemini/cookbook/blob/main/quickstarts/Get_started_LyriaRealTime.ipynb",
+          "https://magenta.withgoogle.com/infinite-crate-announce"
+        ],
+        "free_access_basis": "Official Google cookbook describes free preview with quota; account status reports free billing tier.",
+        "billing_changes_made": false,
+        "other_model_calls_made": false,
+        "attempt_number": 1,
+        "transport": "WebSocket over existing SOCKS5 proxy with remote DNS and verified TLS",
+        "software": {
+          "websocket-client": "1.9.2",
+          "python-socks": "3.1.1"
+        },
+        "status": "completed",
+        "stage": "complete",
+        "messages_without_audio": [],
+        "chunks": [
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 5.241,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210732,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 6.044,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210733,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 7.917,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210734,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 9.895,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210735,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 11.902,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210736,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 13.893,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210737,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 15.936,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210738,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 17.927,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210739,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 19.923,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210740,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 22.1,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210741,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 23.911,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210742,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 25.896,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210743,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 27.955,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210744,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 29.971,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210745,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 31.951,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210746,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 33.919,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210747,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 35.912,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210748,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 37.943,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210749,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 39.931,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210750,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          },
+          {
+            "bytes": 384000,
+            "mime_type": "audio/l16;rate=48000;channels=2",
+            "received_after_seconds": 41.954,
+            "source_metadata": {
+              "clientContent": {
+                "weightedPrompts": [
+                  {
+                    "text": "An intimate solo acoustic grand piano performance. Slow lyrical melody, warm rounded piano tone, gentle legato phrasing, sparse left-hand chords, natural expressive timing, a quiet dry studio recording. Only one acoustic grand piano. No percussion, bells, chimes, singing, synthesizers, ambient sound effects, tape hiss, vinyl crackle, or background noise.",
+                    "weight": 1
+                  }
+                ]
+              },
+              "musicGenerationConfig": {
+                "temperature": 0.9,
+                "topK": 40,
+                "seed": 210751,
+                "guidance": 5,
+                "bpm": 64,
+                "density": 0.2,
+                "brightness": 0.3,
+                "scale": "D_MAJOR_B_MINOR",
+                "muteBass": false,
+                "muteDrums": true,
+                "musicGenerationMode": "QUALITY"
+              }
+            }
+          }
+        ],
+        "processing": "All returned PCM chunks concatenated unchanged; WAV header added. No DSP or sample selection.",
+        "setup_response": {
+          "setupComplete": {}
+        },
+        "elapsed_seconds": 42.13,
+        "audio": {
+          "frames": 1920000,
+          "duration_seconds": 40.0,
+          "channels": 2,
+          "sample_rate": 48000,
+          "sample_format": "signed 16-bit little-endian PCM",
+          "finite": true,
+          "peak_dbfs": -2.4494349683435455,
+          "rms_dbfs": -17.855066942843063,
+          "full_scale_samples": 0,
+          "nonzero_samples": 3839592,
+          "sha256_pcm": "cb89db9cebf07415277703edce5cf5881b537c534d5ad887c7c712abe11b77d6",
+          "wav_path": "artifacts/audio/blind-20261021/lyria-realtime/lyria-realtime-seed210732.wav",
+          "sha256_wav": "41696f2903b5b5a33b9af36c1d5eb7a5b5b43888cc41eca6e8ae169964909644"
+        }
+      }
+    ]
+  },
+  "unavailable": [
+    {
+      "model": "Eleven Music v2.5",
+      "reason": "Verified API key, free subscription; Music API requires a paid subscription."
+    },
+    {
+      "model": "Lyria 3.5",
+      "reason": "Verified API key, free billing tier; model has no free API tier."
+    },
+    {
+      "model": "Pianoteq",
+      "reason": "No purchased license; user chose to skip it."
+    }
+  ],
+  "billing_changes_made": false,
+  "stable_audio_validation": [
+    {
+      "file": "artifacts/audio/blind-20261021/stable-audio/medium/piano-210731-60s-raw.wav",
+      "duration": 60.0,
+      "channels": 2,
+      "rate": 44100,
+      "finite": true,
+      "silent_tenths": 0,
+      "full_scale_samples": 0
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/stable-audio/medium/piano-210732-60s-raw.wav",
+      "duration": 60.0,
+      "channels": 2,
+      "rate": 44100,
+      "finite": true,
+      "silent_tenths": 0,
+      "full_scale_samples": 0
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/stable-audio/small-music/piano-210731-60s-raw.wav",
+      "duration": 60.0,
+      "channels": 2,
+      "rate": 44100,
+      "finite": true,
+      "silent_tenths": 0,
+      "full_scale_samples": 0
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/stable-audio/small-music/piano-210732-60s-raw.wav",
+      "duration": 60.0,
+      "channels": 2,
+      "rate": 44100,
+      "finite": true,
+      "silent_tenths": 0,
+      "full_scale_samples": 0
+    }
+  ],
+  "listening_files": [
+    {
+      "id": "219b9e978b5c827efe53",
+      "source": "artifacts/audio/blind-20261021/render/aria-seed-21021-continuation.wav",
+      "source_sha256": "ff87d2ee236e1d780b020d91a7462dcc1b6e0fc3c210fcda451a03a4290ddc23",
+      "listening_sha256": "e53baee9b359fd54b23f368b64aef515ed9ff5394b8c47976113e4869f5d3727",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.999999505565906,
+        "true_peak_dbtp": -7.3535085240663705
+      },
+      "gain_db": 16.400140013555607,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.428863525390625,
+      "bytes": 1605266
+    },
+    {
+      "id": "a1a97eebd826dc5a461c",
+      "source": "artifacts/audio/blind-20261021/render/aria-seed-21022-continuation.wav",
+      "source_sha256": "d28155928cf09add1efea1400d591151c6b8dd5118bc3af9d0a3f75b3f858a6c",
+      "listening_sha256": "d7170f1d7910cb6484d28f238cd77a783a091141a63eb6acb0a1a7326da12e66",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.999999828878597,
+        "true_peak_dbtp": -9.149617816679786
+      },
+      "gain_db": 15.189144797326591,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.348663330078125,
+      "bytes": 1636507
+    },
+    {
+      "id": "297a0eb38058676ed973",
+      "source": "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.wav",
+      "source_sha256": "88de8a550ba480bb2e489564201abbc8361949ab7dfeb4b1e9a73691d84b6594",
+      "listening_sha256": "5ebd3431753c66657cdcda1c0c7faa3231ad0f6a27c404b173db29845d56df61",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.99999990899584,
+        "true_peak_dbtp": -8.177385439384864
+      },
+      "gain_db": -5.24713443374873,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.390045166015625,
+      "bytes": 1600860
+    },
+    {
+      "id": "86dc020f0e7ea58cdf3a",
+      "source": "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.wav",
+      "source_sha256": "9e50a62644df38dfb9134ae8ae87b64a31190b09277ce2ded0688d43da9440a2",
+      "listening_sha256": "33e11c17924d5152a5a4f9111928edada9344c6ee06136ce00f48c83606d5114",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.99999971393231,
+        "true_peak_dbtp": -8.90936760260426
+      },
+      "gain_db": -6.3978668943822825,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.358154296875,
+      "bytes": 1351525
+    },
+    {
+      "id": "b75af28ad22163cb8d4f",
+      "source": "artifacts/audio/ace-quality-20261021/turbo-piano-42022-60s-raw.wav",
+      "source_sha256": "720b0f9562751ac8aa04cde6d97cdbff885e402f552a9770e53372aee9ba4f74",
+      "listening_sha256": "1dee1af7229269558920385523db51c6a2aba781cb30160b5fc91c0e135cba3b",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -23.000000248868425,
+        "true_peak_dbtp": -5.05961907881515
+      },
+      "gain_db": -3.5105847548255156,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.558502197265625,
+      "bytes": 1620036
+    },
+    {
+      "id": "23b7f529f2c7eda277b7",
+      "source": "artifacts/audio/blind-20261021/render/original-eight-bar-seed.wav",
+      "source_sha256": "5db7faea6ede5ab44924ff9b7d87934f3eaa9e8cbbdb712e1172e801fb12d85d",
+      "listening_sha256": "b96c201c95c782ca9cb223e38b0e99b1f1488ceef7a1e15e8a871f0fee024a33",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -23.000000517335096,
+        "true_peak_dbtp": -8.109968900875886
+      },
+      "gain_db": 16.04649209474755,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.392974853515625,
+      "bytes": 1618649
+    },
+    {
+      "id": "1c454b38f5a38935416a",
+      "source": "artifacts/audio/blind-20261021/stable-audio/small-music/piano-210731-60s-raw.wav",
+      "source_sha256": "3faff59e1f492b6f0cf649d9ad4c7e375d18f06406c99bd658678398485d0c03",
+      "listening_sha256": "18655f713dc915f7a242670a38fba943dbee946f1aac54df4d80e6abc9c7f451",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.999999832352994,
+        "true_peak_dbtp": -8.75303052230249
+      },
+      "gain_db": -1.7059722092598868,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.364898681640625,
+      "bytes": 1287666
+    },
+    {
+      "id": "f645476e2386e410728a",
+      "source": "artifacts/audio/blind-20261021/stable-audio/small-music/piano-210732-60s-raw.wav",
+      "source_sha256": "9c8cbb3ce17b2f8cf91c12f87b53ec14d8f877c40b8277bb8b8a14d0ea0a3303",
+      "listening_sha256": "f30b64f6be7eb7049aa05fe55581c2fbd29fc129e72455e29fe7187aa2767b39",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.999999687645804,
+        "true_peak_dbtp": -5.156869783631544
+      },
+      "gain_db": -1.2694232390816964,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.55224609375,
+      "bytes": 1255245
+    },
+    {
+      "id": "5dfbdb5bf83f3aaa546f",
+      "source": "artifacts/audio/blind-20261021/stable-audio/medium/piano-210731-60s-raw.wav",
+      "source_sha256": "e5912f7e6933ba05fe41db1b8c6e32c3ff50a814e3645970f1914216692dfa90",
+      "listening_sha256": "9ddde5273a9575238c84879bc7c8f3d18b643dffa73e1dd0228eda424daa73b3",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.99999985099426,
+        "true_peak_dbtp": -4.316875587892425
+      },
+      "gain_db": -1.4997503561678371,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.607635498046875,
+      "bytes": 1213302
+    },
+    {
+      "id": "cd940715fb6839b99fdc",
+      "source": "artifacts/audio/blind-20261021/stable-audio/medium/piano-210732-60s-raw.wav",
+      "source_sha256": "aaf106f954c3f1b0c655d8e9dad781e6589fc4e58b9fcae1b8a44ac41d60f16f",
+      "listening_sha256": "b61918f37420d466584e4c2f3bf15c717e1b95f22ba44161c9a8e1265e7a09b1",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.999999965187452,
+        "true_peak_dbtp": -6.293942346393246
+      },
+      "gain_db": 0.20750097289278813,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.484344482421875,
+      "bytes": 1321823
+    },
+    {
+      "id": "36b72f2449d462dd9ec4",
+      "source": "artifacts/audio/blind-20261021/lyria-realtime/lyria-realtime-seed210731.wav",
+      "source_sha256": "a207797fde0447f5199a54c61ccac44fd7be2aac565eed1e60c3333f66df5e03",
+      "listening_sha256": "08a209b351d050f7d61de14d00a9cd974754b3f506c776cecc65abe84f141362",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.999999773756635,
+        "true_peak_dbtp": -10.096612016148415
+      },
+      "gain_db": -6.398129619493986,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.312713623046875,
+      "bytes": 1769704
+    },
+    {
+      "id": "d4873f00c612389a048a",
+      "source": "artifacts/audio/blind-20261021/lyria-realtime/lyria-realtime-seed210732.wav",
+      "source_sha256": "41696f2903b5b5a33b9af36c1d5eb7a5b5b43888cc41eca6e8ae169964909644",
+      "listening_sha256": "64f62566d1b478de9ad56720bc9ecfdef2f0891437652df54c342e228afc87b4",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.99999977714233,
+        "true_peak_dbtp": -10.116689737727816
+      },
+      "gain_db": -6.838750883719019,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.311981201171875,
+      "bytes": 1771083
+    }
+  ],
+  "processing": {
+    "duration_seconds": 30,
+    "sample_rate": 44100,
+    "channels": 2,
+    "integrated_lufs": -23,
+    "edge_fade_seconds": 0.02,
+    "gain_only": true,
+    "notch_filter": false,
+    "denoising": false,
+    "compression": false,
+    "encoding": "PCM16 lossless FLAC"
+  }
+}

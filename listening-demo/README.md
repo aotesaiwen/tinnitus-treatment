@@ -21,7 +21,9 @@ Use a static server that supports HTTP byte-range requests. A plain Python
 `http.server` can play these FLAC files but prevents seeking in Chromium.
 Open the printed URL; opening `index.html` directly does not support JSON fetches.
 
-The six short listening excerpts are versioned with the page. Full raw audio and
+The second round contains twelve short listening excerpts. The first round's six
+excerpts and existing browser-local scores remain accessible at `round-1/`, using
+their unchanged sample IDs and storage version. Full raw audio and
 model weights stay outside Git. To rebuild the excerpts locally, follow
 [`research/listening/README.md`](../research/listening/README.md).
 
@@ -29,6 +31,8 @@ model weights stay outside Git. To rebuild the excerpts locally, follow
 
 - Starting a round shuffles actual excerpts; reloading preserves that round's
   labels, scores, notes, and position in the sample list.
+- The round links switch between separately saved datasets. Resetting or revealing
+  one does not change the other.
 - One audio element prevents simultaneous playback. Switching can retain the
   playback position. The initial playback volume is 65%.
 - A sample needs playback and all three scores, or an explicit skip, to finish.
@@ -47,7 +51,8 @@ node research/listening/check_demo.cjs http://127.0.0.1:8765
 
 This exercises actual media playback and seeking, deferred source disclosure,
 saved scores, skip/reveal gating, locked scores, literal note rendering, JSON
-export, reset, and narrow layouts. It saves screenshots under `.runtime/previews`.
+export, reset, narrow layouts, and preservation of first-round scores when
+switching datasets. It saves screenshots under `.runtime/previews`.
 
 `dist/` is the entire deployable app: HTML, CSS, JavaScript, manifest, reveal map,
 and lossless audio. There is no build step. Publish an exact committed snapshot

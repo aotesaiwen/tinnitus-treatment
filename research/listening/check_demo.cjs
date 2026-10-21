@@ -16,9 +16,10 @@ const path = require('node:path');
     page.on('request', request => requests.push(request.url()));
     await page.goto(base);
     await page.locator('.sample-item').first().waitFor();
+    const dataset = await page.evaluate(() => manifest.version);
     const count = await page.locator('.sample-item').count();
     assert(count >= 2, 'A comparison requires multiple real samples');
-    const session = () => page.evaluate(() => JSON.parse(localStorage.getItem(Object.keys(localStorage).find(k => k.startsWith('listening-room:')))));
+    const session = () => page.evaluate(version => JSON.parse(localStorage.getItem(`listening-room:${version}`)), dataset);
     const initial = await session();
     assert.equal(await page.locator('#reveal').isDisabled(), true);
     assert(!requests.some(url => url.endsWith('/reveal.json')), 'No source identity request before revealing');
@@ -88,8 +89,32 @@ const path = require('node:path');
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `No horizontal overflow at ${width}px`);
       await page.screenshot({ path: path.join(output, `listening-${width}.png`), fullPage: true, animations: 'disabled' });
     }
+    if (await page.locator('.round-nav a[href="round-1/"]').count()) {
+      const oldManifest = await (await page.request.get(new URL('round-1/manifest.json', page.url()).href)).json();
+      const first = oldManifest.samples[0].id;
+      const savedOld = {
+        version: oldManifest.version, session: 'previous-round-saved-session',
+        createdAt: '2026-10-21T00:00:00Z', order: oldManifest.samples.map(s => s.id),
+        index: 0, volume: .65, keepPosition: true, revealed: false,
+        answers: { [first]: { ratings: { clarity: 3, music: 4, replay: 5 },
+          artifacts: ['Metallic tones'], note: '保留第一轮的旧评分', played: true, skipped: false } },
+      };
+      await page.evaluate(saved => localStorage.setItem(`listening-room:${saved.version}`, JSON.stringify(saved)), savedOld);
+      const newRound = await session();
+      await page.locator('.round-nav a').click();
+      await page.locator('.sample-item').first().waitFor();
+      assert.equal(await page.locator('.sample-item').count(), oldManifest.samples.length);
+      assert.equal(await page.locator('#notes').inputValue(), savedOld.answers[first].note);
+      assert.equal(await page.locator('input[name="replay"][value="5"]').isChecked(), true);
+      assert.equal(await page.locator('#artifact-options input[value="Metallic tones"]').isChecked(), true);
+      await page.locator('#play').click();
+      await page.waitForFunction(() => document.querySelector('audio').currentTime > .05);
+      await page.locator('.round-nav a').click();
+      await page.locator('.sample-item').first().waitFor();
+      assert.deepEqual(await session(), newRound, 'Switching rounds must preserve independent sessions');
+    }
     assert.deepEqual(errors, [], 'No browser script errors');
-    console.log(JSON.stringify({ samples: count, checks: ['actual FLAC playback', 'position-preserving switch', 'source identities deferred', 'rating persistence', 'skip and reveal gate', 'locked ratings', 'literal notes', 'JSON export', 'new round', 'responsive widths'], browserErrors: errors }, null, 2));
+    console.log(JSON.stringify({ samples: count, checks: ['actual FLAC playback', 'position-preserving switch', 'source identities deferred', 'rating persistence', 'skip and reveal gate', 'locked ratings', 'literal notes', 'JSON export', 'new round', 'responsive widths', 'previous round preservation'], browserErrors: errors }, null, 2));
   } finally {
     await browser.close();
   }

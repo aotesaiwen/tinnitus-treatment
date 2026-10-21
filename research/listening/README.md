@@ -1,4 +1,4 @@
-# Local generation comparison
+# Music generation comparison
 
 This experiment compares actual outputs for the brief “gentle solo piano.” It
 supports listening decisions about these excerpts, not a general ranking of
@@ -13,9 +13,11 @@ models. The web interface is in [`listening-demo`](../../listening-demo/README.m
 | Salamander Grand Piano V3 / sfizz | One common sampled piano for both MIDI routes and the authored control. |
 | ACE-Step 1.5 turbo | One existing direct-audio output, seed 42022, eight inference steps, language model disabled. No new ACE generation. |
 | Authored control | The original eight-bar MIDI prompt, rendered with the same piano. Authored in code, not output from a trained music model. |
-| Eleven Music v2.5 | Not generated: no account or API credentials. |
-| Lyria 3.5 | Not generated: no account or API credentials. |
-| Stable Audio 3 | Not generated: the official Medium and Small Music weights require gated Hugging Face access; unauthenticated requests returned 401. |
+| Stable Audio 3 Small Music | Two fixed-seed direct-audio generations from verified official weights. |
+| Stable Audio 3 Medium | Two fixed-seed direct-audio generations, using the same prompt and seeds as Small Music. |
+| Lyria RealTime | Two actual 40-second streams from Google's free experimental API, captured unchanged. This is not Lyria 3.5. |
+| Eleven Music v2.5 | Not generated: API credentials are valid, but the current free subscription does not include the paid-only Music API. |
+| Lyria 3.5 | Not generated: API credentials are valid, but this model has no free API tier. Billing was not enabled. |
 | Pianoteq | Not rendered: no installed licensed copy. A restricted trial is not used as a valid comparison. |
 
 No unavailable route is represented by another model's audio. The MIDI models
@@ -39,7 +41,7 @@ events; none are invented afterward.
 
 ## Audio preparation
 
-1. Generate both predetermined seeds for each local model. Retain their full
+1. Generate both predetermined seeds for each new model. Retain their full
    original outputs and provenance; do not choose a preferred retry.
 2. Render MIDI through sfizz 1.2.3 with the original Salamander Grand Piano V3,
    44.1 kHz / 16-bit sample library. Omit mechanical key/pedal-noise regions
@@ -90,8 +92,8 @@ renderer does not require a serial number.
 ### Local generation
 
 Generation runners use isolated runtimes under `.runtime/`; model weights and
-large audio files are excluded from Git. Setup details for the two models live
-in `aria-setup.md` and `text2midi-setup.md`.
+large audio files are excluded from Git. Setup details live in `aria-setup.md`,
+`text2midi-setup.md`, `stable-audio-setup.md`, and `lyria-realtime-setup.md`.
 
 ```sh
 cargo build --release --locked
@@ -106,6 +108,12 @@ at absolute MIDI ticks and records every omitted percussion event. The separate
 renderer timing audit confirmed that sfizz follows the tempo map; its longer
 WAV tails are the piano samples' natural decay.
 
+The latest dataset has twelve excerpts. The original six-excerpt dataset and its
+browser-local scores remain accessible at `round-1/`; its sample IDs and storage
+version are unchanged. Each dataset uses a separate storage key, so revealing or
+resetting one round does not change the other. Already familiar excerpts cannot
+be made unfamiliar merely by shuffling them again.
+
 The final command needs NumPy, SciPy, and SoundFile; the existing ACE environment
 supplies these libraries only and does not generate music. A source list records
 each input path, offset, source label, and configuration. Missing or short audio,
@@ -115,7 +123,8 @@ causes failure instead of replacement or silent padding.
 Full run records are under `artifacts/audio/blind-20261021/`: raw model outputs,
 token IDs, code/checkpoint revisions, renderer hashes, arrangement changes, and
 `prepared/measurements.json`. A compact reproducibility record is committed in
-[`run-record.json`](run-record.json). Original and derived MIDI files are also
+[`run-record.json`](run-record.json) for round one and
+[`run-record-v2.json`](run-record-v2.json) for round two. Original and derived MIDI files are also
 retained in [`midi/`](midi/); full raw WAV files remain outside Git. The page
 fetches `reveal.json` only after explicit disclosure.
 
