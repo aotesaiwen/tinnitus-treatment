@@ -7,8 +7,8 @@
   <meta name="description" content="试听匿名音乐片段，记录真实听感，再揭晓每段音乐的来源。">
   <title>盲听室 · 音乐盲测</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=zh-1">
-  <script src="app.js?v=zh-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=rounds-2">
+  <script src="app.js?v=rounds-2" defer></script>
 </head>
 <body>
   <div class="page-shell">
@@ -16,6 +16,7 @@
       <a class="wordmark" href="./" aria-label="盲听室首页"><span class="brand-mark" aria-hidden="true">lr</span>盲听室<span class="edition"> / 音乐试听</span></a>
       <span class="header-status"><span class="status-dot"></span>私人试听</span>
     </header>
+    <nav class="round-nav" aria-label="选择试听轮次"><span aria-current="page">第二轮 · 加入新模型</span><a href="round-1/">第一轮 · 查看旧评分 →</a></nav>
     <main>
       <section class="intro" aria-labelledby="page-title">
         <div><p class="eyebrow">先听，再揭晓</p><h1 id="page-title">先听音乐，<br>再看答案。</h1></div>
@@ -31,7 +32,7 @@
         </aside>
         <div class="listening-main">
           <section class="player-panel" aria-labelledby="sample-heading">
-            <div class="player-heading"><div><p class="eyebrow" id="sample-position">片段 01</p><h2 id="sample-heading">片段 A</h2></div><span class="sound-tag">钢琴独奏</span></div>
+            <div class="player-heading"><div><p class="eyebrow" id="sample-position">片段 01</p><h2 id="sample-heading">片段 A</h2></div><span class="sound-tag">钢琴试听</span></div>
             <div class="listening-stage"><span class="sample-letter" id="sample-letter" aria-hidden="true">A</span><div class="stage-caption"><span id="play-state">随时开始试听</span><span class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div>
             <audio id="audio" preload="metadata"></audio>
             <div class="seek-row"><span id="time-current">00:00</span><input id="seek" type="range" min="0" max="30" step="0.05" value="0" aria-label="播放进度"><span id="time-total">00:30</span></div>

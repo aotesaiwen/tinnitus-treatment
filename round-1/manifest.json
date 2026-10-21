@@ -1,0 +1,85 @@
+{
+  "version": "piano-20261021-v1",
+  "samples": [
+    {
+      "id": "4223f25a116d847b4c47",
+      "audio": "../audio/4223f25a116d847b4c47.flac",
+      "duration": 30
+    },
+    {
+      "id": "4c867802b2108fbf2262",
+      "audio": "../audio/4c867802b2108fbf2262.flac",
+      "duration": 30
+    },
+    {
+      "id": "69020a3fceb31f3d7423",
+      "audio": "../audio/69020a3fceb31f3d7423.flac",
+      "duration": 30
+    },
+    {
+      "id": "6d3cf34088d76e60df74",
+      "audio": "../audio/6d3cf34088d76e60df74.flac",
+      "duration": 30
+    },
+    {
+      "id": "77f9855a97412f0a876e",
+      "audio": "../audio/77f9855a97412f0a876e.flac",
+      "duration": 30
+    },
+    {
+      "id": "e1c4f17b2c466dec7d41",
+      "audio": "../audio/e1c4f17b2c466dec7d41.flac",
+      "duration": 30
+    }
+  ],
+  "method": "六段音乐各取源文件开头 30 秒，统一为 −23 LUFS。由 MIDI 演奏的片段使用同一套 Salamander 钢琴音色；直接生成音频的对照使用模型自身生成的音色。各片段首尾均作 20 毫秒淡入淡出，不做频段滤波、降噪或压缩。",
+  "coverageNote": "本次实际运行了两种本地 MIDI 生成模型，每种使用两个预先确定的随机种子；另加入一段已有的直接生成音频和一段原创 MIDI 作对照。下方标为“未测试”的方案没有试听片段。",
+  "coverage": [
+    {
+      "name": "Aria",
+      "status": "已生成",
+      "detail": "根据同一段原创的八小节 MIDI 续写两段钢琴音乐。试听中不包含作为输入的原始乐句。"
+    },
+    {
+      "name": "Text2midi",
+      "status": "已生成并改编",
+      "detail": "两次输出都没有遵守钢琴独奏要求。试听版去掉鼓轨，将其余音符交给同一套钢琴演奏。保留原始 MIDI，揭晓时会明确说明改编内容。"
+    },
+    {
+      "name": "ACE-Step 1.5 turbo",
+      "status": "已有对照",
+      "detail": "使用此前直接生成的一段钢琴音乐；本轮没有重新运行 ACE-Step。"
+    },
+    {
+      "name": "原创 MIDI 对照",
+      "status": "对照样本",
+      "detail": "用代码写成的原创八小节乐句，由同一套钢琴演奏。它不是音乐生成模型的输出。"
+    },
+    {
+      "name": "Salamander Grand Piano V3",
+      "status": "已用于演奏",
+      "detail": "所有 MIDI 片段都使用这套真实钢琴采样音色。"
+    },
+    {
+      "name": "Eleven Music v2.5",
+      "status": "未测试",
+      "detail": "尚未配置账号和 API 凭据。"
+    },
+    {
+      "name": "Lyria 3.5",
+      "status": "未测试",
+      "detail": "尚未配置账号和 API 凭据。"
+    },
+    {
+      "name": "Stable Audio 3",
+      "status": "未测试",
+      "detail": "官方 Medium 和 Small Music 权重需要 Hugging Face 访问授权。未登录的下载请求返回 401，目前尚未配置授权凭据。"
+    },
+    {
+      "name": "Pianoteq",
+      "status": "未测试",
+      "detail": "尚未安装有许可证的版本，本次没有使用功能受限的试用版作为对照。"
+    }
+  ],
+  "attribution": "钢琴采样：Alexander Holm 制作的 Salamander Grand Piano V3，采用 CC BY 3.0 许可（https://creativecommons.org/licenses/by/3.0/），来源为 https://archive.org/details/SalamanderGrandPianoV3。使用 sfizz 1.2.3 演奏，统一关闭键盘与踏板的机械噪声层。试听片段经过截取、首尾淡入淡出及响度匹配。"
+}

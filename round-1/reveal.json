@@ -1,0 +1,47 @@
+{
+  "version": "piano-20261021-v1",
+  "samples": {
+    "6d3cf34088d76e60df74": {
+      "label": "Aria · 续写 01",
+      "shortLabel": "Aria · 01",
+      "description": "模型根据原创八小节 MIDI 续写钢琴音符，再由 Salamander 演奏。作为输入的原创乐句已排除。",
+      "configuration": "官方生成版权重；随机种子 21021；温度参数 0.90；min-p 0.035。取续写部分的前 30 秒。",
+      "url": "https://github.com/EleutherAI/aria"
+    },
+    "4223f25a116d847b4c47": {
+      "label": "Aria · 续写 02",
+      "shortLabel": "Aria · 02",
+      "description": "用另一个预先确定的随机种子续写同一段原创 MIDI，再由同一套钢琴演奏。作为输入的原创乐句已排除。",
+      "configuration": "官方生成版权重；随机种子 21022；温度参数 0.90；min-p 0.035。取续写部分的前 30 秒。",
+      "url": "https://github.com/EleutherAI/aria"
+    },
+    "4c867802b2108fbf2262": {
+      "label": "Text2midi · 钢琴改编 01",
+      "shortLabel": "Text2midi · 01",
+      "description": "原始输出没有遵守钢琴独奏要求，包含多种乐器和鼓。试听版去掉 148 个打击乐音符，将其余 316 个音符交给 Salamander 钢琴演奏。这是改编版本，不能算作成功生成了钢琴独奏。",
+      "configuration": "随机种子 210641；温度参数 0.9；生成 2000 个标记。要求为 C 大调、每分钟 64 拍；原始输出速度约为每分钟 87–128 拍。未修正保留音符的音高、力度或速度。",
+      "url": "https://github.com/AMAAI-Lab/Text2midi"
+    },
+    "69020a3fceb31f3d7423": {
+      "label": "Text2midi · 钢琴改编 02",
+      "shortLabel": "Text2midi · 02",
+      "description": "原始输出同样包含多种乐器和鼓。试听版去掉 76 个打击乐音符，将其余 396 个音符交给 Salamander 钢琴演奏。原始输出另行保留。",
+      "configuration": "随机种子 210682；温度参数 0.9；生成 2000 个标记。要求为 A 小调、每分钟 68 拍；实际速度约为每分钟 67.1 拍。未修正保留音符的音高、力度或速度。",
+      "url": "https://github.com/AMAAI-Lab/Text2midi"
+    },
+    "77f9855a97412f0a876e": {
+      "label": "ACE-Step 1.5 turbo · 直接生成对照",
+      "shortLabel": "ACE-Step",
+      "description": "此前直接生成的音频，提示词要求柔和的毛毡钢琴独奏。音色由模型直接生成，没有使用 MIDI 或本轮统一的钢琴采样器，用于对照此前的生成路线。",
+      "configuration": "随机种子 42022；推理 8 步；shift 参数为 3；语言模型关闭。取原始 60 秒音频的前 30 秒，未做降噪或频段处理。",
+      "url": "https://github.com/ace-step/ACE-Step-1.5"
+    },
+    "e1c4f17b2c466dec7d41": {
+      "label": "原创 MIDI · 对照样本",
+      "shortLabel": "原创 MIDI 对照",
+      "description": "用代码写成的原创乐句，也是 Aria 的输入，由同一套 Salamander 钢琴演奏。用于对照采样器的音色，本身不是音乐生成模型的输出。",
+      "configuration": "八小节，D 大调，64 个音符，约每分钟 62.7 拍。取前 30 秒。保留琴音及松键后的琴弦余音；所有 MIDI 片段都统一关闭机械噪声层。",
+      "url": "https://archive.org/details/SalamanderGrandPianoV3"
+    }
+  }
+}

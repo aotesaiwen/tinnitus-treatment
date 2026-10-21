@@ -1,85 +1,125 @@
 {
-  "version": "piano-20261021-v1",
+  "version": "piano-20261021-v2",
   "samples": [
     {
-      "id": "4223f25a116d847b4c47",
-      "audio": "audio/4223f25a116d847b4c47.flac",
+      "id": "1c454b38f5a38935416a",
+      "audio": "audio/1c454b38f5a38935416a.flac",
       "duration": 30
     },
     {
-      "id": "4c867802b2108fbf2262",
-      "audio": "audio/4c867802b2108fbf2262.flac",
+      "id": "219b9e978b5c827efe53",
+      "audio": "audio/219b9e978b5c827efe53.flac",
       "duration": 30
     },
     {
-      "id": "69020a3fceb31f3d7423",
-      "audio": "audio/69020a3fceb31f3d7423.flac",
+      "id": "23b7f529f2c7eda277b7",
+      "audio": "audio/23b7f529f2c7eda277b7.flac",
       "duration": 30
     },
     {
-      "id": "6d3cf34088d76e60df74",
-      "audio": "audio/6d3cf34088d76e60df74.flac",
+      "id": "297a0eb38058676ed973",
+      "audio": "audio/297a0eb38058676ed973.flac",
       "duration": 30
     },
     {
-      "id": "77f9855a97412f0a876e",
-      "audio": "audio/77f9855a97412f0a876e.flac",
+      "id": "36b72f2449d462dd9ec4",
+      "audio": "audio/36b72f2449d462dd9ec4.flac",
       "duration": 30
     },
     {
-      "id": "e1c4f17b2c466dec7d41",
-      "audio": "audio/e1c4f17b2c466dec7d41.flac",
+      "id": "5dfbdb5bf83f3aaa546f",
+      "audio": "audio/5dfbdb5bf83f3aaa546f.flac",
+      "duration": 30
+    },
+    {
+      "id": "86dc020f0e7ea58cdf3a",
+      "audio": "audio/86dc020f0e7ea58cdf3a.flac",
+      "duration": 30
+    },
+    {
+      "id": "a1a97eebd826dc5a461c",
+      "audio": "audio/a1a97eebd826dc5a461c.flac",
+      "duration": 30
+    },
+    {
+      "id": "b75af28ad22163cb8d4f",
+      "audio": "audio/b75af28ad22163cb8d4f.flac",
+      "duration": 30
+    },
+    {
+      "id": "cd940715fb6839b99fdc",
+      "audio": "audio/cd940715fb6839b99fdc.flac",
+      "duration": 30
+    },
+    {
+      "id": "d4873f00c612389a048a",
+      "audio": "audio/d4873f00c612389a048a.flac",
+      "duration": 30
+    },
+    {
+      "id": "f645476e2386e410728a",
+      "audio": "audio/f645476e2386e410728a.flac",
       "duration": 30
     }
   ],
-  "method": "六段音乐各取源文件开头 30 秒，统一为 −23 LUFS。由 MIDI 演奏的片段使用同一套 Salamander 钢琴音色；直接生成音频的对照使用模型自身生成的音色。各片段首尾均作 20 毫秒淡入淡出，不做频段滤波、降噪或压缩。",
-  "coverageNote": "本次实际运行了两种本地 MIDI 生成模型，每种使用两个预先确定的随机种子；另加入一段已有的直接生成音频和一段原创 MIDI 作对照。下方标为“未测试”的方案没有试听片段。",
+  "method": "\u5341\u4e8c\u6bb5\u97f3\u4e50\u5404\u53d6\u6e90\u6587\u4ef6\u5f00\u5934 30 \u79d2\uff0c\u7edf\u4e00\u4e3a 44.1 kHz \u53cc\u58f0\u9053\u3001\u221223 LUFS\u3002\u7531 MIDI \u6f14\u594f\u7684\u7247\u6bb5\u4f7f\u7528\u540c\u4e00\u5957 Salamander \u94a2\u7434\u97f3\u8272\uff1b\u76f4\u63a5\u751f\u6210\u97f3\u9891\u7684\u7247\u6bb5\u4f7f\u7528\u6a21\u578b\u81ea\u8eab\u751f\u6210\u7684\u97f3\u8272\u3002\u5404\u7247\u6bb5\u9996\u5c3e\u5747\u4f5c 20 \u6beb\u79d2\u6de1\u5165\u6de1\u51fa\uff0c\u4e0d\u505a\u9891\u6bb5\u6ee4\u6ce2\u3001\u964d\u566a\u6216\u538b\u7f29\u3002",
+  "coverageNote": "\u7b2c\u4e8c\u8f6e\u52a0\u5165 Stable Audio 3 \u7684\u4e24\u4e2a\u7248\u672c\uff0c\u4ee5\u53ca Google Lyria RealTime\uff0c\u6bcf\u79cd\u5404\u4e24\u6bb5\uff1b\u540c\u65f6\u4fdd\u7559\u7b2c\u4e00\u8f6e\u7684\u516d\u6bb5\u4f5c\u4e3a\u5bf9\u7167\u3002\u6bcf\u79cd\u65b9\u6848\u4f7f\u7528\u9884\u5148\u56fa\u5b9a\u7684\u79cd\u5b50\uff0c\u4e0d\u6311\u9009\u6700\u597d\u542c\u7684\u91cd\u8bd5\u3002\u7b2c\u4e00\u8f6e\u4e0e\u65e7\u8bc4\u5206\u53ef\u4ece\u9875\u9762\u4e0a\u65b9\u8fd4\u56de\u67e5\u770b\u3002",
   "coverage": [
     {
       "name": "Aria",
-      "status": "已生成",
-      "detail": "根据同一段原创的八小节 MIDI 续写两段钢琴音乐。试听中不包含作为输入的原始乐句。"
+      "status": "\u5df2\u751f\u6210",
+      "detail": "\u6839\u636e\u540c\u4e00\u6bb5\u539f\u521b\u7684\u516b\u5c0f\u8282 MIDI \u7eed\u5199\u4e24\u6bb5\u94a2\u7434\u97f3\u4e50\u3002\u8bd5\u542c\u4e2d\u4e0d\u5305\u542b\u4f5c\u4e3a\u8f93\u5165\u7684\u539f\u59cb\u4e50\u53e5\u3002"
     },
     {
       "name": "Text2midi",
-      "status": "已生成并改编",
-      "detail": "两次输出都没有遵守钢琴独奏要求。试听版去掉鼓轨，将其余音符交给同一套钢琴演奏。保留原始 MIDI，揭晓时会明确说明改编内容。"
+      "status": "\u5df2\u751f\u6210\u5e76\u6539\u7f16",
+      "detail": "\u4e24\u6b21\u8f93\u51fa\u90fd\u6ca1\u6709\u9075\u5b88\u94a2\u7434\u72ec\u594f\u8981\u6c42\u3002\u8bd5\u542c\u7248\u53bb\u6389\u9f13\u8f68\uff0c\u5c06\u5176\u4f59\u97f3\u7b26\u4ea4\u7ed9\u540c\u4e00\u5957\u94a2\u7434\u6f14\u594f\u3002\u4fdd\u7559\u539f\u59cb MIDI\uff0c\u63ed\u6653\u65f6\u4f1a\u660e\u786e\u8bf4\u660e\u6539\u7f16\u5185\u5bb9\u3002"
     },
     {
       "name": "ACE-Step 1.5 turbo",
-      "status": "已有对照",
-      "detail": "使用此前直接生成的一段钢琴音乐；本轮没有重新运行 ACE-Step。"
+      "status": "\u5df2\u6709\u5bf9\u7167",
+      "detail": "\u4f7f\u7528\u6b64\u524d\u76f4\u63a5\u751f\u6210\u7684\u4e00\u6bb5\u94a2\u7434\u97f3\u4e50\uff1b\u672c\u8f6e\u6ca1\u6709\u91cd\u65b0\u8fd0\u884c ACE-Step\u3002"
     },
     {
-      "name": "原创 MIDI 对照",
-      "status": "对照样本",
-      "detail": "用代码写成的原创八小节乐句，由同一套钢琴演奏。它不是音乐生成模型的输出。"
+      "name": "\u539f\u521b MIDI \u5bf9\u7167",
+      "status": "\u5bf9\u7167\u6837\u672c",
+      "detail": "\u7528\u4ee3\u7801\u5199\u6210\u7684\u539f\u521b\u516b\u5c0f\u8282\u4e50\u53e5\uff0c\u7531\u540c\u4e00\u5957\u94a2\u7434\u6f14\u594f\u3002\u5b83\u4e0d\u662f\u97f3\u4e50\u751f\u6210\u6a21\u578b\u7684\u8f93\u51fa\u3002"
     },
     {
       "name": "Salamander Grand Piano V3",
-      "status": "已用于演奏",
-      "detail": "所有 MIDI 片段都使用这套真实钢琴采样音色。"
+      "status": "\u5df2\u7528\u4e8e\u6f14\u594f",
+      "detail": "\u6240\u6709 MIDI \u7247\u6bb5\u90fd\u4f7f\u7528\u8fd9\u5957\u771f\u5b9e\u94a2\u7434\u91c7\u6837\u97f3\u8272\u3002"
+    },
+    {
+      "name": "Stable Audio 3 Small Music",
+      "status": "\u5df2\u751f\u6210",
+      "detail": "\u672c\u5730\u76f4\u63a5\u751f\u6210\u4e24\u6bb5\u97f3\u9891\uff0c\u4f7f\u7528\u5b98\u65b9 Small Music \u6743\u91cd\u3002"
+    },
+    {
+      "name": "Stable Audio 3 Medium",
+      "status": "\u5df2\u751f\u6210",
+      "detail": "\u672c\u5730\u76f4\u63a5\u751f\u6210\u4e24\u6bb5\u97f3\u9891\uff0c\u4e0e Small Music \u4f7f\u7528\u76f8\u540c\u7684\u94a2\u7434\u72ec\u594f\u63d0\u793a\u8bcd\u548c\u79cd\u5b50\u3002"
+    },
+    {
+      "name": "Lyria RealTime",
+      "status": "\u5df2\u751f\u6210",
+      "detail": "\u4f7f\u7528 Google \u5b9e\u9a8c\u6027\u5b9e\u65f6\u97f3\u4e50 API \u7684\u514d\u8d39\u989d\u5ea6\uff0c\u76f4\u63a5\u751f\u6210\u4e24\u6bb5\u97f3\u9891\u3002\u5b83\u662f\u72ec\u7acb\u4e8e Lyria 3.5 \u7684\u6a21\u578b\u3002"
     },
     {
       "name": "Eleven Music v2.5",
-      "status": "未测试",
-      "detail": "尚未配置账号和 API 凭据。"
+      "status": "\u672a\u6d4b\u8bd5",
+      "detail": "API \u5bc6\u94a5\u5df2\u9a8c\u8bc1\uff0c\u4f46\u5f53\u524d\u8d26\u53f7\u662f\u514d\u8d39\u6863\uff1b\u97f3\u4e50 API \u8981\u6c42\u4ed8\u8d39\u8ba2\u9605\u3002"
     },
     {
       "name": "Lyria 3.5",
-      "status": "未测试",
-      "detail": "尚未配置账号和 API 凭据。"
-    },
-    {
-      "name": "Stable Audio 3",
-      "status": "未测试",
-      "detail": "官方 Medium 和 Small Music 权重需要 Hugging Face 访问授权。未登录的下载请求返回 401，目前尚未配置授权凭据。"
+      "status": "\u672a\u6d4b\u8bd5",
+      "detail": "API \u5bc6\u94a5\u5df2\u9a8c\u8bc1\uff0c\u4f46\u8be5\u97f3\u4e50\u6a21\u578b\u6ca1\u6709\u514d\u8d39 API \u989d\u5ea6\uff1b\u672c\u8f6e\u6ca1\u6709\u5f00\u542f\u4ed8\u8d39\u8ba1\u8d39\u3002"
     },
     {
       "name": "Pianoteq",
-      "status": "未测试",
-      "detail": "尚未安装有许可证的版本，本次没有使用功能受限的试用版作为对照。"
+      "status": "\u5df2\u8df3\u8fc7",
+      "detail": "\u6ca1\u6709\u8d2d\u4e70\u8bb8\u53ef\u8bc1\u3002MIDI \u7247\u6bb5\u7ee7\u7eed\u4f7f\u7528\u5df2\u914d\u7f6e\u7684 Salamander \u94a2\u7434\u97f3\u6e90\u3002"
     }
   ],
-  "attribution": "钢琴采样：Alexander Holm 制作的 Salamander Grand Piano V3，采用 CC BY 3.0 许可（https://creativecommons.org/licenses/by/3.0/），来源为 https://archive.org/details/SalamanderGrandPianoV3。使用 sfizz 1.2.3 演奏，统一关闭键盘与踏板的机械噪声层。试听片段经过截取、首尾淡入淡出及响度匹配。"
+  "attribution": "\u94a2\u7434\u91c7\u6837\uff1aAlexander Holm \u5236\u4f5c\u7684 Salamander Grand Piano V3\uff0c\u91c7\u7528 CC BY 3.0 \u8bb8\u53ef\uff08https://creativecommons.org/licenses/by/3.0/\uff09\uff0c\u6765\u6e90\u4e3a https://archive.org/details/SalamanderGrandPianoV3\u3002\u4f7f\u7528 sfizz 1.2.3 \u6f14\u594f\uff0c\u7edf\u4e00\u5173\u95ed\u952e\u76d8\u4e0e\u8e0f\u677f\u7684\u673a\u68b0\u566a\u58f0\u5c42\u3002\u8bd5\u542c\u7247\u6bb5\u7ecf\u8fc7\u622a\u53d6\u3001\u9996\u5c3e\u6de1\u5165\u6de1\u51fa\u53ca\u54cd\u5ea6\u5339\u914d\u3002"
 }
