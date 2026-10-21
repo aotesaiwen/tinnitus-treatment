@@ -1,0 +1,47 @@
+{
+  "version": "piano-20261021-v1",
+  "samples": {
+    "6d3cf34088d76e60df74": {
+      "label": "Aria \u00b7 continuation 01",
+      "shortLabel": "Aria \u00b7 01",
+      "description": "Model-generated piano notes continuing the original eight-bar MIDI prompt, rendered with Salamander. The authored prompt is excluded.",
+      "configuration": "Official generative checkpoint; seed 21021; temperature 0.90; min-p 0.035. First 30 seconds of generated-only continuation.",
+      "url": "https://github.com/EleutherAI/aria"
+    },
+    "4223f25a116d847b4c47": {
+      "label": "Aria \u00b7 continuation 02",
+      "shortLabel": "Aria \u00b7 02",
+      "description": "A second fixed-seed continuation of the same original MIDI prompt, rendered with the same piano. The authored prompt is excluded.",
+      "configuration": "Official generative checkpoint; seed 21022; temperature 0.90; min-p 0.035. First 30 seconds of generated-only continuation.",
+      "url": "https://github.com/EleutherAI/aria"
+    },
+    "4c867802b2108fbf2262": {
+      "label": "Text2midi \u00b7 piano arrangement 01",
+      "shortLabel": "Text2midi \u00b7 01",
+      "description": "The original output failed the solo-piano brief: multiple instruments and drums. This arrangement omits 148 percussion notes and plays the 316 pitched notes on Salamander. It is an adapted output, not a successful solo-piano generation.",
+      "configuration": "Seed 210641; temperature 0.9; 2000 tokens. Requested C major, 64 BPM; original tempo varies around 87\u2013128 BPM. No pitched-note, velocity or tempo corrections.",
+      "url": "https://github.com/AMAAI-Lab/Text2midi"
+    },
+    "69020a3fceb31f3d7423": {
+      "label": "Text2midi \u00b7 piano arrangement 02",
+      "shortLabel": "Text2midi \u00b7 02",
+      "description": "The original output also contained multiple instruments and drums. This arrangement omits 76 percussion notes and plays the 396 pitched notes on Salamander. Raw output is preserved separately.",
+      "configuration": "Seed 210682; temperature 0.9; 2000 tokens. Requested A minor, 68 BPM; original tempo about 67.1 BPM. No pitched-note, velocity or tempo corrections.",
+      "url": "https://github.com/AMAAI-Lab/Text2midi"
+    },
+    "77f9855a97412f0a876e": {
+      "label": "ACE-Step 1.5 turbo \u00b7 direct audio baseline",
+      "shortLabel": "ACE-Step",
+      "description": "An existing direct-audio attempt prompted for gentle solo felt piano. Its timbre is generated directly, without MIDI or the common piano sampler. Retained as a comparison with the earlier route.",
+      "configuration": "Seed 42022; 8 inference steps; shift 3; language model disabled. First 30 seconds of the original 60-second output; no denoising or frequency shaping.",
+      "url": "https://github.com/ace-step/ACE-Step-1.5"
+    },
+    "e1c4f17b2c466dec7d41": {
+      "label": "Authored MIDI \u00b7 reference control",
+      "shortLabel": "Authored control",
+      "description": "The original phrase written in code and used as Aria's input, rendered with the same Salamander piano. This controls for the sound of the renderer; it is not a trained music model's output.",
+      "configuration": "Eight bars; D major; 64 notes; about 62.7 BPM. First 30 seconds. Note and string-release samples retained; mechanical noise layers omitted uniformly for all MIDI samples.",
+      "url": "https://archive.org/details/SalamanderGrandPianoV3"
+    }
+  }
+}

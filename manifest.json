@@ -1,0 +1,85 @@
+{
+  "version": "piano-20261021-v1",
+  "samples": [
+    {
+      "id": "4223f25a116d847b4c47",
+      "audio": "audio/4223f25a116d847b4c47.flac",
+      "duration": 30
+    },
+    {
+      "id": "4c867802b2108fbf2262",
+      "audio": "audio/4c867802b2108fbf2262.flac",
+      "duration": 30
+    },
+    {
+      "id": "69020a3fceb31f3d7423",
+      "audio": "audio/69020a3fceb31f3d7423.flac",
+      "duration": 30
+    },
+    {
+      "id": "6d3cf34088d76e60df74",
+      "audio": "audio/6d3cf34088d76e60df74.flac",
+      "duration": 30
+    },
+    {
+      "id": "77f9855a97412f0a876e",
+      "audio": "audio/77f9855a97412f0a876e.flac",
+      "duration": 30
+    },
+    {
+      "id": "e1c4f17b2c466dec7d41",
+      "audio": "audio/e1c4f17b2c466dec7d41.flac",
+      "duration": 30
+    }
+  ],
+  "method": "Six 30-second excerpts, each taken from the beginning of its source and matched to -23 LUFS. All MIDI samples use the same Salamander piano; the direct-audio baseline supplies its own timbre. Identical 20 ms edge fades; no frequency filtering, denoising or compression.",
+  "coverageNote": "Two local MIDI models were generated with two predetermined seeds each. The set also includes one existing direct-audio baseline and one authored MIDI reference. The unavailable routes below have no listening sample.",
+  "coverage": [
+    {
+      "name": "Aria",
+      "status": "Generated",
+      "detail": "Two piano continuations from one original eight-bar MIDI prompt. The prompt is excluded from both listening excerpts."
+    },
+    {
+      "name": "Text2midi",
+      "status": "Generated; adapted",
+      "detail": "Both outputs ignored the solo-piano instrumentation request. Listening versions omit percussion and play all remaining notes on piano. Raw MIDI is preserved; the reveal identifies the adaptations."
+    },
+    {
+      "name": "ACE-Step 1.5 turbo",
+      "status": "Existing baseline",
+      "detail": "One existing direct-audio piano attempt. No new ACE-Step generation was run for this set."
+    },
+    {
+      "name": "Authored MIDI reference",
+      "status": "Control",
+      "detail": "An original eight-bar phrase written in code, rendered on the common piano. This is a reference, not output from a trained music-generation model."
+    },
+    {
+      "name": "Salamander Grand Piano V3",
+      "status": "Rendered",
+      "detail": "The same real piano sample library renders all MIDI-derived excerpts."
+    },
+    {
+      "name": "Eleven Music v2.5",
+      "status": "Not tested",
+      "detail": "No account or API credentials are available."
+    },
+    {
+      "name": "Lyria 3.5",
+      "status": "Not tested",
+      "detail": "No account or API credentials are available."
+    },
+    {
+      "name": "Stable Audio 3",
+      "status": "Not tested",
+      "detail": "Official Medium and Small Music weights require gated Hugging Face access. Unauthenticated downloads returned 401; no authorized credentials are available."
+    },
+    {
+      "name": "Pianoteq",
+      "status": "Not tested",
+      "detail": "No installed licensed copy is available. Its restricted trial is not used in this comparison."
+    }
+  ],
+  "attribution": "Piano samples: Salamander Grand Piano V3 by Alexander Holm, CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/), from https://archive.org/details/SalamanderGrandPianoV3. Rendered with sfizz 1.2.3; mechanical key/pedal noise layers omitted. Listening excerpts cropped, edge-faded and gain-matched."
+}
