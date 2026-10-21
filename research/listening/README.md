@@ -59,6 +59,36 @@ the listening round.
 
 ## Reproduce
 
+### Optional provider access
+
+Browser sign-in does not authorize local generation scripts. Run the Chinese
+hidden-input setup with the system Python (no extra packages required):
+
+```sh
+python3 scripts/configure-music-access.py
+python3 scripts/configure-music-access.py --status
+```
+
+It accepts a Hugging Face read token, a Gemini API key, and an ElevenLabs API
+key. Each is optional; Enter keeps the existing value or skips the provider.
+Keys are saved only in the Git-ignored `.runtime/music-access/credentials.json`
+with directory permissions `0700` and file permissions `0600`. The setup does
+not call paid APIs, download weights, or verify account entitlements. Runners
+must explicitly load this file or receive the corresponding environment
+variables; the setup does not change global shell configuration.
+
+Create keys at [Hugging Face](https://huggingface.co/settings/tokens),
+[Google AI Studio](https://aistudio.google.com/apikey), and
+[ElevenLabs](https://elevenlabs.io/app/api/api-keys).
+Stable Audio also requires accepting the model access terms for
+[Medium](https://huggingface.co/stabilityai/stable-audio-3-medium) and
+[Small-Music](https://huggingface.co/stabilityai/stable-audio-3-small-music).
+The [Eleven Music API requires a paid account](https://elevenlabs.io/docs/eleven-api/guides/cookbooks/music).
+Pianoteq is optional and requires a purchased license; the existing Salamander
+renderer does not require a serial number.
+
+### Local generation
+
 Generation runners use isolated runtimes under `.runtime/`; model weights and
 large audio files are excluded from Git. Setup details for the two models live
 in `aria-setup.md` and `text2midi-setup.md`.
