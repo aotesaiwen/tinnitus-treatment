@@ -22,7 +22,7 @@ const path = require('node:path');
     const initial = await session();
     assert.equal(await page.locator('#reveal').isDisabled(), true);
     assert(!requests.some(url => url.endsWith('/reveal.json')), 'No source identity request before revealing');
-    assert.equal(await page.locator('#sample-heading').textContent(), 'Sample A');
+    assert.equal(await page.locator('#sample-heading').textContent(), '片段 A');
     await page.screenshot({ path: path.join(output, 'listening-desktop.png'), fullPage: true, animations: 'disabled' });
 
     await page.locator('#play').click();
@@ -35,7 +35,7 @@ const path = require('node:path');
     for (const criterion of ['clarity', 'music', 'replay']) {
       await page.locator(`input[name="${criterion}"][value="4"]`).check({ force: true });
     }
-    const note = '<img src=x onerror="window.unexpectedScript=true"> clean test note';
+    const note = '<img src=x onerror="window.unexpectedScript=true"> 中文试听笔记';
     await page.locator('#notes').fill(note);
     const order = (await session()).order;
     await page.reload();
@@ -80,7 +80,7 @@ const path = require('node:path');
     const fresh = await session();
     assert.notEqual(fresh.session, initial.session);
     assert(Object.values(fresh.answers).every(a => Object.keys(a.ratings).length === 0));
-    assert.equal(await page.locator('#sample-heading').textContent(), 'Sample A');
+    assert.equal(await page.locator('#sample-heading').textContent(), '片段 A');
     assert.equal(await page.locator('#reveal').isDisabled(), true);
 
     for (const width of [390, 768]) {
