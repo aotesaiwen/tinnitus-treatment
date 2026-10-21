@@ -5,9 +5,34 @@ anonymous sample letters. The listener records sound clarity, musicality, desire
 to keep listening, optional artifacts, and notes before revealing the sources.
 Ratings stay in that browser's local storage and can be exported as JSON.
 
-The published Site is owner-private. `.openai/hosting.json` identifies it; reuse
-that project when publishing updates. No API keys, model downloads, analytics, or
+The standalone public demo is hosted at
+[aotesaiwen.github.io/tinnitus-treatment](https://aotesaiwen.github.io/tinnitus-treatment/).
+Visitors do not need ChatGPT or GitHub accounts. HTML, scripts, styles, and audio
+are served together; no API keys, model downloads, external fonts, analytics, or
 backend service are needed to listen.
+
+The former ChatGPT Site remains separate. `.openai/hosting.json` records that
+legacy deployment and is not included in the public site's publishing branch.
+Browser-local scores belong to each origin, so scores on the old hostname do not
+automatically appear on the new hostname.
+
+## Publish the standalone site
+
+GitHub Pages serves `/` from the `codex/listening-pages` branch. That branch
+contains only the committed contents of `listening-demo/dist`; `.nojekyll` keeps
+the files unchanged. After committing and verifying a change, publish from the
+repository root:
+
+```sh
+listening_commit=$(git subtree split --prefix=listening-demo/dist)
+git push origin "$listening_commit:refs/heads/codex/listening-pages"
+```
+
+The push must be a fast-forward; do not force-push the deployment branch. Wait
+for the Pages build to complete, then check the public homepage, both manifests,
+and audio playback without authentication. Test direct access without a proxy
+when assessing local network reachability; one successful network test does not
+guarantee access from every ISP.
 
 ## Preview
 
@@ -56,4 +81,4 @@ switching datasets. It saves screenshots under `.runtime/previews`.
 
 `dist/` is the entire deployable app: HTML, CSS, JavaScript, manifest, reveal map,
 and lossless audio. There is no build step. Publish an exact committed snapshot
-including the audio using Sites; do not reuse a preparing or empty manifest.
+including the audio; do not reuse a preparing or empty manifest.
