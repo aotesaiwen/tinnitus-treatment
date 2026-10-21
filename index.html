@@ -1,61 +1,61 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f6f3">
-  <meta name="description" content="Listen to anonymous music excerpts, record your impressions, then reveal how each was made.">
-  <title>Listening Room — a blind music comparison</title>
+  <meta name="description" content="试听匿名音乐片段，记录真实听感，再揭晓每段音乐的来源。">
+  <title>盲听室 · 音乐盲测</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=zh-1">
+  <script src="app.js?v=zh-1" defer></script>
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <a class="wordmark" href="./" aria-label="Listening Room home"><span class="brand-mark" aria-hidden="true">lr</span>Listening Room<span class="edition"> / music studies</span></a>
-      <span class="header-status"><span class="status-dot"></span>PRIVATE LISTENING SESSION</span>
+      <a class="wordmark" href="./" aria-label="盲听室首页"><span class="brand-mark" aria-hidden="true">lr</span>盲听室<span class="edition"> / 音乐试听</span></a>
+      <span class="header-status"><span class="status-dot"></span>私人试听</span>
     </header>
     <main>
       <section class="intro" aria-labelledby="page-title">
-        <div><p class="eyebrow">LISTEN FIRST. REVEAL LATER.</p><h1 id="page-title">Let your ears<br>make the choice.</h1></div>
-        <div class="intro-aside"><p>One brief: solo piano.<br>Different ways to make music.</p><p class="muted">Listen in any order, note what you hear, <br>then find out how each piece was made.</p><div class="session-meta" id="session-meta">Preparing the listening set…</div></div>
+        <div><p class="eyebrow">先听，再揭晓</p><h1 id="page-title">先听音乐，<br>再看答案。</h1></div>
+        <div class="intro-aside"><p>同样以钢琴独奏为目标，<br>尝试不同的音乐生成方式。</p><p class="muted">按自己的顺序试听，记下感受，<br>最后再看每段音乐是怎么做出来的。</p><div class="session-meta" id="session-meta">正在载入试听片段…</div></div>
       </section>
       <p class="error-banner" id="global-error" role="alert" hidden></p>
-      <section class="listening-layout" id="listening" aria-label="Blind listening session" hidden>
+      <section class="listening-layout" id="listening" aria-label="音乐盲测" hidden>
         <aside class="sample-sidebar">
-          <div class="section-topline"><h2>THE LISTENING SET</h2><span id="progress-count">0 / 0</span></div>
-          <nav id="sample-list" aria-label="Choose a sample"></nav>
-          <div class="session-note"><span class="note-mark" aria-hidden="true">i</span><p>Model names stay hidden until you finish. Your notes are saved in this browser.</p></div>
-          <button class="text-button coverage-trigger" type="button">What is included?</button>
+          <div class="section-topline"><h2>试听片段</h2><span id="progress-count">0 / 0</span></div>
+          <nav id="sample-list" aria-label="选择试听片段"></nav>
+          <div class="session-note"><span class="note-mark" aria-hidden="true">i</span><p>评分前隐藏模型名称。你的评分和笔记会保存在当前浏览器中。</p></div>
+          <button class="text-button coverage-trigger" type="button">本次包含哪些方案？</button>
         </aside>
         <div class="listening-main">
           <section class="player-panel" aria-labelledby="sample-heading">
-            <div class="player-heading"><div><p class="eyebrow" id="sample-position">SAMPLE 01</p><h2 id="sample-heading">Sample A</h2></div><span class="sound-tag">SOLO PIANO</span></div>
-            <div class="listening-stage"><span class="sample-letter" id="sample-letter" aria-hidden="true">A</span><div class="stage-caption"><span id="play-state">READY WHEN YOU ARE</span><span class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div>
+            <div class="player-heading"><div><p class="eyebrow" id="sample-position">片段 01</p><h2 id="sample-heading">片段 A</h2></div><span class="sound-tag">钢琴独奏</span></div>
+            <div class="listening-stage"><span class="sample-letter" id="sample-letter" aria-hidden="true">A</span><div class="stage-caption"><span id="play-state">随时开始试听</span><span class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div>
             <audio id="audio" preload="metadata"></audio>
-            <div class="seek-row"><span id="time-current">00:00</span><input id="seek" type="range" min="0" max="30" step="0.05" value="0" aria-label="Playback position"><span id="time-total">00:30</span></div>
-            <div class="transport"><button type="button" id="play" class="primary-button">Play sample <span class="play-symbol" aria-hidden="true"></span></button><button type="button" id="restart" class="secondary-button">From start</button><label class="volume-label">Volume<input id="volume" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Playback volume"></label></div>
-            <div class="player-foot"><label class="checkbox-label"><input id="keep-position" type="checkbox" checked>Keep position when switching</label><span class="keyboard-hint"><kbd>space</kbd> play / pause</span></div>
+            <div class="seek-row"><span id="time-current">00:00</span><input id="seek" type="range" min="0" max="30" step="0.05" value="0" aria-label="播放进度"><span id="time-total">00:30</span></div>
+            <div class="transport"><button type="button" id="play" class="primary-button">播放片段 <span class="play-symbol" aria-hidden="true"></span></button><button type="button" id="restart" class="secondary-button">从头播放</button><label class="volume-label">音量<input id="volume" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="播放音量"></label></div>
+            <div class="player-foot"><label class="checkbox-label"><input id="keep-position" type="checkbox" checked>切换片段时保留播放进度</label><span class="keyboard-hint"><kbd>空格</kbd> 播放 / 暂停</span></div>
             <p class="player-error" id="player-error" role="alert" hidden></p>
           </section>
           <section class="rating-panel" aria-labelledby="rating-heading">
-            <div class="rating-heading"><div><p class="eyebrow">YOUR IMPRESSION</p><h2 id="rating-heading">How does it feel to listen?</h2></div><span class="scale-note">1 = poor &nbsp; 5 = excellent</span></div>
+            <div class="rating-heading"><div><p class="eyebrow">你的听感</p><h2 id="rating-heading">这段音乐听起来怎么样？</h2></div><span class="scale-note">1 分 = 很差　5 分 = 很好</span></div>
             <div id="ratings"></div>
-            <fieldset class="artifact-field"><legend>Anything stand out? <span class="optional">Optional</span></legend><div class="artifact-options" id="artifact-options"></div></fieldset>
-            <label class="notes-label" for="notes">A note to yourself <span class="optional">Optional</span></label><textarea id="notes" rows="2" maxlength="1200" placeholder="A sound you noticed. A phrase you liked. A reason to stop."></textarea>
-            <div class="rating-actions"><span id="save-status" aria-live="polite">Play this sample to begin.</span><button type="button" id="next" class="secondary-button">Next sample <span aria-hidden="true">→</span></button></div>
-            <button type="button" id="skip" class="text-button skip-button">Skip — I cannot judge this sample</button>
+            <fieldset class="artifact-field"><legend>听到了哪些问题？ <span class="optional">选填</span></legend><div class="artifact-options" id="artifact-options"></div></fieldset>
+            <label class="notes-label" for="notes">记下你的感受 <span class="optional">选填</span></label><textarea id="notes" rows="2" maxlength="1200" placeholder="哪里好听，哪里刺耳，或者为什么不想继续听。"></textarea>
+            <div class="rating-actions"><span id="save-status" aria-live="polite">先播放这段音乐，再记录听感。</span><button type="button" id="next" class="secondary-button">下一段 <span aria-hidden="true">→</span></button></div>
+            <button type="button" id="skip" class="text-button skip-button">跳过：暂时无法评价这段</button>
           </section>
         </div>
       </section>
-      <section class="finish-panel" id="finish-panel" hidden><div><p class="eyebrow">WHEN YOU ARE READY</p><h2>The names can wait.<br>Your first impression matters.</h2><p class="muted" id="finish-hint">Listen and rate each sample to reveal the results.</p></div><button type="button" id="reveal" class="primary-button" disabled>Reveal the sources <span aria-hidden="true">↗</span></button></section>
-      <section id="results" class="results" hidden aria-labelledby="results-heading"><div class="results-heading"><div><p class="eyebrow">THE REVEAL</p><h2 id="results-heading">Your listening, in perspective.</h2><p class="muted">These are your impressions of these excerpts, not a general model ranking.</p></div><button type="button" id="export" class="secondary-button">Export my ratings <span aria-hidden="true">↓</span></button></div><div id="results-list"></div><div class="results-foot"><p>Your original ratings are locked. You can keep listening with the sources visible.</p><button type="button" id="new-session" class="text-button">Start a new shuffled session</button></div></section>
+      <section class="finish-panel" id="finish-panel" hidden><div><p class="eyebrow">听完之后</p><h2>先记下真实感受，<br>再揭晓模型名称。</h2><p class="muted" id="finish-hint">每段评分完成或明确跳过后，即可揭晓来源。</p></div><button type="button" id="reveal" class="primary-button" disabled>揭晓来源 <span aria-hidden="true">↗</span></button></section>
+      <section id="results" class="results" hidden aria-labelledby="results-heading"><div class="results-heading"><div><p class="eyebrow">答案揭晓</p><h2 id="results-heading">看看你喜欢的是哪一种。</h2><p class="muted">这里展示你对本次片段的评价，不代表模型的总体排名。</p></div><button type="button" id="export" class="secondary-button">导出我的评分 <span aria-hidden="true">↓</span></button></div><div id="results-list"></div><div class="results-foot"><p>本轮评分已锁定。你可以对照来源继续试听。</p><button type="button" id="new-session" class="text-button">重新打乱，开始新一轮</button></div></section>
     </main>
-    <footer><span>LISTENING ROOM / 2026</span><span id="footer-method">Level-matched excerpts. No frequency filtering.</span><button type="button" class="text-button coverage-trigger">Session details</button></footer>
+    <footer><span>盲听室 / 2026</span><span id="footer-method">统一响度，不做频段滤波。</span><button type="button" class="text-button coverage-trigger">本次试听说明</button></footer>
   </div>
-  <dialog id="confirm-dialog"><form method="dialog"><p class="eyebrow">ONE LAST THING</p><h2 id="confirm-title">Reveal the sources?</h2><p id="confirm-text">Your ratings will be locked for this round. You can continue listening after the reveal.</p><div class="dialog-actions"><button value="cancel" class="secondary-button">Keep listening</button><button value="confirm" id="confirm-action" class="primary-button">Reveal results</button></div></form></dialog>
-  <dialog id="coverage-dialog"><div class="dialog-top"><p class="eyebrow">ABOUT THIS SESSION</p><button type="button" id="close-coverage" class="text-button" aria-label="Close session details">Close ×</button></div><h2>What you are comparing.</h2><div id="coverage-content"></div></dialog>
-  <noscript><p>This listening comparison needs JavaScript to play samples and save your ratings.</p></noscript>
+  <dialog id="confirm-dialog"><form method="dialog"><p class="eyebrow">确认操作</p><h2 id="confirm-title">现在揭晓来源吗？</h2><p id="confirm-text">揭晓后，本轮评分将锁定；你仍然可以继续试听。</p><div class="dialog-actions"><button value="cancel" class="secondary-button">继续试听</button><button value="confirm" id="confirm-action" class="primary-button">揭晓结果</button></div></form></dialog>
+  <dialog id="coverage-dialog"><div class="dialog-top"><p class="eyebrow">关于本次试听</p><button type="button" id="close-coverage" class="text-button" aria-label="关闭试听说明">关闭 ×</button></div><h2>这次在比较什么？</h2><div id="coverage-content"></div></dialog>
+  <noscript><p>此网页需要启用 JavaScript 才能播放音乐和保存评分。</p></noscript>
 </body>
 </html>
