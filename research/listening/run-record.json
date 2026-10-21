@@ -1,0 +1,1593 @@
+{
+  "schema": "listening-room-run/v1",
+  "dataset": "piano-20261021-v1",
+  "recorded_on": "2026-10-21",
+  "aria": {
+    "repo_id": "loubb/aria-medium-base",
+    "revision": "5a1ef36c5007ee10fbe57d61d96725a7244bd2b2",
+    "files": [
+      [
+        ".gitattributes",
+        171
+      ],
+      [
+        "README.md",
+        4274
+      ],
+      [
+        "__init__.py",
+        0
+      ],
+      [
+        "config.json",
+        533
+      ],
+      [
+        "configuration_aria.py",
+        1921
+      ],
+      [
+        "eval-splits.tar.gz",
+        361658821
+      ],
+      [
+        "example-prompts/classical.mid",
+        10045
+      ],
+      [
+        "example-prompts/nocturne.mid",
+        7444
+      ],
+      [
+        "example-prompts/pokey_jazz.mid",
+        14240
+      ],
+      [
+        "example-prompts/smooth_jazz.mid",
+        6961
+      ],
+      [
+        "example-prompts/yesterday.mid",
+        6536
+      ],
+      [
+        "model-demo.safetensors",
+        2452363696
+      ],
+      [
+        "model-gen.safetensors",
+        2634170640
+      ],
+      [
+        "model.safetensors",
+        2634170640
+      ],
+      [
+        "modeling_aria.py",
+        22857
+      ],
+      [
+        "tokenization_aria.py",
+        7059
+      ],
+      [
+        "tokenizer_config.json",
+        194
+      ]
+    ],
+    "code_revision": "c2f67bc90b49335543c0249fe00fb84a9337faf8",
+    "tokenizer_revision": "7c815755c6889a784b6a1b3343e9e8daa3e7d128",
+    "checkpoint_file": ".runtime/aria-checkpoint/model-gen.safetensors",
+    "checkpoint_sha256": "5e6b07ee2680f0044deea30da613d89b12e3e30d012d1812b388d6b8d8306c90",
+    "source_model_card": "https://huggingface.co/loubb/aria-medium-base",
+    "source_code": "https://github.com/EleutherAI/aria",
+    "license": "Apache-2.0 (official model card and source repository)",
+    "checkpoint_resolution": "The source README's loubb/aria-medium-gen endpoint returned HTTP 401. The official author's base model card links the same generative variant as model-gen.safetensors in loubb/aria-medium-base; that public file is used at the recorded revision.",
+    "checkpoint_variant": "model-gen.safetensors (official generative finetune)",
+    "pytorch": "2.10.0+cu128",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "dtype": "bfloat16",
+    "allocator_limit_gib": 16,
+    "ignored_checkpoint_keys": [],
+    "prompt_tokens": 199,
+    "temperature": 0.9,
+    "min_p": 0.035,
+    "max_new_tokens": 2048,
+    "force_end": false,
+    "compile": false,
+    "seed": {
+      "path": "artifacts/audio/blind-20261021/aria/original-eight-bar-seed.mid",
+      "duration_s": 30.640000000000004,
+      "note_count": 64,
+      "key": "D major",
+      "meter": "4/4",
+      "bars": 8,
+      "approximate_bpm": 62.66318537859007,
+      "origin": "Original notes authored in this script for this comparison; not a published song or model demo.",
+      "notes": [
+        {
+          "onset_s": 0.002377724113486787,
+          "end_s": 2.6390000000000002,
+          "pitch": 38,
+          "velocity": 44,
+          "hand": "left"
+        },
+        {
+          "onset_s": 0.4580264091207378,
+          "end_s": 1.5925,
+          "pitch": 57,
+          "velocity": 40,
+          "hand": "left"
+        },
+        {
+          "onset_s": 0.9206199079770018,
+          "end_s": 2.0020000000000002,
+          "pitch": 61,
+          "velocity": 46,
+          "hand": "left"
+        },
+        {
+          "onset_s": 1.8179684079596794,
+          "end_s": 2.83,
+          "pitch": 66,
+          "velocity": 45,
+          "hand": "left"
+        },
+        {
+          "onset_s": 2.7311552397726597,
+          "end_s": 3.53,
+          "pitch": 61,
+          "velocity": 42,
+          "hand": "left"
+        },
+        {
+          "onset_s": 0,
+          "end_s": 1.2285000000000001,
+          "pitch": 66,
+          "velocity": 64,
+          "hand": "right"
+        },
+        {
+          "onset_s": 1.3573445721568467,
+          "end_s": 1.9565,
+          "pitch": 69,
+          "velocity": 71,
+          "hand": "right"
+        },
+        {
+          "onset_s": 2.278145493909385,
+          "end_s": 3.43,
+          "pitch": 73,
+          "velocity": 70,
+          "hand": "right"
+        },
+        {
+          "onset_s": 3.724283348782158,
+          "end_s": 6.398000000000001,
+          "pitch": 35,
+          "velocity": 44,
+          "hand": "left"
+        },
+        {
+          "onset_s": 4.1837195169484085,
+          "end_s": 5.340000000000001,
+          "pitch": 54,
+          "velocity": 42,
+          "hand": "left"
+        },
+        {
+          "onset_s": 4.656305284091174,
+          "end_s": 5.7540000000000004,
+          "pitch": 57,
+          "velocity": 45,
+          "hand": "left"
+        },
+        {
+          "onset_s": 5.5771431875630935,
+          "end_s": 6.59,
+          "pitch": 62,
+          "velocity": 45,
+          "hand": "left"
+        },
+        {
+          "onset_s": 6.484898904653272,
+          "end_s": 7.29,
+          "pitch": 57,
+          "velocity": 39,
+          "hand": "left"
+        },
+        {
+          "onset_s": 3.724171043354407,
+          "end_s": 5.018000000000001,
+          "pitch": 71,
+          "velocity": 66,
+          "hand": "right"
+        },
+        {
+          "onset_s": 5.11596167314982,
+          "end_s": 5.708,
+          "pitch": 69,
+          "velocity": 65,
+          "hand": "right"
+        },
+        {
+          "onset_s": 6.025233028216655,
+          "end_s": 7.09,
+          "pitch": 66,
+          "velocity": 59,
+          "hand": "right"
+        },
+        {
+          "onset_s": 7.4983992837084115,
+          "end_s": 10.158000000000001,
+          "pitch": 31,
+          "velocity": 45,
+          "hand": "left"
+        },
+        {
+          "onset_s": 7.948956044683716,
+          "end_s": 9.1,
+          "pitch": 54,
+          "velocity": 44,
+          "hand": "left"
+        },
+        {
+          "onset_s": 8.404011893003394,
+          "end_s": 9.514,
+          "pitch": 59,
+          "velocity": 43,
+          "hand": "left"
+        },
+        {
+          "onset_s": 9.327758503267997,
+          "end_s": 10.350999999999999,
+          "pitch": 62,
+          "velocity": 47,
+          "hand": "left"
+        },
+        {
+          "onset_s": 10.24363252511073,
+          "end_s": 11.058,
+          "pitch": 59,
+          "velocity": 39,
+          "hand": "left"
+        },
+        {
+          "onset_s": 7.492715944313211,
+          "end_s": 8.226,
+          "pitch": 67,
+          "velocity": 66,
+          "hand": "right"
+        },
+        {
+          "onset_s": 8.409532569022307,
+          "end_s": 9.146,
+          "pitch": 69,
+          "velocity": 65,
+          "hand": "right"
+        },
+        {
+          "onset_s": 9.33734386827375,
+          "end_s": 10.755,
+          "pitch": 71,
+          "velocity": 70,
+          "hand": "right"
+        },
+        {
+          "onset_s": 11.260053092072935,
+          "end_s": 14.040999999999999,
+          "pitch": 33,
+          "velocity": 42,
+          "hand": "left"
+        },
+        {
+          "onset_s": 11.734427286776063,
+          "end_s": 12.9125,
+          "pitch": 52,
+          "velocity": 41,
+          "hand": "left"
+        },
+        {
+          "onset_s": 12.198250339765682,
+          "end_s": 13.347999999999997,
+          "pitch": 57,
+          "velocity": 45,
+          "hand": "left"
+        },
+        {
+          "onset_s": 13.154228410615344,
+          "end_s": 14.248999999999999,
+          "pitch": 62,
+          "velocity": 48,
+          "hand": "left"
+        },
+        {
+          "onset_s": 14.143356486153397,
+          "end_s": 15.012,
+          "pitch": 57,
+          "velocity": 39,
+          "hand": "left"
+        },
+        {
+          "onset_s": 11.265333042137371,
+          "end_s": 12.294999999999998,
+          "pitch": 69,
+          "velocity": 65,
+          "hand": "right"
+        },
+        {
+          "onset_s": 12.671591982745399,
+          "end_s": 13.447,
+          "pitch": 66,
+          "velocity": 62,
+          "hand": "right"
+        },
+        {
+          "onset_s": 13.643191339731112,
+          "end_s": 14.684999999999999,
+          "pitch": 64,
+          "velocity": 56,
+          "hand": "right"
+        },
+        {
+          "onset_s": 15.22797131874765,
+          "end_s": 17.868999999999996,
+          "pitch": 38,
+          "velocity": 42,
+          "hand": "left"
+        },
+        {
+          "onset_s": 15.677885427944423,
+          "end_s": 16.822499999999998,
+          "pitch": 57,
+          "velocity": 42,
+          "hand": "left"
+        },
+        {
+          "onset_s": 16.14948659709681,
+          "end_s": 17.231999999999996,
+          "pitch": 61,
+          "velocity": 43,
+          "hand": "left"
+        },
+        {
+          "onset_s": 17.05182623268717,
+          "end_s": 18.058,
+          "pitch": 66,
+          "velocity": 44,
+          "hand": "left"
+        },
+        {
+          "onset_s": 17.963530320648314,
+          "end_s": 18.744,
+          "pitch": 61,
+          "velocity": 43,
+          "hand": "left"
+        },
+        {
+          "onset_s": 15.2259293119933,
+          "end_s": 16.458499999999997,
+          "pitch": 66,
+          "velocity": 64,
+          "hand": "right"
+        },
+        {
+          "onset_s": 16.59112049339015,
+          "end_s": 17.186499999999995,
+          "pitch": 69,
+          "velocity": 67,
+          "hand": "right"
+        },
+        {
+          "onset_s": 17.507510973601494,
+          "end_s": 18.449999999999996,
+          "pitch": 73,
+          "velocity": 72,
+          "hand": "right"
+        },
+        {
+          "onset_s": 18.935444027027955,
+          "end_s": 21.608,
+          "pitch": 35,
+          "velocity": 42,
+          "hand": "left"
+        },
+        {
+          "onset_s": 19.4057190285682,
+          "end_s": 20.55,
+          "pitch": 54,
+          "velocity": 43,
+          "hand": "left"
+        },
+        {
+          "onset_s": 19.861658038218152,
+          "end_s": 20.964000000000002,
+          "pitch": 57,
+          "velocity": 44,
+          "hand": "left"
+        },
+        {
+          "onset_s": 20.782647449172188,
+          "end_s": 21.800000000000004,
+          "pitch": 62,
+          "velocity": 47,
+          "hand": "left"
+        },
+        {
+          "onset_s": 21.708527851454484,
+          "end_s": 22.500000000000004,
+          "pitch": 57,
+          "velocity": 40,
+          "hand": "left"
+        },
+        {
+          "onset_s": 18.941120601231713,
+          "end_s": 19.676,
+          "pitch": 74,
+          "velocity": 76,
+          "hand": "right"
+        },
+        {
+          "onset_s": 19.859071493037245,
+          "end_s": 20.596,
+          "pitch": 73,
+          "velocity": 71,
+          "hand": "right"
+        },
+        {
+          "onset_s": 20.790884052746666,
+          "end_s": 22.050000000000004,
+          "pitch": 71,
+          "velocity": 66,
+          "hand": "right"
+        },
+        {
+          "onset_s": 22.69940535910981,
+          "end_s": 25.426000000000005,
+          "pitch": 31,
+          "velocity": 43,
+          "hand": "left"
+        },
+        {
+          "onset_s": 23.167508567406795,
+          "end_s": 24.345000000000002,
+          "pitch": 54,
+          "velocity": 42,
+          "hand": "left"
+        },
+        {
+          "onset_s": 23.640522526972497,
+          "end_s": 24.768000000000004,
+          "pitch": 59,
+          "velocity": 43,
+          "hand": "left"
+        },
+        {
+          "onset_s": 24.577220700403622,
+          "end_s": 25.62400000000001,
+          "pitch": 62,
+          "velocity": 46,
+          "hand": "left"
+        },
+        {
+          "onset_s": 25.51523156155613,
+          "end_s": 26.352000000000007,
+          "pitch": 59,
+          "velocity": 40,
+          "hand": "left"
+        },
+        {
+          "onset_s": 22.69820447165445,
+          "end_s": 23.922000000000004,
+          "pitch": 69,
+          "velocity": 65,
+          "hand": "right"
+        },
+        {
+          "onset_s": 24.108978856449998,
+          "end_s": 24.815000000000005,
+          "pitch": 67,
+          "velocity": 62,
+          "hand": "right"
+        },
+        {
+          "onset_s": 25.051836019143845,
+          "end_s": 26.196000000000005,
+          "pitch": 66,
+          "velocity": 58,
+          "hand": "right"
+        },
+        {
+          "onset_s": 26.56704083011865,
+          "end_s": 29.416000000000004,
+          "pitch": 33,
+          "velocity": 45,
+          "hand": "left"
+        },
+        {
+          "onset_s": 27.041785172293906,
+          "end_s": 28.237500000000004,
+          "pitch": 52,
+          "velocity": 41,
+          "hand": "left"
+        },
+        {
+          "onset_s": 27.516417233220327,
+          "end_s": 28.688000000000002,
+          "pitch": 57,
+          "velocity": 44,
+          "hand": "left"
+        },
+        {
+          "onset_s": 28.47437271906604,
+          "end_s": 29.632000000000005,
+          "pitch": 61,
+          "velocity": 44,
+          "hand": "left"
+        },
+        {
+          "onset_s": 29.521704977835217,
+          "end_s": 30.416000000000004,
+          "pitch": 57,
+          "velocity": 40,
+          "hand": "left"
+        },
+        {
+          "onset_s": 26.56765769090401,
+          "end_s": 27.898000000000003,
+          "pitch": 64,
+          "velocity": 57,
+          "hand": "right"
+        },
+        {
+          "onset_s": 27.98896880927379,
+          "end_s": 28.740000000000006,
+          "pitch": 61,
+          "velocity": 56,
+          "hand": "right"
+        },
+        {
+          "onset_s": 29.003277863134194,
+          "end_s": 30.192000000000004,
+          "pitch": 64,
+          "velocity": 61,
+          "hand": "right"
+        }
+      ],
+      "sha256": "5ce4059f7240f98ac9f288853ecfd39b15c7b92d1e05147f5d83f1260eaf426a"
+    },
+    "samples": [
+      {
+        "seed": 21021,
+        "generation_seconds": 23.37337451800704,
+        "gpu_peak_allocated_gib": 1.5752911567687988,
+        "full_midi": "artifacts/audio/blind-20261021/aria/aria-seed-21021-full.mid",
+        "full_sha256": "33ecbe632f84837f3c7f33451d45d972ebcb9146a39e2c6e88b0d8c3d84af053",
+        "full_duration_s": 340.41,
+        "generated_tokens": 2048,
+        "clip": {
+          "path": "artifacts/audio/blind-20261021/aria/aria-seed-21021-continuation.mid",
+          "duration_s": 60.0,
+          "note_count": 130,
+          "crop_start_s": 30.64,
+          "requested_duration_s": 60.0,
+          "pitch_range": [
+            28,
+            74
+          ],
+          "velocity_range": [
+            40,
+            80
+          ],
+          "sha256": "569672bce584f995cdfb26f1391f4797c80c5abbf4870f023e155114e41ced8d",
+          "processing": "Crop only; original input excluded; note pitches, timings and velocities unchanged; acoustic piano program 0."
+        }
+      },
+      {
+        "seed": 21022,
+        "generation_seconds": 22.48258208297193,
+        "gpu_peak_allocated_gib": 1.5763258934020996,
+        "full_midi": "artifacts/audio/blind-20261021/aria/aria-seed-21022-full.mid",
+        "full_sha256": "61ebc75fcaeff9e6b5bae7b1259958758eb725f26a02507644a97fd709513b21",
+        "full_duration_s": 287.57,
+        "generated_tokens": 2048,
+        "clip": {
+          "path": "artifacts/audio/blind-20261021/aria/aria-seed-21022-continuation.mid",
+          "duration_s": 60.0,
+          "note_count": 154,
+          "crop_start_s": 30.64,
+          "requested_duration_s": 60.0,
+          "pitch_range": [
+            31,
+            78
+          ],
+          "velocity_range": [
+            40,
+            80
+          ],
+          "sha256": "5bba08a7a24e2bd1aa72787bbdc581db68a6b8b12691c8bcd1b6acc0f59a9c72",
+          "processing": "Crop only; original input excluded; note pitches, timings and velocities unchanged; acoustic piano program 0."
+        }
+      }
+    ],
+    "limitations": [
+      "Aria continues symbolic piano; no text instruction following is claimed.",
+      "MIDI notes are generated by the model; piano timbre must be rendered separately.",
+      "Blind excerpts exclude the original input and retain generated note timings and velocities.",
+      "No human listening or musical-quality claim is made by this generation script."
+    ]
+  },
+  "text2midi": {
+    "model": "amaai-lab/text2midi",
+    "model_revision": "9bc91479c4a9b08a9a28a7dcfb3f1a56ee2ded36",
+    "source_url": "https://github.com/AMAAI-Lab/Text2midi",
+    "source_revision": "f3245ee402b29ba00b86c6eb9813032f3f05954f",
+    "encoder": {
+      "repo": "google/flan-t5-base",
+      "revision": "7bcac572ce56db69c1ea7c8af255c5d7c9672fc2"
+    },
+    "architecture_arguments": [
+      "vocab_size",
+      768,
+      8,
+      2048,
+      18,
+      1024,
+      false,
+      8
+    ],
+    "implementation": "Official Transformer.generate; torch.inference_mode; float32; no sampling changes",
+    "encoder_initialization": "Architecture from pinned FLAN-T5 config; complete encoder weights required in the Text2midi checkpoint via strict state-dict load",
+    "dependency_versions": {
+      "torch": "2.10.0+cu128",
+      "transformers": "4.47.0",
+      "miditok": "3.0.3",
+      "symusic": "0.5.5",
+      "tokenizers": "0.21.0"
+    },
+    "midi_transformations": [],
+    "generation": {
+      "max_tokens": 2000,
+      "temperature": 0.9
+    },
+    "samples": [
+      {
+        "id": "text2midi-1-seed210641",
+        "seed": 210641,
+        "prompt": "A gentle expressive solo acoustic grand piano piece in C major, 4/4 time, at a slow tempo of 64 beats per minute. A sparse lyrical right-hand melody floats above soft left-hand broken chords and arpeggios. Calm, intimate, warm and reflective, with quiet dynamics and breathing space between phrases. Piano is the only instrument. No drums, no percussion, no other instruments. Approximately one minute long.",
+        "status": "complete",
+        "generation_seconds": 52.98882762901485,
+        "midi": "artifacts/audio/blind-20261021/text2midi/text2midi-1-seed210641.mid",
+        "token_count": 2000,
+        "analysis": {
+          "duration_s": 37.68596408333333,
+          "note_count": 464,
+          "pitch_min": 28,
+          "pitch_max": 88,
+          "velocities": [
+            59,
+            63,
+            67,
+            75,
+            79,
+            87,
+            95,
+            103,
+            107,
+            111,
+            115,
+            123,
+            127
+          ],
+          "program_changes": [
+            {
+              "channel": 0,
+              "program_zero_based": 65
+            },
+            {
+              "channel": 9,
+              "program_zero_based": 0
+            },
+            {
+              "channel": 2,
+              "program_zero_based": 88
+            },
+            {
+              "channel": 3,
+              "program_zero_based": 14
+            },
+            {
+              "channel": 4,
+              "program_zero_based": 30
+            },
+            {
+              "channel": 5,
+              "program_zero_based": 47
+            },
+            {
+              "channel": 6,
+              "program_zero_based": 119
+            },
+            {
+              "channel": 7,
+              "program_zero_based": 48
+            },
+            {
+              "channel": 8,
+              "program_zero_based": 34
+            }
+          ],
+          "channels_with_notes": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "tempo_bpm": [
+            121.29004087474378,
+            87.41997429852755,
+            121.29004087474378,
+            128.0601028749493,
+            128.0601028749493
+          ],
+          "tracks": 9,
+          "sha256": "44363790a1678caa2f3dc513df4ebaf9e1b9c8d0cf09efdc3ca93b66c164bc3d",
+          "percussion_note_count": 148,
+          "pitched_note_count": 316,
+          "notes_per_channel": {
+            "3": 6,
+            "9": 148,
+            "2": 2,
+            "4": 210,
+            "0": 1,
+            "5": 21,
+            "6": 1,
+            "7": 42,
+            "8": 33
+          }
+        },
+        "requested_solo_piano_satisfied": false,
+        "midi_transformations": []
+      },
+      {
+        "id": "text2midi-2-seed210682",
+        "seed": 210682,
+        "prompt": "A quiet and tender solo acoustic grand piano composition in A minor, 4/4 time, at 68 beats per minute. A simple singing melody with expressive phrasing and gentle arpeggiated accompaniment. Soft dynamics, spacious phrases, a peaceful reflective mood and a resolved ending. Piano alone, without drums, percussion or any other instrument. About one minute long.",
+        "status": "complete",
+        "generation_seconds": 53.508000103756785,
+        "midi": "artifacts/audio/blind-20261021/text2midi/text2midi-2-seed210682.mid",
+        "token_count": 2000,
+        "analysis": {
+          "duration_s": 34.91058983333333,
+          "note_count": 472,
+          "pitch_min": 28,
+          "pitch_max": 77,
+          "velocities": [
+            87,
+            91,
+            99,
+            111,
+            115,
+            127
+          ],
+          "program_changes": [
+            {
+              "channel": 0,
+              "program_zero_based": 0
+            },
+            {
+              "channel": 9,
+              "program_zero_based": 0
+            },
+            {
+              "channel": 2,
+              "program_zero_based": 32
+            },
+            {
+              "channel": 3,
+              "program_zero_based": 30
+            },
+            {
+              "channel": 4,
+              "program_zero_based": 33
+            },
+            {
+              "channel": 5,
+              "program_zero_based": 24
+            },
+            {
+              "channel": 6,
+              "program_zero_based": 36
+            },
+            {
+              "channel": 7,
+              "program_zero_based": 38
+            }
+          ],
+          "channels_with_notes": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9
+          ],
+          "tempo_bpm": [
+            67.09998344867076
+          ],
+          "tracks": 8,
+          "sha256": "55a36d4024355f8034cb8f5c9ea324b90da9ce1d8b559cb531eaf3873ec7e1cf",
+          "percussion_note_count": 76,
+          "pitched_note_count": 396,
+          "notes_per_channel": {
+            "0": 1,
+            "9": 76,
+            "2": 2,
+            "3": 278,
+            "4": 59,
+            "5": 3,
+            "6": 1,
+            "7": 52
+          }
+        },
+        "requested_solo_piano_satisfied": false,
+        "midi_transformations": []
+      }
+    ],
+    "checkpoint_verification": {
+      "repo": "amaai-lab/text2midi",
+      "revision": "9bc91479c4a9b08a9a28a7dcfb3f1a56ee2ded36",
+      "checkpoint_sha256": "d94e8d7dda9207ed734268933629d4a4b7a1a6ce84c77299f610d3470448bfc1",
+      "checkpoint_bytes": 901867614
+    },
+    "implementation_audit": {
+      "official_huggingface_and_github_shared_class_ast_identical": {
+        "MultiHeadSelfAttention": true,
+        "PositionalEncoding": true,
+        "Transformer": true,
+        "TransformerDecoder": true,
+        "TransformerDecoderLayer": true,
+        "TransformerEncoder": true,
+        "TransformerEncoderLayer": true
+      },
+      "official_huggingface_and_github_midi_tokenizer_identical": true,
+      "encoder_parameters_loaded_strictly": true,
+      "inference_changes": "inference_mode only; complete strict checkpoint loading; no modified sampling",
+      "finding": "No model/tokenizer/architecture mismatch found. Both fixed-seed generations failed requested solo-piano instrumentation."
+    },
+    "derived_listening_arrangements": {
+      "transformations": [
+        "Remove MIDI channel9 events",
+        "Map remaining program changes to acoustic grand piano program0"
+      ],
+      "original_midi_retained_unchanged": true,
+      "independent_validation": [
+        {
+          "original": "artifacts/audio/blind-20261021/text2midi/text2midi-1-seed210641.mid",
+          "arrangement": "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.mid",
+          "pitched_events_and_tempos_identical_at_absolute_ticks": true,
+          "remaining_pitched_note_count": 316,
+          "remaining_percussion_note_count": 0,
+          "all_program_changes_are_piano": true
+        },
+        {
+          "original": "artifacts/audio/blind-20261021/text2midi/text2midi-2-seed210682.mid",
+          "arrangement": "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.mid",
+          "pitched_events_and_tempos_identical_at_absolute_ticks": true,
+          "remaining_pitched_note_count": 396,
+          "remaining_percussion_note_count": 0,
+          "all_program_changes_are_piano": true
+        }
+      ]
+    }
+  },
+  "arrangement_verification": [
+    {
+      "original": "artifacts/audio/blind-20261021/text2midi/text2midi-1-seed210641.mid",
+      "arrangement": "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.mid",
+      "pitched_events_and_tempos_identical_at_absolute_ticks": true,
+      "remaining_pitched_note_count": 316,
+      "remaining_percussion_note_count": 0,
+      "all_program_changes_are_piano": true
+    },
+    {
+      "original": "artifacts/audio/blind-20261021/text2midi/text2midi-2-seed210682.mid",
+      "arrangement": "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.mid",
+      "pitched_events_and_tempos_identical_at_absolute_ticks": true,
+      "remaining_pitched_note_count": 396,
+      "remaining_percussion_note_count": 0,
+      "all_program_changes_are_piano": true
+    }
+  ],
+  "renderer_timing_verification": {
+    "schema_version": 1,
+    "renderer": "sfizz1.2.3",
+    "source": "https://github.com/sfztools/sfizz/blob/1.2.3/clients/sfizz_render.cpp",
+    "method": "Compare mido tempo-map seconds of last note-off to sfizz --use-eot output; require <=one audio block error and bit-identical normal-render prefix.",
+    "finding": "sfizz/fmidi event playback ends at last playable event, ignoring trailing EndOfTrack silence. Default rendering then appends a natural sample decay until mean-square power falls below1e-12. No tempo-map flattening needed.",
+    "cases": [
+      {
+        "source_midi": "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.mid",
+        "midi_duration_including_eot_s": 37.685964083333374,
+        "last_note_off_s": 34.38673200000004,
+        "no_tail_render_duration_s": 34.38875283446712,
+        "normal_render_duration_s": 37.384126984126986,
+        "normal_render_prefix_identical_to_no_tail": true,
+        "normal_render_prefix_pcm_sha256": "cad81c2cade56fc12ba9250789ebd8244865afcd0de40eaf7a079370f850e8a1",
+        "last_event_rounding_error_s": 0.002020834467082011,
+        "maximum_event_rounding_s": 0.023219954648526078,
+        "tempo_events": [
+          {
+            "seconds": 0,
+            "microseconds_per_quarter": 494682
+          },
+          {
+            "seconds": 0.49468199999999996,
+            "microseconds_per_quarter": 686342
+          },
+          {
+            "seconds": 8.044444,
+            "microseconds_per_quarter": 494682
+          },
+          {
+            "seconds": 10.023171999999997,
+            "microseconds_per_quarter": 468530
+          },
+          {
+            "seconds": 11.897291999999995,
+            "microseconds_per_quarter": 468530
+          }
+        ]
+      },
+      {
+        "source_midi": "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.mid",
+        "midi_duration_including_eot_s": 34.91058983333333,
+        "last_note_off_s": 32.190768,
+        "no_tail_render_duration_s": 32.20607709750567,
+        "normal_render_duration_s": 48.901224489795915,
+        "normal_render_prefix_identical_to_no_tail": true,
+        "normal_render_prefix_pcm_sha256": "6e335b99be8eeae50da7068fbf074e66ad8cffe8343f1f966f2abca7ea6a000c",
+        "last_event_rounding_error_s": 0.015309097505671332,
+        "maximum_event_rounding_s": 0.023219954648526078,
+        "tempo_events": [
+          {
+            "seconds": 0,
+            "microseconds_per_quarter": 894188
+          }
+        ]
+      }
+    ]
+  },
+  "renders": [
+    {
+      "schema_version": 1,
+      "renderer": "sfizz 1.2.3",
+      "renderer_source": "https://download.opensuse.org/repositories/home:/sfztools:/sfizz/xUbuntu_22.04/",
+      "renderer_sha256": "d2c6db1a6aae7e26c1d3dbd69ebd7661d4ce3fd8823d4cb795f37c2ba786a22e",
+      "midi_path": "artifacts/audio/blind-20261021/aria/aria-seed-21021-continuation.mid",
+      "midi_sha256": "569672bce584f995cdfb26f1391f4797c80c5abbf4870f023e155114e41ced8d",
+      "midi": {
+        "format": 0,
+        "tracks": 1,
+        "ticks_per_beat": 500,
+        "note_on_count": 130,
+        "pitch_range": [
+          28,
+          74
+        ],
+        "pitched_note_count": 130,
+        "percussion_note_count": 0,
+        "pitched_notes_outside_piano_range": 0,
+        "note_counts_by_channel_zero_based": {
+          "0": 130
+        },
+        "velocity_range": [
+          40,
+          80
+        ],
+        "channels_zero_based": [
+          0
+        ],
+        "program_changes_zero_based": [
+          {
+            "channel": 0,
+            "program": 0
+          }
+        ],
+        "render_mapping": "Every pitched track uses the same Salamander piano; original MIDI programs are retained here and in the unchanged MIDI."
+      },
+      "output_path": "artifacts/audio/blind-20261021/render/aria-seed-21021-continuation.wav",
+      "output_sha256": "ff87d2ee236e1d780b020d91a7462dcc1b6e0fc3c210fcda451a03a4290ddc23",
+      "instrument": {
+        "name": "Salamander Grand Piano V3",
+        "author": "Alexander Holm",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0/",
+        "source_url": "https://archive.org/details/SalamanderGrandPianoV3",
+        "sample_archive_sha256": "fe595c7722b70860e6377f82948d1c0cfcf27ecebf500dc79534408a78a62892",
+        "original_sfz_sha256": "84247d1a6af9a6ec6aa45eb28ea914c86bb8cc4618ee08510f9261dbfebb77a1",
+        "rendered_sfz_sha256": "4e6f17ebd37c4494eb2b4907b0722512a72ff30071aefcb3c2612ad0e16538ec",
+        "mechanical_noise_regions_omitted": 92,
+        "note_and_string_release_samples_modified": false,
+        "sample_format": "44100 Hz, 16-bit stereo PCM"
+      },
+      "command": [
+        ".runtime/sfizz/root/usr/bin/sfizz_render",
+        "--sfz",
+        ".runtime/piano/SalamanderGrandPianoV3_44.1khz16bit/SalamanderGrandPianoV3-quiet.sfz",
+        "--midi",
+        "artifacts/audio/blind-20261021/aria/aria-seed-21021-continuation.mid",
+        "--wav",
+        "artifacts/audio/blind-20261021/render/aria-seed-21021-continuation.wav",
+        "--samplerate",
+        "44100",
+        "--quality",
+        "10",
+        "--polyphony",
+        "256"
+      ],
+      "elapsed_s": 10.640393557026982,
+      "audio": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "bits_per_sample": 16,
+        "duration_s": 61.9740589569161,
+        "sample_peak_dbfs": -22.98801450318965,
+        "rms_dbfs": -41.610102790013045,
+        "sample_peak_at_or_above_full_scale": false
+      },
+      "postprocessing": "None. Loudness matching belongs to the blind-set preparation step.",
+      "pianoteq": "Unavailable: no installed licensed copy; no demo substitution."
+    },
+    {
+      "schema_version": 1,
+      "renderer": "sfizz 1.2.3",
+      "renderer_source": "https://download.opensuse.org/repositories/home:/sfztools:/sfizz/xUbuntu_22.04/",
+      "renderer_sha256": "d2c6db1a6aae7e26c1d3dbd69ebd7661d4ce3fd8823d4cb795f37c2ba786a22e",
+      "midi_path": "artifacts/audio/blind-20261021/aria/aria-seed-21022-continuation.mid",
+      "midi_sha256": "5bba08a7a24e2bd1aa72787bbdc581db68a6b8b12691c8bcd1b6acc0f59a9c72",
+      "midi": {
+        "format": 0,
+        "tracks": 1,
+        "ticks_per_beat": 500,
+        "note_on_count": 154,
+        "pitch_range": [
+          31,
+          78
+        ],
+        "pitched_note_count": 154,
+        "percussion_note_count": 0,
+        "pitched_notes_outside_piano_range": 0,
+        "note_counts_by_channel_zero_based": {
+          "0": 154
+        },
+        "velocity_range": [
+          40,
+          80
+        ],
+        "channels_zero_based": [
+          0
+        ],
+        "program_changes_zero_based": [
+          {
+            "channel": 0,
+            "program": 0
+          }
+        ],
+        "render_mapping": "Every pitched track uses the same Salamander piano; original MIDI programs are retained here and in the unchanged MIDI."
+      },
+      "output_path": "artifacts/audio/blind-20261021/render/aria-seed-21022-continuation.wav",
+      "output_sha256": "d28155928cf09add1efea1400d591151c6b8dd5118bc3af9d0a3f75b3f858a6c",
+      "instrument": {
+        "name": "Salamander Grand Piano V3",
+        "author": "Alexander Holm",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0/",
+        "source_url": "https://archive.org/details/SalamanderGrandPianoV3",
+        "sample_archive_sha256": "fe595c7722b70860e6377f82948d1c0cfcf27ecebf500dc79534408a78a62892",
+        "original_sfz_sha256": "84247d1a6af9a6ec6aa45eb28ea914c86bb8cc4618ee08510f9261dbfebb77a1",
+        "rendered_sfz_sha256": "4e6f17ebd37c4494eb2b4907b0722512a72ff30071aefcb3c2612ad0e16538ec",
+        "mechanical_noise_regions_omitted": 92,
+        "note_and_string_release_samples_modified": false,
+        "sample_format": "44100 Hz, 16-bit stereo PCM"
+      },
+      "command": [
+        ".runtime/sfizz/root/usr/bin/sfizz_render",
+        "--sfz",
+        ".runtime/piano/SalamanderGrandPianoV3_44.1khz16bit/SalamanderGrandPianoV3-quiet.sfz",
+        "--midi",
+        "artifacts/audio/blind-20261021/aria/aria-seed-21022-continuation.mid",
+        "--wav",
+        "artifacts/audio/blind-20261021/render/aria-seed-21022-continuation.wav",
+        "--samplerate",
+        "44100",
+        "--quality",
+        "10",
+        "--polyphony",
+        "256"
+      ],
+      "elapsed_s": 11.528920203447342,
+      "audio": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "bits_per_sample": 16,
+        "duration_s": 62.299138321995464,
+        "sample_peak_dbfs": -24.340671097968468,
+        "rms_dbfs": -41.34047830796923,
+        "sample_peak_at_or_above_full_scale": false
+      },
+      "postprocessing": "None. Loudness matching belongs to the blind-set preparation step.",
+      "pianoteq": "Unavailable: no installed licensed copy; no demo substitution."
+    },
+    {
+      "schema_version": 1,
+      "renderer": "sfizz 1.2.3",
+      "renderer_source": "https://download.opensuse.org/repositories/home:/sfztools:/sfizz/xUbuntu_22.04/",
+      "renderer_sha256": "d2c6db1a6aae7e26c1d3dbd69ebd7661d4ce3fd8823d4cb795f37c2ba786a22e",
+      "midi_path": "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.mid",
+      "midi_sha256": "8f46635ceef58d9444705dd3e2e4d64e0867352ccc664530ebb12c708a16f278",
+      "midi": {
+        "format": 1,
+        "tracks": 9,
+        "ticks_per_beat": 24,
+        "note_on_count": 316,
+        "pitch_range": [
+          28,
+          88
+        ],
+        "pitched_note_count": 316,
+        "percussion_note_count": 0,
+        "pitched_notes_outside_piano_range": 0,
+        "note_counts_by_channel_zero_based": {
+          "0": 1,
+          "2": 2,
+          "3": 6,
+          "4": 210,
+          "5": 21,
+          "6": 1,
+          "7": 42,
+          "8": 33
+        },
+        "velocity_range": [
+          59,
+          127
+        ],
+        "channels_zero_based": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "program_changes_zero_based": [
+          {
+            "channel": 0,
+            "program": 0
+          },
+          {
+            "channel": 2,
+            "program": 0
+          },
+          {
+            "channel": 3,
+            "program": 0
+          },
+          {
+            "channel": 4,
+            "program": 0
+          },
+          {
+            "channel": 5,
+            "program": 0
+          },
+          {
+            "channel": 6,
+            "program": 0
+          },
+          {
+            "channel": 7,
+            "program": 0
+          },
+          {
+            "channel": 8,
+            "program": 0
+          }
+        ],
+        "render_mapping": "Every pitched track uses the same Salamander piano; original MIDI programs are retained here and in the unchanged MIDI."
+      },
+      "output_path": "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.wav",
+      "output_sha256": "88de8a550ba480bb2e489564201abbc8361949ab7dfeb4b1e9a73691d84b6594",
+      "instrument": {
+        "name": "Salamander Grand Piano V3",
+        "author": "Alexander Holm",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0/",
+        "source_url": "https://archive.org/details/SalamanderGrandPianoV3",
+        "sample_archive_sha256": "fe595c7722b70860e6377f82948d1c0cfcf27ecebf500dc79534408a78a62892",
+        "original_sfz_sha256": "84247d1a6af9a6ec6aa45eb28ea914c86bb8cc4618ee08510f9261dbfebb77a1",
+        "rendered_sfz_sha256": "4e6f17ebd37c4494eb2b4907b0722512a72ff30071aefcb3c2612ad0e16538ec",
+        "mechanical_noise_regions_omitted": 92,
+        "note_and_string_release_samples_modified": false,
+        "sample_format": "44100 Hz, 16-bit stereo PCM"
+      },
+      "command": [
+        ".runtime/sfizz/root/usr/bin/sfizz_render",
+        "--sfz",
+        ".runtime/piano/SalamanderGrandPianoV3_44.1khz16bit/SalamanderGrandPianoV3-quiet.sfz",
+        "--midi",
+        "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.mid",
+        "--wav",
+        "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.wav",
+        "--samplerate",
+        "44100",
+        "--quality",
+        "10",
+        "--polyphony",
+        "256"
+      ],
+      "elapsed_s": 16.883586421608925,
+      "audio": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "bits_per_sample": 16,
+        "duration_s": 37.384126984126986,
+        "sample_peak_dbfs": -2.9302512143039,
+        "rms_dbfs": -20.283533652712435,
+        "sample_peak_at_or_above_full_scale": false
+      },
+      "postprocessing": "None. Loudness matching belongs to the blind-set preparation step.",
+      "pianoteq": "Unavailable: no installed licensed copy; no demo substitution."
+    },
+    {
+      "schema_version": 1,
+      "renderer": "sfizz 1.2.3",
+      "renderer_source": "https://download.opensuse.org/repositories/home:/sfztools:/sfizz/xUbuntu_22.04/",
+      "renderer_sha256": "d2c6db1a6aae7e26c1d3dbd69ebd7661d4ce3fd8823d4cb795f37c2ba786a22e",
+      "midi_path": "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.mid",
+      "midi_sha256": "94ea34c66e1b8e6ba9e215bab7ef35880c2286224f3d876a678df74ac79960bc",
+      "midi": {
+        "format": 1,
+        "tracks": 8,
+        "ticks_per_beat": 24,
+        "note_on_count": 396,
+        "pitch_range": [
+          28,
+          77
+        ],
+        "pitched_note_count": 396,
+        "percussion_note_count": 0,
+        "pitched_notes_outside_piano_range": 0,
+        "note_counts_by_channel_zero_based": {
+          "0": 1,
+          "2": 2,
+          "3": 278,
+          "4": 59,
+          "5": 3,
+          "6": 1,
+          "7": 52
+        },
+        "velocity_range": [
+          87,
+          127
+        ],
+        "channels_zero_based": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "program_changes_zero_based": [
+          {
+            "channel": 0,
+            "program": 0
+          },
+          {
+            "channel": 2,
+            "program": 0
+          },
+          {
+            "channel": 3,
+            "program": 0
+          },
+          {
+            "channel": 4,
+            "program": 0
+          },
+          {
+            "channel": 5,
+            "program": 0
+          },
+          {
+            "channel": 6,
+            "program": 0
+          },
+          {
+            "channel": 7,
+            "program": 0
+          }
+        ],
+        "render_mapping": "Every pitched track uses the same Salamander piano; original MIDI programs are retained here and in the unchanged MIDI."
+      },
+      "output_path": "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.wav",
+      "output_sha256": "9e50a62644df38dfb9134ae8ae87b64a31190b09277ce2ded0688d43da9440a2",
+      "instrument": {
+        "name": "Salamander Grand Piano V3",
+        "author": "Alexander Holm",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0/",
+        "source_url": "https://archive.org/details/SalamanderGrandPianoV3",
+        "sample_archive_sha256": "fe595c7722b70860e6377f82948d1c0cfcf27ecebf500dc79534408a78a62892",
+        "original_sfz_sha256": "84247d1a6af9a6ec6aa45eb28ea914c86bb8cc4618ee08510f9261dbfebb77a1",
+        "rendered_sfz_sha256": "4e6f17ebd37c4494eb2b4907b0722512a72ff30071aefcb3c2612ad0e16538ec",
+        "mechanical_noise_regions_omitted": 92,
+        "note_and_string_release_samples_modified": false,
+        "sample_format": "44100 Hz, 16-bit stereo PCM"
+      },
+      "command": [
+        ".runtime/sfizz/root/usr/bin/sfizz_render",
+        "--sfz",
+        ".runtime/piano/SalamanderGrandPianoV3_44.1khz16bit/SalamanderGrandPianoV3-quiet.sfz",
+        "--midi",
+        "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.mid",
+        "--wav",
+        "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.wav",
+        "--samplerate",
+        "44100",
+        "--quality",
+        "10",
+        "--polyphony",
+        "256"
+      ],
+      "elapsed_s": 25.397208210080862,
+      "audio": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "bits_per_sample": 16,
+        "duration_s": 48.901224489795915,
+        "sample_peak_dbfs": -2.5210693948248633,
+        "rms_dbfs": -20.243008115234687,
+        "sample_peak_at_or_above_full_scale": false
+      },
+      "postprocessing": "None. Loudness matching belongs to the blind-set preparation step.",
+      "pianoteq": "Unavailable: no installed licensed copy; no demo substitution."
+    },
+    {
+      "schema_version": 1,
+      "renderer": "sfizz 1.2.3",
+      "renderer_source": "https://download.opensuse.org/repositories/home:/sfztools:/sfizz/xUbuntu_22.04/",
+      "renderer_sha256": "d2c6db1a6aae7e26c1d3dbd69ebd7661d4ce3fd8823d4cb795f37c2ba786a22e",
+      "midi_path": "artifacts/audio/blind-20261021/aria/original-eight-bar-seed.mid",
+      "midi_sha256": "5ce4059f7240f98ac9f288853ecfd39b15c7b92d1e05147f5d83f1260eaf426a",
+      "output_path": "artifacts/audio/blind-20261021/render/original-eight-bar-seed.wav",
+      "output_sha256": "5db7faea6ede5ab44924ff9b7d87934f3eaa9e8cbbdb712e1172e801fb12d85d",
+      "instrument": {
+        "name": "Salamander Grand Piano V3",
+        "author": "Alexander Holm",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0/",
+        "source_url": "https://archive.org/details/SalamanderGrandPianoV3",
+        "original_sfz_sha256": "84247d1a6af9a6ec6aa45eb28ea914c86bb8cc4618ee08510f9261dbfebb77a1",
+        "rendered_sfz_sha256": "4e6f17ebd37c4494eb2b4907b0722512a72ff30071aefcb3c2612ad0e16538ec",
+        "mechanical_noise_regions_omitted": 92,
+        "note_and_string_release_samples_modified": false,
+        "sample_format": "44100 Hz, 16-bit stereo PCM",
+        "sample_archive_sha256": "fe595c7722b70860e6377f82948d1c0cfcf27ecebf500dc79534408a78a62892"
+      },
+      "command": [
+        ".runtime/sfizz/root/usr/bin/sfizz_render",
+        "--sfz",
+        ".runtime/piano/SalamanderGrandPianoV3_44.1khz16bit/SalamanderGrandPianoV3-quiet.sfz",
+        "--midi",
+        "artifacts/audio/blind-20261021/aria/original-eight-bar-seed.mid",
+        "--wav",
+        "artifacts/audio/blind-20261021/render/original-eight-bar-seed.wav",
+        "--samplerate",
+        "44100",
+        "--quality",
+        "10",
+        "--polyphony",
+        "256"
+      ],
+      "elapsed_s": 5.667488882318139,
+      "audio": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "bits_per_sample": 16,
+        "duration_s": 32.48471655328798,
+        "sample_peak_dbfs": -24.159077940930096,
+        "rms_dbfs": -41.889055520433025,
+        "sample_peak_at_or_above_full_scale": false
+      },
+      "postprocessing": "None. Loudness matching belongs to the blind-set preparation step.",
+      "pianoteq": "Unavailable: no installed licensed copy; no demo substitution.",
+      "midi": {
+        "format": 0,
+        "tracks": 1,
+        "ticks_per_beat": 500,
+        "note_on_count": 64,
+        "pitch_range": [
+          31,
+          74
+        ],
+        "velocity_range": [
+          39,
+          76
+        ],
+        "channels_zero_based": [
+          0
+        ],
+        "program_changes_zero_based": [
+          {
+            "channel": 0,
+            "program": 0
+          }
+        ],
+        "render_mapping": "Every pitched track uses the same Salamander piano; original MIDI programs are retained here and in the unchanged MIDI."
+      }
+    }
+  ],
+  "audio_measurements": [
+    {
+      "id": "6d3cf34088d76e60df74",
+      "source": "artifacts/audio/blind-20261021/render/aria-seed-21021-continuation.wav",
+      "source_sha256": "ff87d2ee236e1d780b020d91a7462dcc1b6e0fc3c210fcda451a03a4290ddc23",
+      "listening_sha256": "e53baee9b359fd54b23f368b64aef515ed9ff5394b8c47976113e4869f5d3727",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.999999505565906,
+        "true_peak_dbtp": -7.3535085240663705
+      },
+      "gain_db": 16.400140013555607,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.428863525390625,
+      "bytes": 1605266
+    },
+    {
+      "id": "4223f25a116d847b4c47",
+      "source": "artifacts/audio/blind-20261021/render/aria-seed-21022-continuation.wav",
+      "source_sha256": "d28155928cf09add1efea1400d591151c6b8dd5118bc3af9d0a3f75b3f858a6c",
+      "listening_sha256": "d7170f1d7910cb6484d28f238cd77a783a091141a63eb6acb0a1a7326da12e66",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.999999828878597,
+        "true_peak_dbtp": -9.149617816679786
+      },
+      "gain_db": 15.189144797326591,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.348663330078125,
+      "bytes": 1636507
+    },
+    {
+      "id": "4c867802b2108fbf2262",
+      "source": "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.wav",
+      "source_sha256": "88de8a550ba480bb2e489564201abbc8361949ab7dfeb4b1e9a73691d84b6594",
+      "listening_sha256": "5ebd3431753c66657cdcda1c0c7faa3231ad0f6a27c404b173db29845d56df61",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.99999990899584,
+        "true_peak_dbtp": -8.177385439384864
+      },
+      "gain_db": -5.24713443374873,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.390045166015625,
+      "bytes": 1600860
+    },
+    {
+      "id": "69020a3fceb31f3d7423",
+      "source": "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.wav",
+      "source_sha256": "9e50a62644df38dfb9134ae8ae87b64a31190b09277ce2ded0688d43da9440a2",
+      "listening_sha256": "33e11c17924d5152a5a4f9111928edada9344c6ee06136ce00f48c83606d5114",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -22.99999971393231,
+        "true_peak_dbtp": -8.90936760260426
+      },
+      "gain_db": -6.3978668943822825,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.358154296875,
+      "bytes": 1351525
+    },
+    {
+      "id": "77f9855a97412f0a876e",
+      "source": "artifacts/audio/ace-quality-20261021/turbo-piano-42022-60s-raw.wav",
+      "source_sha256": "720b0f9562751ac8aa04cde6d97cdbff885e402f552a9770e53372aee9ba4f74",
+      "listening_sha256": "1dee1af7229269558920385523db51c6a2aba781cb30160b5fc91c0e135cba3b",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -23.000000248868425,
+        "true_peak_dbtp": -5.05961907881515
+      },
+      "gain_db": -3.5105847548255156,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.558502197265625,
+      "bytes": 1620036
+    },
+    {
+      "id": "e1c4f17b2c466dec7d41",
+      "source": "artifacts/audio/blind-20261021/render/original-eight-bar-seed.wav",
+      "source_sha256": "5db7faea6ede5ab44924ff9b7d87934f3eaa9e8cbbdb712e1172e801fb12d85d",
+      "listening_sha256": "b96c201c95c782ca9cb223e38b0e99b1f1488ceef7a1e15e8a871f0fee024a33",
+      "rate": 44100,
+      "channels": 2,
+      "duration": 30,
+      "levels": {
+        "integrated_lufs": -23.000000517335096,
+        "true_peak_dbtp": -8.109968900875886
+      },
+      "gain_db": 16.04649209474755,
+      "source_start_seconds": 0,
+      "edge_fade_seconds": 0.02,
+      "silent_tenths": 0,
+      "peak": 0.392974853515625,
+      "bytes": 1618649
+    }
+  ],
+  "aria_validation": {
+    "midi_files": [
+      {
+        "path": "artifacts/audio/blind-20261021/aria/aria-seed-21021-continuation.mid",
+        "note_ons": 130,
+        "note_offs": 130,
+        "length_s": 60.000000000000064,
+        "first_note_s": 0.44,
+        "programs": [
+          [
+            0,
+            0
+          ]
+        ],
+        "balanced_notes": true
+      },
+      {
+        "path": "artifacts/audio/blind-20261021/aria/aria-seed-21022-continuation.mid",
+        "note_ons": 154,
+        "note_offs": 154,
+        "length_s": 60.00000000000002,
+        "first_note_s": 0.01,
+        "programs": [
+          [
+            0,
+            0
+          ]
+        ],
+        "balanced_notes": true
+      }
+    ],
+    "rerun_refuses_overwrite": true,
+    "existing_report_unchanged_after_refusal": true,
+    "human_listening_performed": false
+  }
+}

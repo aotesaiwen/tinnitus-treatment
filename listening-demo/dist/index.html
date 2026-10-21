@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f3">
+  <meta name="description" content="Listen to anonymous music excerpts, record your impressions, then reveal how each was made.">
+  <title>Listening Room — a blind music comparison</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="wordmark" href="./" aria-label="Listening Room home"><span class="brand-mark" aria-hidden="true">lr</span>Listening Room<span class="edition"> / music studies</span></a>
+      <span class="header-status"><span class="status-dot"></span>PRIVATE LISTENING SESSION</span>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div><p class="eyebrow">LISTEN FIRST. REVEAL LATER.</p><h1 id="page-title">Let your ears<br>make the choice.</h1></div>
+        <div class="intro-aside"><p>One brief: solo piano.<br>Different ways to make music.</p><p class="muted">Listen in any order, note what you hear, <br>then find out how each piece was made.</p><div class="session-meta" id="session-meta">Preparing the listening set…</div></div>
+      </section>
+      <p class="error-banner" id="global-error" role="alert" hidden></p>
+      <section class="listening-layout" id="listening" aria-label="Blind listening session" hidden>
+        <aside class="sample-sidebar">
+          <div class="section-topline"><h2>THE LISTENING SET</h2><span id="progress-count">0 / 0</span></div>
+          <nav id="sample-list" aria-label="Choose a sample"></nav>
+          <div class="session-note"><span class="note-mark" aria-hidden="true">i</span><p>Model names stay hidden until you finish. Your notes are saved in this browser.</p></div>
+          <button class="text-button coverage-trigger" type="button">What is included?</button>
+        </aside>
+        <div class="listening-main">
+          <section class="player-panel" aria-labelledby="sample-heading">
+            <div class="player-heading"><div><p class="eyebrow" id="sample-position">SAMPLE 01</p><h2 id="sample-heading">Sample A</h2></div><span class="sound-tag">SOLO PIANO</span></div>
+            <div class="listening-stage"><span class="sample-letter" id="sample-letter" aria-hidden="true">A</span><div class="stage-caption"><span id="play-state">READY WHEN YOU ARE</span><span class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div>
+            <audio id="audio" preload="metadata"></audio>
+            <div class="seek-row"><span id="time-current">00:00</span><input id="seek" type="range" min="0" max="30" step="0.05" value="0" aria-label="Playback position"><span id="time-total">00:30</span></div>
+            <div class="transport"><button type="button" id="play" class="primary-button">Play sample <span class="play-symbol" aria-hidden="true"></span></button><button type="button" id="restart" class="secondary-button">From start</button><label class="volume-label">Volume<input id="volume" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Playback volume"></label></div>
+            <div class="player-foot"><label class="checkbox-label"><input id="keep-position" type="checkbox" checked>Keep position when switching</label><span class="keyboard-hint"><kbd>space</kbd> play / pause</span></div>
+            <p class="player-error" id="player-error" role="alert" hidden></p>
+          </section>
+          <section class="rating-panel" aria-labelledby="rating-heading">
+            <div class="rating-heading"><div><p class="eyebrow">YOUR IMPRESSION</p><h2 id="rating-heading">How does it feel to listen?</h2></div><span class="scale-note">1 = poor &nbsp; 5 = excellent</span></div>
+            <div id="ratings"></div>
+            <fieldset class="artifact-field"><legend>Anything stand out? <span class="optional">Optional</span></legend><div class="artifact-options" id="artifact-options"></div></fieldset>
+            <label class="notes-label" for="notes">A note to yourself <span class="optional">Optional</span></label><textarea id="notes" rows="2" maxlength="1200" placeholder="A sound you noticed. A phrase you liked. A reason to stop."></textarea>
+            <div class="rating-actions"><span id="save-status" aria-live="polite">Play this sample to begin.</span><button type="button" id="next" class="secondary-button">Next sample <span aria-hidden="true">→</span></button></div>
+            <button type="button" id="skip" class="text-button skip-button">Skip — I cannot judge this sample</button>
+          </section>
+        </div>
+      </section>
+      <section class="finish-panel" id="finish-panel" hidden><div><p class="eyebrow">WHEN YOU ARE READY</p><h2>The names can wait.<br>Your first impression matters.</h2><p class="muted" id="finish-hint">Listen and rate each sample to reveal the results.</p></div><button type="button" id="reveal" class="primary-button" disabled>Reveal the sources <span aria-hidden="true">↗</span></button></section>
+      <section id="results" class="results" hidden aria-labelledby="results-heading"><div class="results-heading"><div><p class="eyebrow">THE REVEAL</p><h2 id="results-heading">Your listening, in perspective.</h2><p class="muted">These are your impressions of these excerpts, not a general model ranking.</p></div><button type="button" id="export" class="secondary-button">Export my ratings <span aria-hidden="true">↓</span></button></div><div id="results-list"></div><div class="results-foot"><p>Your original ratings are locked. You can keep listening with the sources visible.</p><button type="button" id="new-session" class="text-button">Start a new shuffled session</button></div></section>
+    </main>
+    <footer><span>LISTENING ROOM / 2026</span><span id="footer-method">Level-matched excerpts. No frequency filtering.</span><button type="button" class="text-button coverage-trigger">Session details</button></footer>
+  </div>
+  <dialog id="confirm-dialog"><form method="dialog"><p class="eyebrow">ONE LAST THING</p><h2 id="confirm-title">Reveal the sources?</h2><p id="confirm-text">Your ratings will be locked for this round. You can continue listening after the reveal.</p><div class="dialog-actions"><button value="cancel" class="secondary-button">Keep listening</button><button value="confirm" id="confirm-action" class="primary-button">Reveal results</button></div></form></dialog>
+  <dialog id="coverage-dialog"><div class="dialog-top"><p class="eyebrow">ABOUT THIS SESSION</p><button type="button" id="close-coverage" class="text-button" aria-label="Close session details">Close ×</button></div><h2>What you are comparing.</h2><div id="coverage-content"></div></dialog>
+  <noscript><p>This listening comparison needs JavaScript to play samples and save your ratings.</p></noscript>
+</body>
+</html>

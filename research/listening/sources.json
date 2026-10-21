@@ -1,0 +1,67 @@
+{
+  "version": "piano-20261021-v1",
+  "method": "Six 30-second excerpts, each taken from the beginning of its source and matched to -23 LUFS. All MIDI samples use the same Salamander piano; the direct-audio baseline supplies its own timbre. Identical 20 ms edge fades; no frequency filtering, denoising or compression.",
+  "coverageNote": "Two local MIDI models were generated with two predetermined seeds each. The set also includes one existing direct-audio baseline and one authored MIDI reference. The unavailable routes below have no listening sample.",
+  "attribution": "Piano samples: Salamander Grand Piano V3 by Alexander Holm, CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/), from https://archive.org/details/SalamanderGrandPianoV3. Rendered with sfizz 1.2.3; mechanical key/pedal noise layers omitted. Listening excerpts cropped, edge-faded and gain-matched.",
+  "coverage": [
+    {"name": "Aria", "status": "Generated", "detail": "Two piano continuations from one original eight-bar MIDI prompt. The prompt is excluded from both listening excerpts."},
+    {"name": "Text2midi", "status": "Generated; adapted", "detail": "Both outputs ignored the solo-piano instrumentation request. Listening versions omit percussion and play all remaining notes on piano. Raw MIDI is preserved; the reveal identifies the adaptations."},
+    {"name": "ACE-Step 1.5 turbo", "status": "Existing baseline", "detail": "One existing direct-audio piano attempt. No new ACE-Step generation was run for this set."},
+    {"name": "Authored MIDI reference", "status": "Control", "detail": "An original eight-bar phrase written in code, rendered on the common piano. This is a reference, not output from a trained music-generation model."},
+    {"name": "Salamander Grand Piano V3", "status": "Rendered", "detail": "The same real piano sample library renders all MIDI-derived excerpts."},
+    {"name": "Eleven Music v2.5", "status": "Not tested", "detail": "No account or API credentials are available."},
+    {"name": "Lyria 3.5", "status": "Not tested", "detail": "No account or API credentials are available."},
+    {"name": "Stable Audio 3", "status": "Not tested", "detail": "Official Medium and Small Music weights require gated Hugging Face access. Unauthenticated downloads returned 401; no authorized credentials are available."},
+    {"name": "Pianoteq", "status": "Not tested", "detail": "No installed licensed copy is available. Its restricted trial is not used in this comparison."}
+  ],
+  "samples": [
+    {
+      "file": "artifacts/audio/blind-20261021/render/aria-seed-21021-continuation.wav",
+      "label": "Aria · continuation 01",
+      "shortLabel": "Aria · 01",
+      "description": "Model-generated piano notes continuing the original eight-bar MIDI prompt, rendered with Salamander. The authored prompt is excluded.",
+      "configuration": "Official generative checkpoint; seed 21021; temperature 0.90; min-p 0.035. First 30 seconds of generated-only continuation.",
+      "url": "https://github.com/EleutherAI/aria"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/render/aria-seed-21022-continuation.wav",
+      "label": "Aria · continuation 02",
+      "shortLabel": "Aria · 02",
+      "description": "A second fixed-seed continuation of the same original MIDI prompt, rendered with the same piano. The authored prompt is excluded.",
+      "configuration": "Official generative checkpoint; seed 21022; temperature 0.90; min-p 0.035. First 30 seconds of generated-only continuation.",
+      "url": "https://github.com/EleutherAI/aria"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/render/text2midi-1-seed210641-piano-arrangement.wav",
+      "label": "Text2midi · piano arrangement 01",
+      "shortLabel": "Text2midi · 01",
+      "description": "The original output failed the solo-piano brief: multiple instruments and drums. This arrangement omits 148 percussion notes and plays the 316 pitched notes on Salamander. It is an adapted output, not a successful solo-piano generation.",
+      "configuration": "Seed 210641; temperature 0.9; 2000 tokens. Requested C major, 64 BPM; original tempo varies around 87–128 BPM. No pitched-note, velocity or tempo corrections.",
+      "url": "https://github.com/AMAAI-Lab/Text2midi"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/render/text2midi-2-seed210682-piano-arrangement.wav",
+      "label": "Text2midi · piano arrangement 02",
+      "shortLabel": "Text2midi · 02",
+      "description": "The original output also contained multiple instruments and drums. This arrangement omits 76 percussion notes and plays the 396 pitched notes on Salamander. Raw output is preserved separately.",
+      "configuration": "Seed 210682; temperature 0.9; 2000 tokens. Requested A minor, 68 BPM; original tempo about 67.1 BPM. No pitched-note, velocity or tempo corrections.",
+      "url": "https://github.com/AMAAI-Lab/Text2midi"
+    },
+    {
+      "file": "artifacts/audio/ace-quality-20261021/turbo-piano-42022-60s-raw.wav",
+      "label": "ACE-Step 1.5 turbo · direct audio baseline",
+      "shortLabel": "ACE-Step",
+      "description": "An existing direct-audio attempt prompted for gentle solo felt piano. Its timbre is generated directly, without MIDI or the common piano sampler. Retained as a comparison with the earlier route.",
+      "configuration": "Seed 42022; 8 inference steps; shift 3; language model disabled. First 30 seconds of the original 60-second output; no denoising or frequency shaping.",
+      "url": "https://github.com/ace-step/ACE-Step-1.5"
+    },
+    {
+      "file": "artifacts/audio/blind-20261021/render/original-eight-bar-seed.wav",
+      "label": "Authored MIDI · reference control",
+      "shortLabel": "Authored control",
+      "description": "The original phrase written in code and used as Aria's input, rendered with the same Salamander piano. This controls for the sound of the renderer; it is not a trained music model's output.",
+      "configuration": "Eight bars; D major; 64 notes; about 62.7 BPM. First 30 seconds. Note and string-release samples retained; mechanical noise layers omitted uniformly for all MIDI samples.",
+      "url": "https://archive.org/details/SalamanderGrandPianoV3"
+    }
+  ]
+}

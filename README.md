@@ -38,6 +38,7 @@ filter design, tinnitus matching, and simulation commands.
 - [Desktop development and data](app/README.md)
 - [Generators, ACE-Step setup, and historical measurements](docs/generation.md)
 - [Audio processing, validation metrics, and matching](docs/audio-engine.md)
+- [Blind music listening demo](listening-demo/README.md) and [local model comparison](research/listening/README.md)
 - [Music research lab: candidate selection, preference learning, and paired controls](https://github.com/aotesaiwen/tinnitus-treatment/blob/codex/music-research-lab/research/README.md)
 
 Generated sources retain their original audio. Playback and export reprocess it
