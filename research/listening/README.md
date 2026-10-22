@@ -139,3 +139,29 @@ cropped, edge-faded, and gain-matched as described above.
 Official model sources: [Aria](https://github.com/EleutherAI/aria),
 [Text2midi](https://github.com/AMAAI-Lab/Text2midi), and
 [ACE-Step 1.5](https://github.com/ace-step/ACE-Step-1.5).
+
+## Repertoire processing (2026-10-22)
+
+The published full Chopin rendition now has client-side sound controls. Its
+source MIDI, FLAC, attribution, renderer and original gain-only render record
+remain unchanged. `listening-demo/dist/repertoire/audio-engine.js` implements
+broad ±6 dB shelves, one music path for original/processed comparison, pink-noise
+background and a transparent-below-threshold peak guard. There is no new music
+generation, no notch, no model/provider selection and no change to note releases.
+The selected Heolstor arrangement remains `awaiting_score_file`.
+
+`calibrate_repertoire.py` measures full-track BS.1770 loudness for the Web Audio
+shelf grid using NumPy/SciPy/SoundFile, following the same K weighting and gating
+as `src/loudness.rs`. Regenerate its small static calibration module with:
+
+```sh
+.runtime/ACE-Step-1.5/.venv/bin/python research/listening/calibrate_repertoire.py
+```
+
+This table is specific to the existing Chopin audio hash and must be recalibrated
+if that audio or the shelf frequencies/ranges change. Background is not part of
+loudness matching; interpolation and local musical passages can differ. See
+`listening-demo/README.md` for browser lifecycle, persistence and verification.
+`repertoire-player-validation.json` records this iteration's measured signal
+results and coverage. Listening comfort or clinical benefit is not inferred
+from technical tests. Prior listener scores and preferences are unchanged.

@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f6f3">
-  <meta name="description" content="用同一套钢琴音色试听选定的完整曲目。">
+  <meta name="description" content="播放完整肖邦曲目，调节音色与粉红噪声，在同一位置比较原版和处理版。">
   <title>曲目试听 · 盲听室</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles.css?v=repertoire-1">
-  <link rel="stylesheet" href="repertoire.css?v=1">
-  <script src="repertoire.js?v=1" defer></script>
+  <link rel="stylesheet" href="repertoire.css?v=2">
+  <script src="repertoire.js?v=2" type="module"></script>
 </head>
 <body>
   <div class="page-shell">
@@ -19,8 +19,8 @@
     </header>
     <main>
       <section class="intro" aria-labelledby="page-title">
-        <div><p class="eyebrow">选定的两首曲目</p><h1 id="page-title">从熟悉的曲子<br>开始听。</h1></div>
-        <div class="intro-aside"><p>用同一套钢琴音色，<br>听完整的旋律、和声和乐句。</p><p class="muted">这一页保留曲名，随时可以拖动进度，<br>反复听你在意的部分。</p></div>
+        <div><p class="eyebrow">完整曲目 · 声音调节</p><h1 id="page-title">让熟悉的旋律，<br>适合此刻的你。</h1></div>
+        <div class="intro-aside"><p>调一点明亮，添一点低音。<br>在同一段旋律里，听听差别。</p><p class="muted">保留完整曲目，随时切回原版。<br>仅供声音偏好试听，不代表已证实的治疗效果。</p></div>
       </section>
       <section class="repertoire-list" aria-label="曲目列表">
         <article class="piece" aria-labelledby="chopin-title">
@@ -32,6 +32,58 @@
             <source src="chopin-nocturne-op9-no2.flac" type="audio/flac">
             你的浏览器不支持音频播放，可以下载音频后试听。
           </audio>
+          <section id="listening-controls" class="sound-panel" aria-label="播放与声音调节" hidden>
+            <div class="piece-transport">
+              <button id="play-piece" class="primary-button" type="button">播放</button>
+              <span id="piece-time" class="piece-time">0:00 / 0:00</span>
+              <span class="full-length">完整曲目 · 约 3 分 24 秒</span>
+            </div>
+            <label class="sr-only" for="piece-seek">播放进度</label>
+            <input id="piece-seek" class="piece-seek" type="range" min="0" max="1" step="0.1" value="0" disabled>
+            <div class="master-control">
+              <label for="volume">总音量</label>
+              <input id="volume" type="range" min="0" max="100" value="65">
+              <output id="volume-value" for="volume">65%</output>
+            </div>
+            <fieldset class="comparison">
+              <legend>在同一位置比较</legend>
+              <label><input type="radio" name="comparison" value="original">原版</label>
+              <label><input type="radio" name="comparison" value="processed" checked>处理版</label>
+            </fieldset>
+            <p id="mode-description" class="control-note" aria-live="polite"></p>
+            <div class="tone-controls">
+              <div class="sound-control">
+                <div class="control-heading"><label for="brightness">明亮程度</label><output id="brightness-value" for="brightness">中性</output></div>
+                <input id="brightness" type="range" min="-6" max="6" step="1" value="0" aria-describedby="brightness-hint">
+                <div class="range-hints" id="brightness-hint"><span>更柔和</span><span>更明亮</span></div>
+              </div>
+              <div class="sound-control">
+                <div class="control-heading"><label for="bass">低音厚度</label><output id="bass-value" for="bass">中性</output></div>
+                <input id="bass" type="range" min="-6" max="6" step="1" value="0" aria-describedby="bass-hint">
+                <div class="range-hints" id="bass-hint"><span>更轻盈</span><span>更厚实</span></div>
+              </div>
+            </div>
+            <div class="background-control">
+              <label class="background-toggle"><input id="background" type="checkbox">背景声 · 粉红噪声</label>
+              <p class="control-note">轻柔、连续的沙沙声。只在处理版播放时响起，随音乐暂停或结束。</p>
+              <div class="master-control">
+                <label for="backgroundVolume">背景音量</label>
+                <input id="backgroundVolume" type="range" min="0" max="100" value="30" disabled>
+                <output id="backgroundVolume-value" for="backgroundVolume">30%</output>
+              </div>
+            </div>
+            <div class="settings-actions">
+              <button id="save-settings" class="secondary-button" type="button">保存设置</button>
+              <button id="restore-settings" class="secondary-button" type="button">恢复已存设置</button>
+              <button id="reset-settings" class="text-button" type="button">恢复默认</button>
+            </div>
+            <p id="settings-status" class="control-note" role="status"></p>
+            <details class="processing-details"><summary>声音调节与对比说明</summary>
+              <p>原版使用原始音乐输出；处理版使用平滑的宽频段调节，不针对耳鸣频率挖去声音。中性且背景声关闭时，两者输出一致。切换时有约 80 毫秒的平滑过渡。</p>
+              <p>音乐音量依据这首完整曲目的预先测量做近似补偿，减少“更响”对比较的影响。当前乐句与插值设置仍可能有差别；背景声额外叠加，不纳入精确响度匹配。总音量控制两者。</p>
+              <p>输出设有数字峰值保护，较大峰值会被柔和压低。设备与耳机仍影响实际音量；请从舒适的小音量开始。下载的是未调节的原始音频。</p>
+            </details>
+          </section>
           <p class="player-error" id="playback-error" role="alert" hidden>音频暂时无法载入，请刷新后重试，或使用下面的下载链接。</p>
           <div class="piece-links"><a href="chopin-nocturne-op9-no2.flac" download>下载完整音频</a><a href="chopin-nocturne-op9-no2.mid" download>下载 MIDI</a><a href="https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1590" target="_blank" rel="noopener noreferrer">原谱与来源 ↗</a></div>
           <details class="source-details"><summary>演奏与来源说明</summary>

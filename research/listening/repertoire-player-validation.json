@@ -1,0 +1,277 @@
+{
+  "date": "2026-10-22",
+  "scope": "Chopin full-piece browser sound controls; no source audio/MIDI or blind-test dataset changes.",
+  "environment": "Playwright Chromium, desktop 1440px and mobile 390px viewport/touch emulation; Vite HTTP Range server.",
+  "source_audio_sha256": "813de7b99b85bc5b1ac85c793d45589c164ec3224b93be35ae3cacd95f2cf4d0",
+  "source_midi_sha256": "e202d3941ce5f26397f57f59f0e2e4e3ad9e19061fa3c4dc596c5ee6a6a2548e",
+  "checks": [
+    "Complete 204.405261-second playback and pause",
+    "Seek to 150 seconds and via UI/keyboard; HTTP 206",
+    "Same-position original/processed switch; exactly one music source",
+    "24 A/B switches and background toggles do not allocate more audio nodes",
+    "Actual output and master mute",
+    "Background reaches exact silence when disabled, paused, ended, original or zero volume",
+    "Pagehide pauses music and suspends audio context",
+    "Save, restore, reset and reload do not autoplay",
+    "Settings storage denial preserves playback",
+    "Native original fallback without Web Audio",
+    "Keyboard and mobile touch operation, no horizontal overflow",
+    "No browser script errors",
+    "Existing twelve-excerpt blind test and prior-round scores pass check_demo.cjs"
+  ],
+  "limits": [
+    "Physical phones and non-Chromium browsers were not tested.",
+    "Full-track calibration is approximate between grid points and is not momentary/perceived loudness matching.",
+    "Background is excluded from matching.",
+    "Browser 4x resampling is an intersample-peak check, not certified true-peak metering.",
+    "Signal tests do not establish comfort or clinical benefit."
+  ],
+  "signal_results": {
+    "baseline": {
+      "peakDbfs": -3.969208997797329,
+      "rmsDbfs": -25.74970190255837,
+      "lufs": -22.999866251746475,
+      "finite": true
+    },
+    "full": [
+      {
+        "bass": 0,
+        "brightness": 0,
+        "background": false,
+        "mode": "processed",
+        "peakDbfs": -3.969208997797329,
+        "rmsDbfs": -25.749701902742565,
+        "lufs": -22.99986625179047,
+        "finite": true,
+        "loudnessDifference": -4.39932534845866e-11,
+        "maxError": 5.960464477539063e-08,
+        "resampledPeakDb": -3.969208997797329
+      },
+      {
+        "bass": -6,
+        "brightness": -6,
+        "background": false,
+        "mode": "processed",
+        "peakDbfs": -3.1327180236600856,
+        "rmsDbfs": -25.84053478982636,
+        "lufs": -22.99986503915404,
+        "finite": true,
+        "loudnessDifference": 1.212592433574855e-06,
+        "maxError": 0,
+        "resampledPeakDb": -3.1327180236600856
+      },
+      {
+        "bass": 6,
+        "brightness": 6,
+        "background": false,
+        "mode": "processed",
+        "peakDbfs": -4.840044049759332,
+        "rmsDbfs": -25.575671470491862,
+        "lufs": -22.999867034880335,
+        "finite": true,
+        "loudnessDifference": -7.831338599828541e-07,
+        "maxError": 0,
+        "resampledPeakDb": -4.840044049759332
+      },
+      {
+        "bass": -6,
+        "brightness": 6,
+        "background": false,
+        "mode": "processed",
+        "peakDbfs": -3.5310734644804516,
+        "rmsDbfs": -26.07413320555278,
+        "lufs": -22.99987130154319,
+        "finite": true,
+        "loudnessDifference": -5.049796715894672e-06,
+        "maxError": 0,
+        "resampledPeakDb": -3.5310734644804516
+      },
+      {
+        "bass": 6,
+        "brightness": -6,
+        "background": false,
+        "mode": "processed",
+        "peakDbfs": -4.497299490439545,
+        "rmsDbfs": -25.434346187732352,
+        "lufs": -22.99987009026402,
+        "finite": true,
+        "loudnessDifference": -3.838517546483899e-06,
+        "maxError": 0,
+        "resampledPeakDb": -4.497299490439545
+      },
+      {
+        "bass": 2,
+        "brightness": -2,
+        "background": false,
+        "mode": "processed",
+        "peakDbfs": -4.342968624093202,
+        "rmsDbfs": -25.66629049901416,
+        "lufs": -23.02184948855465,
+        "finite": true,
+        "loudnessDifference": -0.021983236808175377,
+        "maxError": 0,
+        "resampledPeakDb": -4.342968624093202
+      },
+      {
+        "bass": -2,
+        "brightness": 2,
+        "background": false,
+        "mode": "processed",
+        "peakDbfs": -3.73103015989499,
+        "rmsDbfs": -25.874424039502266,
+        "lufs": -23.022351261449028,
+        "finite": true,
+        "loudnessDifference": -0.02248500970255307,
+        "maxError": 0,
+        "resampledPeakDb": -3.73103015989499
+      },
+      {
+        "bass": 6,
+        "brightness": 6,
+        "background": true,
+        "mode": "processed",
+        "peakDbfs": -4.684314064654357,
+        "rmsDbfs": -24.60479543770942,
+        "lufs": -22.176834656778436,
+        "finite": true,
+        "loudnessDifference": 0.8230315949680396,
+        "maxError": 0,
+        "resampledPeakDb": -4.684314064654357
+      },
+      {
+        "bass": 6,
+        "brightness": -6,
+        "background": true,
+        "mode": "original",
+        "peakDbfs": -3.969208997797329,
+        "rmsDbfs": -25.749701902742565,
+        "lufs": -22.99986625179047,
+        "finite": true,
+        "loudnessDifference": -4.39932534845866e-11,
+        "maxError": 5.960464477539063e-08,
+        "resampledPeakDb": -3.969208997797329
+      }
+    ],
+    "toneResults": [
+      {
+        "frequency": 80,
+        "bass": 0,
+        "brightness": 0,
+        "rmsDb": -23.01029991810004
+      },
+      {
+        "frequency": 80,
+        "bass": 6,
+        "brightness": 0,
+        "rmsDb": -18.74864738966957
+      },
+      {
+        "frequency": 80,
+        "bass": 0,
+        "brightness": 6,
+        "rmsDb": -23.28513355143739
+      },
+      {
+        "frequency": 1000,
+        "bass": 0,
+        "brightness": 0,
+        "rmsDb": -23.010299871569373
+      },
+      {
+        "frequency": 1000,
+        "bass": 6,
+        "brightness": 0,
+        "rmsDb": -24.656444696321117
+      },
+      {
+        "frequency": 1000,
+        "bass": 0,
+        "brightness": 6,
+        "rmsDb": -23.12965307093524
+      },
+      {
+        "frequency": 8000,
+        "bass": 0,
+        "brightness": 0,
+        "rmsDb": -23.010299871569373
+      },
+      {
+        "frequency": 8000,
+        "bass": 6,
+        "brightness": 0,
+        "rmsDb": -24.681505917800337
+      },
+      {
+        "frequency": 8000,
+        "bass": 0,
+        "brightness": 6,
+        "rmsDb": -17.3252198476352
+      }
+    ],
+    "windows": [
+      {
+        "start": 0.15,
+        "peak": 0.09301984310150146,
+        "rms": 0.02602070545993433
+      },
+      {
+        "start": 0.65,
+        "peak": 0,
+        "rms": 0
+      },
+      {
+        "start": 1.15,
+        "peak": 0.08518630266189575,
+        "rms": 0.025983716255721493
+      },
+      {
+        "start": 1.65,
+        "peak": 0,
+        "rms": 0
+      },
+      {
+        "start": 2.15,
+        "peak": 0.08474373817443848,
+        "rms": 0.02469248453582064
+      },
+      {
+        "start": 2.65,
+        "peak": 0,
+        "rms": 0
+      },
+      {
+        "start": 3.15,
+        "peak": 0.09351170063018799,
+        "rms": 0.028052619482849813
+      },
+      {
+        "start": 3.65,
+        "peak": 0,
+        "rms": 0
+      },
+      {
+        "start": 4.15,
+        "peak": 0,
+        "rms": 0
+      },
+      {
+        "start": 4.65,
+        "peak": 0,
+        "rms": 0
+      }
+    ],
+    "overload": {
+      "peakDbfs": -0.6255859260290284,
+      "rmsDbfs": -1.0023312253588317,
+      "lufs": -0.17233146511254338,
+      "finite": true
+    },
+    "rapidChanges": {
+      "maxAdjacentStep": 0.007027387619018555
+    },
+    "noiseLoop": {
+      "seamStep": 0.09666143357753754,
+      "maxNoiseStep": 0.2188793644309044
+    }
+  }
+}

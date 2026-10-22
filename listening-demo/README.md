@@ -94,3 +94,55 @@ processing are recorded in `research/listening/repertoire-record.json`.
 `dist/` is the entire deployable app: HTML, CSS, JavaScript, manifest, reveal map,
 and lossless audio. There is no build step. Publish an exact committed snapshot
 including the audio; do not reuse a preparing or empty manifest.
+
+## Full-piece sound controls
+
+The repertoire page processes the existing Chopin FLAC entirely in the browser.
+There is one media element, one Web Audio context, and one reusable music path.
+The Chinese controls include play/pause, seek, a master volume that also works
+when a mobile browser ignores media-element volume, brightness, bass, original /
+processed comparison, and separately enabled/levelled **pink noise**. The native
+player remains available if Web Audio or the module cannot load.
+
+- Brightness and bass use broad high/low shelves at 2,500 / 250 Hz, each ±6 dB.
+  Defaults are neutral. There is no notch or tinnitus-frequency targeting.
+- Original mode ramps both shelves to zero, music compensation to unity and
+  background to silence, without changing the playhead or saved parameters.
+  Processed mode reapplies those parameters. Both modes share master volume and
+  the peak guard. Neutral music stays below the guard's nonlinear region.
+- Compensation comes from full-track BS.1770 measurements on a 5 × 5 gain grid;
+  intermediate settings interpolate in dB. This is approximate musical loudness
+  compensation, not exact momentary or perceived loudness matching. Background
+  sound is deliberately excluded from matching. `compensation.js` records the
+  input hash, method, grid, and gains.
+- A unity-response peak guard below amplitude 0.8 smoothly saturates larger
+  values and bounds digital samples below 0.95. It is not a certified true-peak
+  limiter. The tested track/settings also passed browser 4× resampled peak
+  checks. The raw FLAC and MIDI downloads remain unchanged.
+- Parameter ramps last 80 ms and reach exact zero. One normalized, deterministic
+  12-second pink-noise buffer has a crossfaded loop seam. Noise fades out on
+  pause, end, seeking or buffering; the context suspends after 120 ms of inactivity.
+  Page departure immediately pauses media and suspends the context. Repeated
+  toggles do not create more sources or connect another output path.
+- Settings automatically save to `listening-room:repertoire-settings:v1`.
+  Save / restore buttons and reset operate only on that key. Nothing starts
+  playing on load or restore. Storage denial leaves playback usable and shows a
+  clear message. Both blind-test datasets and ratings keep their existing keys.
+
+Additional checks:
+
+```sh
+node research/listening/check_repertoire.cjs http://127.0.0.1:8765/repertoire/
+node research/listening/check_repertoire_signal.cjs http://127.0.0.1:8765/repertoire/
+```
+
+The first checks real playback/seek, same-position A/B, master mute, unchanged
+node counts after repeated switches, background lifecycle, saved defaults,
+storage denial, keyboard controls, Chromium mobile touch emulation, HTTP Range,
+source MIDI hash, attribution links and navigation. The signal check renders the
+full decoded piece through the shipped graph in Chromium's OfflineAudioContext,
+measures BS.1770 loudness and peaks, verifies neutral/original waveform identity,
+probes low/high frequency response, checks silent states, overload protection,
+loop continuity and rapid parameter ramps. Reports and screenshots are written
+to `.runtime/previews`; these are not committed. Physical iOS/Android devices and
+every domestic network are outside this automated test coverage.
