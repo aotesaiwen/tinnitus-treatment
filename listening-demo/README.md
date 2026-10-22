@@ -11,6 +11,13 @@ Visitors do not need ChatGPT or GitHub accounts. HTML, scripts, styles, and audi
 are served together; no API keys, model downloads, external fonts, analytics, or
 backend service are needed to listen.
 
+The [repertoire page](https://aotesaiwen.github.io/tinnitus-treatment/repertoire/)
+adds complete, named pieces played through the same piano renderer. Chopin's
+Nocturne Op.9 No.2 is available as a full 204.4-second rendition from Mutopia's
+MIDI. The second selection, the user's exact MuseScore arrangement of *Heolstor,
+the Night Lord*, is clearly marked pending because the score page returned a
+browser verification challenge and no score file was obtained.
+
 The former ChatGPT Site remains separate. `.openai/hosting.json` records that
 legacy deployment and is not included in the public site's publishing branch.
 Browser-local scores belong to each origin, so scores on the old hostname do not
@@ -78,6 +85,11 @@ This exercises actual media playback and seeking, deferred source disclosure,
 saved scores, skip/reveal gating, locked scores, literal note rendering, JSON
 export, reset, narrow layouts, and preservation of first-round scores when
 switching datasets. It saves screenshots under `.runtime/previews`.
+
+For the complete-piece page, run
+`node research/listening/check_repertoire.cjs http://127.0.0.1:8765/repertoire/`.
+Its source, license, renderer, original MIDI hash, output hash, and gain-only
+processing are recorded in `research/listening/repertoire-record.json`.
 
 `dist/` is the entire deployable app: HTML, CSS, JavaScript, manifest, reveal map,
 and lossless audio. There is no build step. Publish an exact committed snapshot

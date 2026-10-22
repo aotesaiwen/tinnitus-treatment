@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f3">
+  <meta name="description" content="用同一套钢琴音色试听选定的完整曲目。">
+  <title>曲目试听 · 盲听室</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css?v=repertoire-1">
+  <link rel="stylesheet" href="repertoire.css?v=1">
+  <script src="repertoire.js?v=1" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="wordmark" href="../" aria-label="返回音乐盲测"><span class="brand-mark" aria-hidden="true">lr</span>盲听室<span class="edition"> / 曲目试听</span></a>
+      <a class="text-button" href="../">返回音乐盲测 →</a>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div><p class="eyebrow">选定的两首曲目</p><h1 id="page-title">从熟悉的曲子<br>开始听。</h1></div>
+        <div class="intro-aside"><p>用同一套钢琴音色，<br>听完整的旋律、和声和乐句。</p><p class="muted">这一页保留曲名，随时可以拖动进度，<br>反复听你在意的部分。</p></div>
+      </section>
+      <section class="repertoire-list" aria-label="曲目列表">
+        <article class="piece" aria-labelledby="chopin-title">
+          <div class="piece-top"><span class="piece-number">01</span><span class="piece-status">可以试听</span></div>
+          <h2 id="chopin-title">降 E 大调夜曲</h2>
+          <p class="piece-subtitle">肖邦 · Op.9 No.2</p>
+          <p class="piece-description">按现成琴谱的 MIDI 演奏完整曲目，保留原有音符、节奏和力度控制。</p>
+          <audio id="chopin-audio" controls preload="metadata" aria-label="播放肖邦降 E 大调夜曲">
+            <source src="chopin-nocturne-op9-no2.flac" type="audio/flac">
+            你的浏览器不支持音频播放，可以下载音频后试听。
+          </audio>
+          <p class="player-error" id="playback-error" role="alert" hidden>音频暂时无法载入，请刷新后重试，或使用下面的下载链接。</p>
+          <div class="piece-links"><a href="chopin-nocturne-op9-no2.flac" download>下载完整音频</a><a href="chopin-nocturne-op9-no2.mid" download>下载 MIDI</a><a href="https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1590" target="_blank" rel="noopener noreferrer">原谱与来源 ↗</a></div>
+          <details class="source-details"><summary>演奏与来源说明</summary>
+            <p>本版本由谱面导出的 MIDI 驱动 Salamander 钢琴采样，未经 Aria 续写。保留原始 MIDI 的 1,242 个音符、速度和音量控制；未额外加入演奏者的自由速度与踏板。音频保留自然尾音，仅整体调整响度。</p>
+            <p>乐谱整理：Renato Biolcati Rinaldi，Mutopia-2014/12/18-1590，依据 G. Schirmer 1881 年版。MIDI 与本次演奏音频采用 <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>。</p>
+            <p>钢琴音源：Alexander Holm 的 Salamander Grand Piano V3，采用 <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>；使用 sfizz 1.2.3 演奏，沿用前两轮的钢琴设置。<a href="https://archive.org/details/SalamanderGrandPianoV3" target="_blank" rel="noopener noreferrer">音源来源 ↗</a></p>
+          </details>
+        </article>
+        <article class="piece piece-pending" aria-labelledby="heolstor-title">
+          <div class="piece-top"><span class="piece-number">02</span><span class="piece-status pending-status">等待谱文件</span></div>
+          <h2 id="heolstor-title">Heolstor, the Night Lord</h2>
+          <p class="piece-subtitle">Elden Ring Nightreign · 所选钢琴谱</p>
+          <p class="piece-description">已选定你提供的 MuseScore 版本。取得 MIDI、MusicXML 或 PDF 谱文件后，会用同一套钢琴音色加入试听。</p>
+          <div class="piece-links"><a href="https://musescore.com/user/35580763/scores/25692103" target="_blank" rel="noopener noreferrer">打开所选乐谱 ↗</a></div>
+        </article>
+      </section>
+    </main>
+    <footer><span>盲听室 / 曲目试听</span><span>完整曲目 · 同一套钢琴音色</span><a class="text-button" href="../">返回音乐盲测</a></footer>
+  </div>
+</body>
+</html>

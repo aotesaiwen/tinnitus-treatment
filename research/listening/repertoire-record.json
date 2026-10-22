@@ -1,0 +1,157 @@
+{
+  "title": "Chopin — Nocturne in E-flat major, Op.9 No.2",
+  "duration_seconds": 204.40526077097505,
+  "sample_rate": 44100,
+  "channels": 2,
+  "source_page": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1590",
+  "source_midi": "https://www.mutopiaproject.org/ftp/ChopinFF/O9/chopin_nocturne_op9_n2/chopin_nocturne_op9_n2.mid",
+  "score_credit": "Renato Biolcati Rinaldi / Mutopia-2014/12/18-1590, after G. Schirmer 1881",
+  "score_and_render_license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "source_midi_sha256": "e202d3941ce5f26397f57f59f0e2e4e3ad9e19061fa3c4dc596c5ee6a6a2548e",
+  "audio_sha256": "813de7b99b85bc5b1ac85c793d45589c164ec3224b93be35ae3cacd95f2cf4d0",
+  "audio_bytes": 10213757,
+  "processing": "Full unchanged score MIDI rendered with the same quiet Salamander preset; gain-only loudness matching; full natural tail retained; no Aria continuation, frequency filtering, added pedal, note editing, or fades.",
+  "render": {
+    "schema_version": 1,
+    "renderer": "sfizz 1.2.3",
+    "renderer_source": "https://download.opensuse.org/repositories/home:/sfztools:/sfizz/xUbuntu_22.04/",
+    "renderer_sha256": "d2c6db1a6aae7e26c1d3dbd69ebd7661d4ce3fd8823d4cb795f37c2ba786a22e",
+    "midi_path": "artifacts/audio/repertoire-20261022/sources/chopin-nocturne-op9-no2.mid",
+    "midi_sha256": "e202d3941ce5f26397f57f59f0e2e4e3ad9e19061fa3c4dc596c5ee6a6a2548e",
+    "midi": {
+      "format": 1,
+      "tracks": 3,
+      "ticks_per_beat": 384,
+      "note_on_count": 1242,
+      "pitch_range": [
+        32,
+        99
+      ],
+      "pitched_note_count": 1242,
+      "percussion_note_count": 0,
+      "pitched_notes_outside_piano_range": 0,
+      "note_counts_by_channel_zero_based": {
+        "1": 471,
+        "2": 771
+      },
+      "velocity_range": [
+        90,
+        90
+      ],
+      "channels_zero_based": [
+        1,
+        2
+      ],
+      "program_changes_zero_based": [],
+      "render_mapping": "Every pitched track uses the same Salamander piano; original MIDI programs are retained here and in the unchanged MIDI."
+    },
+    "output_path": "artifacts/audio/repertoire-20261022/chopin-nocturne-op9-no2-raw.wav",
+    "output_sha256": "43729ab3eb7c22091ec012c7cd61d854648dbcad02ac6f07ab67df9b68cac2cf",
+    "instrument": {
+      "name": "Salamander Grand Piano V3",
+      "author": "Alexander Holm",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "source_url": "https://archive.org/details/SalamanderGrandPianoV3",
+      "sample_archive_sha256": "fe595c7722b70860e6377f82948d1c0cfcf27ecebf500dc79534408a78a62892",
+      "original_sfz_sha256": "84247d1a6af9a6ec6aa45eb28ea914c86bb8cc4618ee08510f9261dbfebb77a1",
+      "rendered_sfz_sha256": "4e6f17ebd37c4494eb2b4907b0722512a72ff30071aefcb3c2612ad0e16538ec",
+      "mechanical_noise_regions_omitted": 92,
+      "note_and_string_release_samples_modified": false,
+      "sample_format": "44100 Hz, 16-bit stereo PCM"
+    },
+    "command": [
+      ".runtime/sfizz/root/usr/bin/sfizz_render",
+      "--sfz",
+      ".runtime/piano/SalamanderGrandPianoV3_44.1khz16bit/SalamanderGrandPianoV3-quiet.sfz",
+      "--midi",
+      "artifacts/audio/repertoire-20261022/sources/chopin-nocturne-op9-no2.mid",
+      "--wav",
+      "artifacts/audio/repertoire-20261022/chopin-nocturne-op9-no2-raw.wav",
+      "--samplerate",
+      "44100",
+      "--quality",
+      "10",
+      "--polyphony",
+      "256"
+    ],
+    "elapsed_s": 70.29023158736527,
+    "audio": {
+      "sample_rate": 44100,
+      "channels": 2,
+      "bits_per_sample": 16,
+      "duration_s": 204.40526077097505,
+      "sample_peak_dbfs": -10.368264481543825,
+      "rms_dbfs": -32.14875887429738,
+      "sample_peak_at_or_above_full_scale": false
+    },
+    "postprocessing": "None. Loudness matching belongs to the blind-set preparation step.",
+    "pianoteq": "Unavailable: no installed licensed copy; no demo substitution."
+  },
+  "levels": {
+    "tool": "tinnitus-music",
+    "version": "0.1.0",
+    "mode": "passthrough",
+    "fs": 44100,
+    "channels": 2,
+    "duration_s": 204.40526077097505,
+    "input_path": "artifacts/audio/repertoire-20261022/chopin-nocturne-op9-no2-raw.wav",
+    "input_sha256": "43729ab3eb7c22091ec012c7cd61d854648dbcad02ac6f07ab67df9b68cac2cf",
+    "input": {
+      "integrated_lufs": -29.398923811943057,
+      "true_peak_dbtp": -10.368253379045553
+    },
+    "input_bandwidth_hz": 11313.70849898476,
+    "design": null,
+    "measurement": null,
+    "target_lufs": -23.0,
+    "true_peak_ceiling_db": -1.0,
+    "gain_db": 6.398923811943057,
+    "gain_limited_by_true_peak": false,
+    "output_format": "F32",
+    "output_path": "artifacts/audio/repertoire-20261022/chopin-nocturne-op9-no2-matched.wav",
+    "output_sha256": "6e99145b8b8f5bb4bd7fa3592193b8e548ab8f3033c2e8a228a7d3c503160f08",
+    "output": {
+      "integrated_lufs": -22.999999431235413,
+      "true_peak_dbtp": -3.969329189697296
+    },
+    "write": {
+      "clipped_samples": 0,
+      "non_finite_samples": 0
+    },
+    "checks": [
+      {
+        "id": "L1",
+        "description": "output loudness error vs target (|LU|)",
+        "value": 5.687645874274949e-07,
+        "limit": 0.1,
+        "pass": true
+      },
+      {
+        "id": "L2",
+        "description": "output true peak (dBTP)",
+        "value": -3.969329189697296,
+        "limit": -1.0,
+        "pass": true
+      },
+      {
+        "id": "Q1",
+        "description": "clipped or non-finite output samples",
+        "value": 0.0,
+        "limit": 0.0,
+        "pass": true
+      }
+    ],
+    "warnings": [],
+    "all_pass": true,
+    "processing_s": 2.018677975,
+    "realtime_factor": 101.25699259733342
+  },
+  "second_piece": {
+    "title": "Heolstor, the Night Lord — Elden Ring Nightreign",
+    "source_page": "https://musescore.com/user/35580763/scores/25692103",
+    "status": "awaiting_score_file",
+    "reason": "Public page retrieval returned HTTP 403 and a browser verification challenge. No downloadable score obtained."
+  }
+}
